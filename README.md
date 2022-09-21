@@ -12,7 +12,7 @@ Zin: Feeling good and ready to work on the project.
 ## Wellbeing?
 As a group, most of us are sleeping pretty well. After a discussion around stress profiles, we mostly decided to ensure communication when we are feeling stressed, taking breaks is essential to our success. We will take two main breaks, lunch break (1h to 2h max) and honey break (30 minutes). Extra breaks may be used once applicable. One way to mitigate this stress from happening is to acknowledge it openly and walk away for 5 - 10 mins. 
 Ash: I like to talk things through as a way of reassuring what is going on.
-Brendan: communicate to the stress level to the team and go for a work out to distress.
+Brendan: communicate to the stress level to the team and go for a work out to destress.
 Pei: Let my pair know and take a short break.
 Tomas: I will communicate with my pair and have some time for myself.
 Zin: Go to the balcony and have some fresh air.
