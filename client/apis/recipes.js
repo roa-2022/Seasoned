@@ -19,6 +19,3 @@ export function getRecipes(userInput) {
       return result
     })
 }
-
-
-

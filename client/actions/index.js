@@ -14,6 +14,7 @@ export function fetchRecipes(userInput) {
     try {
       const recipes = await getRecipes(userInput)
       dispatch(displayRecipes(recipes))
+      console.log('action', recipes)
     } catch (err) {
       console.log('Err message: ' + err)
     }
