@@ -1,19 +1,19 @@
 import { getRecipes } from '../apis/recipes'
 
-export const SEARCH_RECIPES = 'SEARCH_RECIPES'
+export const DISPLAY_RECIPES = 'DISPLAY_RECIPES'
 
-export function searchRecipes(userInput) {
+export function displayRecipes(recipes) {
   return {
-    type: SEARCH_RECIPES,
-    payload: userInput,
+    type: DISPLAY_RECIPES,
+    payload: recipes,
   }
 }
 
-export function fetchRecipes() {
+export function fetchRecipes(userInput) {
   return async (dispatch) => {
     try {
-      const recipes = await getRecipes()
-      dispatch(searchRecipes(recipes))
+      const recipes = await getRecipes(userInput)
+      dispatch(displayRecipes(recipes))
     } catch (err) {
       console.log('Err message: ' + err)
     }

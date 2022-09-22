@@ -1,11 +1,11 @@
-import { SEARCH_RECIPES } from '../actions'
+import { DISPLAY_RECIPES } from '../actions'
 
 const initialState = []
 
 const recipesReducer = (state = initialState, action) => {
   const { type, payload } = action
   switch (type) {
-    case SEARCH_RECIPES:
+    case DISPLAY_RECIPES:
       return payload
     default:
       return state

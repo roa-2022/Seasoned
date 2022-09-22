@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchRecipes } from '../actions'
 
@@ -7,10 +7,13 @@ import SearchIcon from '@mui/icons-material/Search'
 
 export default function SearchRecipe() {
   const dispatch = useDispatch()
+  const [ingredient, setIngredient] = useState('')
+  // const [results, setResults] = useState([])
 
   function handleSearch(e) {
     e.preventDefault()
-    dispatch(fetchRecipes())
+    dispatch(fetchRecipes(ingredient))
+    e.target.reset()
     // console.log('Testing function')
   }
   return (
@@ -18,6 +21,9 @@ export default function SearchRecipe() {
       <div>
         <form onSubmit={handleSearch}>
           <TextField
+            onChange={(e) => {
+              setIngredient(e.target.value)
+            }}
             label="Search"
             variant="outlined"
             color="primary"
