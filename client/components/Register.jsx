@@ -7,10 +7,10 @@ import {
   GridForm,
   ColOne,
   ColTwoText,
-  //   ColTwoField,
+  ColTwoField,
   Button,
-  //   RadioLabel,
-  //   Radio,
+  RadioLabel,
+  Radio,
 } from './Styled'
 
 import { addUser } from '../api'

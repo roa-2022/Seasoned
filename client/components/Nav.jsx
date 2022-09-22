@@ -9,8 +9,6 @@ function Nav() {
   const user = useSelector((state) => state.loggedInUser)
   const { logout, loginWithRedirect } = useAuth0()
 
-  // console.log('NAV: ', logout, loginWithRedirect)
-
   const handleLogOff = (e) => {
     e.preventDefault()
     logout()
