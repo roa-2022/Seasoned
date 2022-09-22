@@ -1,30 +1,22 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchFruits, fetchVegetables } from '../actions'
+import { fetchProduce } from '../actions'
 
 function App() {
-  const fruits = useSelector((state) => state.fruits)
-  const vegetables = useSelector((state) => state.vegetables)
+  const produce = useSelector((state) => state.produce)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchFruits())
-    dispatch(fetchVegetables())
+    dispatch(fetchProduce())
   }, [])
 
   return (
     <>
       <div className="app">
-        <h1>Fruits!</h1>
+        <h1>Produce!</h1>
         <ul>
-          {fruits.map((fruit) => (
-            <li key={fruit.name}>{fruit.name}</li>
-          ))}
-        </ul>
-        <h1>Vegetables!</h1>
-        <ul>
-          {vegetables.map((vegetable) => (
-            <li key={vegetable.name}>{vegetable.name}</li>
+          {produce.map((produce) => (
+            <li key={produce.name}>{produce.display_name}</li>
           ))}
         </ul>
       </div>
