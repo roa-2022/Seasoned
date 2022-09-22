@@ -10,8 +10,6 @@ export default function SearchRecipe() {
   const [ingredient, setIngredient] = useState([])
   // const [results, setResults] = useState([])
 
-
-
   const handleSearch = (e) => {
     e.preventDefault()
     dispatch(fetchRecipes(ingredient))
@@ -26,11 +24,12 @@ export default function SearchRecipe() {
             onChange={(e) => {
               setIngredient(e.target.value)
             }}
-            label="Search"
+            label="Search for recipes"
             variant="outlined"
             color="primary"
-            placeholder="Search for a recipe..."
+            placeholder="What ingredients do you have?"
             size="small"
+            style={{ marginBottom: 20, width: 345 }}
           />
           <IconButton type="submit" aria-label="serach">
             <SearchIcon style={{ fill: 'blue' }} />
