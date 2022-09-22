@@ -16,27 +16,6 @@ import {
 import { addUser } from '../api'
 import { updateLoggedInUser } from '../actions/loggedInUser'
 
-// const icons = [
-//   '🍇',
-//   '🍈',
-//   '🍉',
-//   '🍊',
-//   '🍋',
-//   '🍌',
-//   '🍍',
-//   '🥭',
-//   '🍎',
-//   '🍏',
-//   '🍐',
-//   '🍑',
-//   '🍒',
-//   '🍓',
-//   '🫐',
-//   '🥝',
-//   '🍅',
-//   '🥥',
-// ]
-
 function Register() {
   const user = useSelector((state) => state.loggedInUser)
   const navigate = useNavigate()
@@ -86,24 +65,6 @@ function Register() {
           value={form.username}
           onChange={handleChange}
         />
-
-        {/* <ColOne htmlFor="icon">
-          Which fruit best represents your personality?
-        </ColOne>
-        <ColTwoField id="icon">
-          {icons.map((fruit) => (
-            <RadioLabel key={fruit} selected={form.icon === fruit}>
-              <Radio
-                id={fruit}
-                value={fruit}
-                name="icon"
-                onChange={handleChange}
-              />
-              {fruit}
-            </RadioLabel>
-          ))}
-        </ColTwoField> */}
-
         <Button disabled={!form.username}>Save Profile</Button>
       </GridForm>
     </>
