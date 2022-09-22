@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate, Routes, Route } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import Nav from './Nav'
-// import Fruits from './Fruits'
+
 import Register from './Register'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
@@ -15,7 +15,6 @@ import { getUser } from '../api'
 
 function App() {
   useCacheUser()
-  const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -40,7 +39,7 @@ function App() {
     <>
       <Nav />
       <Routes>
-        <Route path="/" element={<Fruits />} />
+        <Route path="/" element={<h1>This is the home page.</h1>} />
         <Route path="register" element={<Register />} />
       </Routes>
     </>
