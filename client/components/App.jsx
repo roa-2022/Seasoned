@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+// import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchFruits } from '../actions'
+// import { fetchFruits } from '../actions'
 import SearchRecipe from './SearchRecipe'
 
 function App() {

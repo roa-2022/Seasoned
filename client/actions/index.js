@@ -1,18 +1,21 @@
-import { getFruits } from '../apis/fruits'
+import { getRecipes } from '../apis/recipes'
 
-export const SET_FRUITS = 'SET_FRUITS'
+export const SEARCH_RECIPES = 'SEARCH_RECIPES'
 
-export function setFruits(fruits) {
+export function searchRecipes(userInput) {
   return {
-    type: SET_FRUITS,
-    payload: fruits,
+    type: SEARCH_RECIPES,
+    payload: userInput,
   }
 }
 
-export function fetchFruits() {
-  return (dispatch) => {
-    return getFruits().then((fruits) => {
-      dispatch(setFruits(fruits))
-    })
+export function fetchRecipes() {
+  return async (dispatch) => {
+    try {
+      const recipes = await getRecipes()
+      dispatch(searchRecipes(recipes))
+    } catch (err) {
+      console.log('Err message: ' + err)
+    }
   }
 }
