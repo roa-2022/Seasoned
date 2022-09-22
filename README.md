@@ -116,31 +116,31 @@ Socialize, eat together, music and honey time. (on toast)
 
 ## Database
 
-### Fruits & Vegetables
+### produce
 
-| Name        | Content                            |
-| ----------- | ---------------------------------- |
-| id          | Unique ID for the fruit/vegetable  |
-| name        | Name of the fruit/vegetable        |
-| description | Description of the fruit/vegetable |
-| image       | Image of the fruit/vegetable       |
+| Name  | Content                                       |
+| ----- | --------------------------------------------- |
+| id    | Unique ID for the fruit/vegetable             |
+| name  | Name of the fruit/vegetable                   |
+| type  | Type of the produce, i.e. fruit or vegetables |
+| image | Image of the fruit/vegetable                  |
 
-### Vegetable/Fruit_months
+### produce_months
 
-| Name               | Content                                   |
-| ------------------ | ----------------------------------------- |
-| ID                 | Unique ID for the fruit/vegetable months  |
-| vegetable/fruit_id | ID referencing the fruit/vegetables table |
-| month_id           | ID referencing the months table           |
+| Name       | Content                          |
+| ---------- | -------------------------------- |
+| ID         | Unique ID for the produce months |
+| produce_id | ID referencing the produce table |
+| month_id   | ID referencing the months table  |
 
-### Months
+### months
 
 | Name       | Content                                         |
 | ---------- | ----------------------------------------------- |
 | ID         | Unique ID for the month                         |
 | month_name | Name of the month, i.e. January, February, etc. |
 
-### Users
+### users
 
 | Name       | Content                                                                                        |
 | ---------- | ---------------------------------------------------------------------------------------------- |
@@ -150,7 +150,7 @@ Socialize, eat together, music and honey time. (on toast)
 | username   | The user's username                                                                            |
 | favourites | Contains the users favourites <b> or </b>links to their favourites entry in a favourites table |
 
-### Favourites
+### favourites
 
 | Name      | Content                                                            |
 | --------- | ------------------------------------------------------------------ |
@@ -159,14 +159,17 @@ Socialize, eat together, music and honey time. (on toast)
 
 ---
 
-####// TODO - edit this for the Seasoned project
-| METHOD | ENDPOINT | USAGE | RETURNS |
-|--------|-----------------------------------------|--------------------------------------------|-----------------------------|
-| GET | `/v1/posts` | Get a list of blog posts | An array of blog posts |
-| POST | `/v1/posts` | Add a new blog post | The newly created blog post |
-| PATCH | `/v1/posts/:id` | Update an existing blog post | The updated blog post |
-| DELETE | `/v1/posts/:id` | Delete an existing blog post | Nothing (status OK) |
-| GET | `/v1/posts/:postId/comments` | Get a list of comments for a specific post | An array of comments |
-| POST | `/v1/posts/:postId/comments` | Add a new comment to a specific post | The newly created comment |
-| PATCH | `/v1/comments/:commentId` | Update an existing comment | The updated comment |
-| DELETE | `/v1/comments/:commentId` | Delete an existing comment | Nothing (status OK) |
+## Seasoned API
+
+| METHOD | ENDPOINT          | USAGE                      | RETURNS                   |
+| ------ | ----------------- | -------------------------- | ------------------------- |
+| GET    | `/v1/produce`     | Get a list of all produce  | An array of produce       |
+| POST   | `/v1/produce`     | Add a new produce          | The newly created produce |
+| PATCH  | `/v1/produce/:id` | Update an existing produce | The updated produce       |
+| DELETE | `/v1/produce/:id` | Delete an existing produce | Nothing (status OK)       |
+
+| METHOD | ENDPOINT                 | USAGE                                       | RETURNS                 |
+| ------ | ------------------------ | ------------------------------------------- | ----------------------- |
+| GET    | `/v1/produce/:id/months` | Get a list of months for a specific produce | An array of months      |
+| POST   | `/v1/produce/:id/months` | Add a new month to a specific produce       | The newly created month |
+| DELETE | `/v1/produce/:id/months` | Delete a month from a specific produce      | Nothing (status OK)     |
