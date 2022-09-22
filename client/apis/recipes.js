@@ -16,6 +16,7 @@ export function getRecipes(userInput) {
     )
     .then((res) => {
       const result = res.body.hits
+
       // const recipeArr = res.body.hits
 
       // return recipeArr.map((eachRecipe) => eachRecipe.label)
@@ -24,10 +25,7 @@ export function getRecipes(userInput) {
       //   title: res.body.hits.label,
       //   url: res.body.hits.url,
       // }
-      console.log(result)
+      console.log('RESULT', result)
       return result
     })
 }
-
-
-
