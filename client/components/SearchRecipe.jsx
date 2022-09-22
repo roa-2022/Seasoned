@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { TextField, IconButton } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 
@@ -7,16 +7,14 @@ import { fetchRecipes } from '../actions'
 
 export default function SearchRecipe() {
   const dispatch = useDispatch()
+  const [ingredient, setIngredient] = useState([])
+  // const [results, setResults] = useState([])
 
-  const [ingredientSearch, setIngredientSearch] = useState('')
 
-  const searchResults = useSelector((state) => state.recipes)
-  // console.log('SEARCHREAULTS: ', searchResults)
 
   const handleSearch = (e) => {
     e.preventDefault()
-    dispatch(fetchRecipes(ingredientSearch))
-    console.log('INGREDIENTSEARCH: ', ingredientSearch)
+    dispatch(fetchRecipes(ingredient))
     e.target.reset()
   }
 
@@ -26,7 +24,7 @@ export default function SearchRecipe() {
         <form onSubmit={handleSearch}>
           <TextField
             onChange={(e) => {
-              setIngredientSearch(e.target.value)
+              setIngredient(e.target.value)
             }}
             label="Search"
             variant="outlined"
@@ -38,16 +36,6 @@ export default function SearchRecipe() {
             <SearchIcon style={{ fill: 'blue' }} />
           </IconButton>
         </form>
-        {searchResults.map((e) => (
-          <>
-            <div>
-              <img src={e.recipe.image} />
-            </div>
-            <div>
-              <a href={e.recipe.url}>{e.recipe.label}</a>
-            </div>
-          </>
-        ))}
       </div>
     </>
   )
