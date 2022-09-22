@@ -40,7 +40,7 @@ function App() {
     <>
       <Nav />
       <Routes>
-        <Route path="/" element={<Fruits />} />
+        <Route path="/" element={<h1>This is the home page.</h1>} />
         <Route path="register" element={<Register />} />
       </Routes>
     </>

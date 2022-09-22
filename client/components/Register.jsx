@@ -104,7 +104,7 @@ function Register() {
           ))}
         </ColTwoField> */}
 
-        <Button disabled={!(form.username && form.icon)}>Save Profile</Button>
+        <Button disabled={!form.username}>Save Profile</Button>
       </GridForm>
     </>
   )

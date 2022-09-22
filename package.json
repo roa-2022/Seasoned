@@ -44,6 +44,7 @@
     "knex": "^2.1.0",
     "pg": "^8.7.1",
     "sqlite3": "^5.0.8",
+    "styled-components": "^5.3.5",
     "superagent": "7.1.1"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-// import { NavLink, NavGroup } from './Styled'
+import { NavLink, NavGroup } from './Styled'
 
 function Nav() {
   const user = useSelector((state) => state.loggedInUser)
