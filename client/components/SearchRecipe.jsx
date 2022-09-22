@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search'
 
 export default function SearchRecipe() {
   const dispatch = useDispatch()
-  const [ingredient, setIngredient] = useState('')
+  const [ingredient, setIngredient] = useState([])
   // const [results, setResults] = useState([])
 
   function handleSearch(e) {
