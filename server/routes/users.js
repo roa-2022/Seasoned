@@ -6,9 +6,7 @@ const router = express.Router()
 
 // GET /api/v1/users
 router.get('/', checkJwt, (req, res) => {
-  console.log('req.user', req.user)
-  console.log('req.body', req.body)
-  const auth0_id = req.user?.sub
+  const auth0_id = req.auth?.sub
 
   if (!auth0_id) {
     res.send(null)
