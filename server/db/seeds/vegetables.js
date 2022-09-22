@@ -74,8 +74,8 @@ exports.seed = function (knex) {
         {
           id: 12,
           name: 'Capsicum/Rapikama',
+          image:
             'https://www.5aday.co.nz/media/5449/capsicum.png?&width=800&height=400&anchor=top&mode=crop',
-          image: '',
         },
         {
           id: 13,
@@ -228,86 +228,86 @@ exports.seed = function (knex) {
             'https://www.5aday.co.nz/media/5737/salad-greens2.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
-          id: 37,
+          id: 38,
           name: 'Silver Beet/Korare',
           image:
             'https://www.5aday.co.nz/media/79418/silverbeet.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
-          id: 37,
+          id: 39,
           name: 'Snow Peas',
           image:
             'https://www.5aday.co.nz/media/79492/snow-peas.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
-          id: 37,
+          id: 40,
           name: 'Spinach/Kōkihi',
           image:
             'https://www.5aday.co.nz/media/79579/spinach.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
-          id: 37,
+          id: 41,
           name: 'Spring Onions/Rikiriki',
           image:
             'https://www.5aday.co.nz/media/35359/Spring-Onions-small.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
-          id: 37,
+          id: 42,
           name: 'Bean Sprouts',
           image:
             'https://www.5aday.co.nz/media/80997/sprouts.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
-          id: 37,
+          id: 44,
           name: 'Swede/Tuwīti tānapu',
           image:
             'https://www.5aday.co.nz/media/15409/swede-2.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
-          id: 38,
+          id: 45,
           name: 'Sweetcorn/Kānga',
           image:
             'https://www.5aday.co.nz/media/78177/sweetcorn.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
-          id: 39,
+          id: 46,
           name: 'Taewa',
           image:
             'https://www.5aday.co.nz/media/15340/taewa-maori-potato.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
-          id: 39,
+          id: 47,
           name: 'Taro',
           image:
             'https://www.5aday.co.nz/media/15424/taro.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
-          id: 40,
+          id: 48,
           name: 'Tomato/Tōmato',
           image: '',
         },
         {
-          id: 41,
+          id: 49,
           name: 'Turnip/Tōnape',
           image: '',
         },
         {
-          id: 42,
+          id: 50,
           name: 'Watercress/Wātakirihi',
           image: '',
         },
         {
-          id: 43,
+          id: 51,
           name: 'Witloof',
           image: '',
         },
         {
-          id: 44,
+          id: 52,
           name: 'Yam/Uwhi',
           image: '',
         },
         {
-          id: 45,
+          id: 53,
           name: 'Rhubarb/Rūpapa',
           image:
             'https://www.5aday.co.nz/media/77662/rhubarb.jpg?&width=800&height=400&anchor=top&mode=crop',
