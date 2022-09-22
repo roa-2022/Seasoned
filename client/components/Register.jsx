@@ -22,7 +22,6 @@ function Register() {
   const dispatch = useDispatch()
   const [form, setForm] = useState({
     username: '',
-    icon: '',
   })
   const [errorMsg, setErrorMsg] = useState('')
 
