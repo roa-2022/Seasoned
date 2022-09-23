@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux'
 import { useNavigate, Routes, Route } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
+import Recipe from './Recipe'
+import SearchRecipe from './SearchRecipe'
+
 import Nav from './Nav'
 
 import Register from './Register'
@@ -37,8 +40,10 @@ function App() {
     <>
       <Nav />
       <Routes>
-        <Route path="/" element={<h1>This is the home page.</h1>} />
+        <Route path="/" element={<SearchRecipe />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/:id" element={<Recipe />} />
+        
       </Routes>
     </>
   )

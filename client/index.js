@@ -9,6 +9,8 @@ import App from './components/App'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
+
+
     <Auth0Provider
       domain="roa22-tomas.au.auth0.com"
       clientId="6MhzntaEMTJ3mltZq6YMNqWbsHV5okaw"
