@@ -24,7 +24,7 @@ export function fetchRecipes(userInput) {
       const recipes = await getRecipes(userInput, 20) // Limits results to 20 recipes
       dispatch(displayRecipes(recipes))
     } catch (err) {
-      console.log('Err message: ' + err)
+      console.log('fetchRecipes - ' + err)
     }
   }
 }
@@ -44,7 +44,7 @@ export function fetchProduce() {
       const produce = await getProduce()
       dispatch(setProduce(produce))
     } catch (err) {
-      console.log('Err message: ' + err)
+      console.log('fetchProduce - ' + err)
     }
   }
 }

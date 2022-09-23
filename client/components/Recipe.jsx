@@ -1,12 +1,6 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 export default function Recipe() {
-  const { id } = useParams()
-  const recipes = useSelector((state) => state.recipes)
-  const recipe = recipes[id]
-
   const { label, images, recipe, healthLabels } = recipe.recipe
   const largeImage = recipe.recipe.images.LARGE?.url
   const regularImage = recipe.recipe.images.REGULAR.url
