@@ -1,33 +1,47 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useNavigate, Routes, Route } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 
-import { fetchFruits, fetchVegetables } from '../actions'
+import Nav from './Nav'
+
+import Register from './Register'
+
+import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
+import { useCacheUser } from '../auth0-utils'
+import { getUser } from '../api'
+
+// import { fetchFruits } from '../actions'
 
 function App() {
-  const fruits = useSelector((state) => state.fruits)
-  const vegetables = useSelector((state) => state.vegetables)
+  useCacheUser()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0()
+
   useEffect(() => {
-    dispatch(fetchFruits())
-    dispatch(fetchVegetables())
-  }, [])
+    if (!isAuthenticated) {
+      dispatch(clearLoggedInUser())
+    } else {
+      getAccessTokenSilently()
+        .then((token) => getUser(token))
+        .then((userInDb) => {
+          userInDb
+            ? dispatch(updateLoggedInUser(userInDb))
+            : navigate('/register')
+        })
+        .catch((err) => console.error(err))
+    }
+  }, [isAuthenticated])
 
   return (
     <>
-      <div className="app">
-        <h1>Fruits!</h1>
-        <ul>
-          {fruits.map((fruit) => (
-            <li key={fruit.name}>{fruit.name}</li>
-          ))}
-        </ul>
-        <h1>Vegetables!</h1>
-        <ul>
-          {vegetables.map((vegetable) => (
-            <li key={vegetable.name}>{vegetable.name}</li>
-          ))}
-        </ul>
-      </div>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<h1>This is the home page.</h1>} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     </>
   )
 }

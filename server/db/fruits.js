@@ -1,7 +1,7 @@
 const connection = require('./connection')
 
 function readFruits(db = connection) {
-  return db('fruits').select()
+  return db('fruit').select()
 }
 
 module.exports = {

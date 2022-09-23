@@ -1,15 +1,18 @@
-const express = require('express')
 const path = require('path')
+const express = require('express')
 
-const fruitsRoutes = require('./routes/fruits')
-const vegetablesRoutes = require('./routes/vegetables')
-
+const fruitRoutes = require('./routes/fruits')
+const userRoutes = require('./routes/users')
 const server = express()
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
-server.use('/api/v1/fruits', fruitsRoutes)
-server.use('/api/v1/vegetables', vegetablesRoutes)
+server.use('/api/v1/fruits', fruitRoutes)
+server.use('/api/v1/users', userRoutes)
+
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'))
+})
 
 module.exports = server
