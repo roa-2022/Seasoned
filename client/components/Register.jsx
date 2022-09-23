@@ -2,19 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import {
-  Error,
-  GridForm,
-  ColOne,
-  ColTwoText,
-  ColTwoField,
-  Button,
-  RadioLabel,
-  Radio,
-} from './Styled'
-
 import { addUser } from '../api'
 import { updateLoggedInUser } from '../actions/loggedInUser'
+
+import md5 from 'md5'
+
+import { Button, TextField } from '@mui/material'
 
 function Register() {
   const user = useSelector((state) => state.loggedInUser)
@@ -22,6 +15,7 @@ function Register() {
   const dispatch = useDispatch()
   const [form, setForm] = useState({
     username: '',
+    name: '',
   })
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -37,15 +31,23 @@ function Register() {
   }
 
   const handleSubmit = (evt) => {
+    const gravatar = `https://www.gravatar.com/avatar/${md5(
+      user.email
+    )}?d=retro&f=y`
+
     evt.preventDefault()
     const userInfo = {
       auth0Id: user.auth0Id,
+      email: user.email,
+      image: gravatar,
       ...form,
     }
     addUser(userInfo, user.token)
       .then(() => dispatch(updateLoggedInUser(userInfo)))
       .catch((err) => setErrorMsg(err.message))
   }
+
+  //Create MD5 hash of user's email address
 
   const hideError = () => {
     setErrorMsg('')
@@ -54,18 +56,61 @@ function Register() {
   return (
     <>
       <h2>Complete profile set up</h2>
-      {errorMsg && <Error onClick={hideError}>Error: {errorMsg}</Error>}
-      <GridForm onSubmit={handleSubmit}>
-        <ColOne htmlFor="username">Username:</ColOne>
-        <ColTwoText
+      {/* {errorMsg && (
+        <div style={{ color: 'red', cursor: 'pointer' }} onClick={hideError}>
+          Error: {errorMsg}
+        </div>
+      )}
+      <div
+        style={{
+          width: '70%',
+          display: 'grid',
+          gridGap: '10px',
+          gridTemplateColumns: 'auto 1fr',
+        }}
+        onSubmit={handleSubmit}
+      >
+        <label htmlFor="username">Username:</label>
+        <input
           type="text"
           id="username"
           name="username"
           value={form.username}
           onChange={handleChange}
         />
-        <Button disabled={!form.username}>Save Profile</Button>
-      </GridForm>
+        <Button
+          disabled={!form.username}
+          variant={form.username ? 'contained' : 'outlined'}
+        >
+          Save Profile
+        </Button>
+      </div> */}
+      {errorMsg && <div onClick={hideError}>Error: {errorMsg}</div>}
+      <form>
+        <TextField
+          type="text"
+          id="name"
+          name="name"
+          label="Name"
+          value={form.name}
+          onChange={handleChange}
+        />
+        <TextField
+          type="text"
+          id="username"
+          name="username"
+          label="Username"
+          value={form.username}
+          onChange={handleChange}
+        />
+        <Button
+          disabled={!form.username && !form.name}
+          variant={form.username ? 'contained' : 'outlined'}
+          onClick={handleSubmit}
+        >
+          Save Profile
+        </Button>
+      </form>
     </>
   )
 }
