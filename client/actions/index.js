@@ -13,7 +13,7 @@ export function displayRecipes(recipes) {
 export function fetchRecipes(userInput) {
   return async (dispatch) => {
     try {
-      const recipes = await getRecipes(userInput)
+      const recipes = await getRecipes(userInput, 10)
       dispatch(displayRecipes(recipes))
     } catch (err) {
       console.log('Err message: ' + err)
