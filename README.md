@@ -72,11 +72,12 @@ Socialize, eat together, music and honey time. (on toast)
 
 ## GitFlow
 
-1. Checkout a feature branch. Stage, commit, and push to feature branch.
-2. Pull from main branch.
+1. Checkout a feature branch. Stage, commit, and push to feature branch - <em>regularly</em>.
+2. Pull from <b>main branch</b>.
 3. Resolve merge conflicts.
-4. Submit a pull request to the Git Keeper.
-5. Git keeper merges the pull request to main.
+4. Submit a pull request to the <b>dev branch</b>.
+5. Pull request from <b>dev branch</b> into main is reviewed by the team and our wonderful volunteer reviewer.
+6. Git keeper merges reviewed pull request to <b>main branch</b>.
 
 ---
 
@@ -95,8 +96,8 @@ Socialize, eat together, music and honey time. (on toast)
 
 - [ ] See what vegetables/fruits are in season.
 - [ ] Filter recipes based on the season.
-- [ ] See the whole recipe after clicking on the recipe card
-- [ ] Search recipe according to vege and/or fruits.
+- [x] See the whole recipe after clicking on the recipe card
+- [x] Search recipe according to vege and/or fruits.
 
 ### Stretch
 
@@ -118,13 +119,13 @@ Socialize, eat together, music and honey time. (on toast)
 
 ### produce
 
-| Name   | Content                                                         |
-| ------ | --------------------------------------------------------------- |
-| id     | Unique ID for the fruit/vegetable                               |
-| name   | Name of the fruit/vegetable                                     |
-| type   | Type of the produce, i.e. fruit or vegetables                   |
-| image  | Image of the fruit/vegetable                                    |
-| season | An array of months that the produce is available in NZ (1 - 12) |
+| Name         | Content                                                                                    |
+| ------------ | ------------------------------------------------------------------------------------------ |
+| id           | Unique ID for the fruit/vegetable                                                          |
+| name         | Name of the fruit/vegetable for use with the external API                                  |
+| display_name | Name of the fruit/vegetable for use on Seasoned, includes the Maori word (where available) |
+| type         | Type of the produce, i.e. fruit or vegetables                                              |
+| image        | Image of the fruit/vegetable <b>TODO: host these locally, switch to open-source images</b> |
 
 ### produce_months
 
@@ -134,24 +135,20 @@ Socialize, eat together, music and honey time. (on toast)
 | produce_id | ID referencing the produce table |
 | month_id   | ID referencing the months table  |
 
-### months
-
-| Name       | Content                                         |
-| ---------- | ----------------------------------------------- |
-| ID         | Unique ID for the month                         |
-| month_name | Name of the month, i.e. January, February, etc. |
-
 ### users
 
-| Name       | Content                                                                                        |
-| ---------- | ---------------------------------------------------------------------------------------------- |
-| id         | Unique ID for the user                                                                         |
-| auth0_id   | Auth0 ID for the user                                                                          |
-| name       | Name for the user                                                                              |
-| username   | The user's username                                                                            |
-| favourites | Contains the users favourites <b> or </b>links to their favourites entry in a favourites table |
+| Name                 | Content                                                                                        |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| auth0_id             | Auth0 ID for the user                                                                          |
+| username             | The user's chosen username (must be unique)                                                    |
+| created_at           | When the record was created                                                                    |
+| updated_at           | When the record was last updated <b>TODO: add this functionality.</b>                          |
+| name                 | The user's name, added from Auth0                                                              |
+| email                | The user's email, added from Auth0                                                             |
+| image                | The user's avatar, default is a Gravatar that's generated on sign-up                           |
+| favourites (stretch) | Contains the users favourites <b> or </b>links to their favourites entry in a favourites table |
 
-### favourites
+### favourites (stretch)
 
 | Name      | Content                                                            |
 | --------- | ------------------------------------------------------------------ |
