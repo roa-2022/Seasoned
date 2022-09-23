@@ -7,7 +7,7 @@ export default function Recipe() {
   const recipes = useSelector((state) => state.recipes)
   const recipe = recipes[id]
 
-  const label = recipe.recipe.label
+  const { label, images, recipe, healthLabels } = recipe.recipe
   const largeImage = recipe.recipe.images.LARGE?.url
   const regularImage = recipe.recipe.images.REGULAR.url
   const ingredientsArr = recipe.recipe.ingredients
