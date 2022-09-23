@@ -3,6 +3,14 @@ import { getProduce } from '../apis/produce'
 
 export const DISPLAY_RECIPES = 'DISPLAY_RECIPES'
 
+export const LOADING = 'LOADING'
+
+export function setLoading() {
+  return {
+    type: LOADING,
+  }
+}
+
 export function displayRecipes(recipes) {
   return {
     type: DISPLAY_RECIPES,

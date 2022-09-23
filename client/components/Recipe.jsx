@@ -31,6 +31,8 @@ export default function Recipe() {
             <li key={idx}>{ingredient.text}</li>
           ))}
         </ul>
+        <h4>Instructions</h4>
+        <a href={recipe.recipe.url}>Click this link</a>
       </div>
     </div>
   )
