@@ -1,19 +1,51 @@
-import React from 'react'
-import Recipes from './Recipes'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate, Routes, Route } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 
+import Recipe from './Recipe'
 import SearchRecipe from './SearchRecipe'
-import TopNav from './TopNav'
+
+import Nav from './Nav'
+
+import Register from './Register'
+
+import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
+import { useCacheUser } from '../auth0-utils'
+import { getUser } from '../api'
 
 function App() {
+  useCacheUser()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0()
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      dispatch(clearLoggedInUser())
+    } else {
+      getAccessTokenSilently()
+        .then((token) => getUser(token))
+        .then((userInDb) => {
+          userInDb
+            ? dispatch(updateLoggedInUser(userInDb))
+            : navigate('/register')
+        })
+        .catch((err) => console.error(err))
+    }
+  }, [isAuthenticated])
+
   return (
     <>
-      <div>
-        <TopNav />
-        <h1>Seasoned !!!</h1>
-        {/* If wanting to apply more style to the title, can create a Header component */}
-        <SearchRecipe />
-        <Recipes />
-      </div>
+      <Nav />
+      <h1>Seasoned</h1>
+      <Routes>
+        <Route path="/" element={<SearchRecipe />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/:id" element={<Recipe />} />
+        
+      </Routes>
     </>
   )
 }
