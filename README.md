@@ -127,7 +127,7 @@ Socialize, eat together, music and honey time. (on toast)
 | type         | Type of the produce, i.e. fruit or vegetables                                              |
 | image        | Image of the fruit/vegetable <b>TODO: host these locally, switch to open-source images</b> |
 
-### produce_months
+### produce_available_months
 
 | Name       | Content                          |
 | ---------- | -------------------------------- |

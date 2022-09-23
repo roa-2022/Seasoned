@@ -15,13 +15,11 @@ export function fetchRecipes(userInput) {
     try {
       const recipes = await getRecipes(userInput)
       dispatch(displayRecipes(recipes))
-      console.log('action', recipes)
     } catch (err) {
       console.log('Err message: ' + err)
     }
   }
 }
-
 
 export const SET_PRODUCE = 'SET_PRODUCE'
 
@@ -33,9 +31,12 @@ export function setProduce(produce) {
 }
 
 export function fetchProduce() {
-  return (dispatch) => {
-    return getProduce().then((produce) => {
+  return async (dispatch) => {
+    try {
+      const produce = await getProduce()
       dispatch(setProduce(produce))
-    })
+    } catch (err) {
+      console.log('Err message: ' + err)
+    }
   }
 }
