@@ -47,45 +47,9 @@ function Register() {
       .catch((err) => setErrorMsg(err.message))
   }
 
-  //Create MD5 hash of user's email address
-
-  const hideError = () => {
-    setErrorMsg('')
-  }
-
   return (
     <>
       <h2>Complete profile set up</h2>
-      {/* {errorMsg && (
-        <div style={{ color: 'red', cursor: 'pointer' }} onClick={hideError}>
-          Error: {errorMsg}
-        </div>
-      )}
-      <div
-        style={{
-          width: '70%',
-          display: 'grid',
-          gridGap: '10px',
-          gridTemplateColumns: 'auto 1fr',
-        }}
-        onSubmit={handleSubmit}
-      >
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={form.username}
-          onChange={handleChange}
-        />
-        <Button
-          disabled={!form.username}
-          variant={form.username ? 'contained' : 'outlined'}
-        >
-          Save Profile
-        </Button>
-      </div> */}
-      {errorMsg && <div onClick={hideError}>Error: {errorMsg}</div>}
       <form>
         <TextField
           type="text"
@@ -95,14 +59,26 @@ function Register() {
           value={form.name}
           onChange={handleChange}
         />
-        <TextField
-          type="text"
-          id="username"
-          name="username"
-          label="Username"
-          value={form.username}
-          onChange={handleChange}
-        />
+        {errorMsg ? (
+          <TextField
+            error
+            type="text"
+            id="username"
+            name="username"
+            label="Username"
+            value={form.username}
+            onChange={handleChange}
+          />
+        ) : (
+          <TextField
+            type="text"
+            id="username"
+            name="username"
+            label="Username"
+            value={form.username}
+            onChange={handleChange}
+          />
+        )}
         <Button
           disabled={!form.username && !form.name}
           variant={form.username ? 'contained' : 'outlined'}
@@ -111,6 +87,7 @@ function Register() {
           Save Profile
         </Button>
       </form>
+      {errorMsg && <div style={{ color: 'red' }}>Error: {errorMsg}</div>}
     </>
   )
 }
