@@ -8,9 +8,7 @@ import request from 'superagent'
 export function getRecipes(userInput) {
   return request
     .get(
-      // `https://api.edamam.com/api/recipes/v2?type=public&q=${userInput}&KEY`
-
-      `https://api.edamam.com/api/recipes/v2?type=public&q=${userInput}&app_id=eeb6d9e0&app_key=9bbd15d307d13bf463f6a7326338bced&nutrients%5BCA%5D=50%2B`
+      `https://api.edamam.com/api/recipes/v2?type=public&q=${userInput}&app_id=eeb6d9e0&app_key=${process.env.KEY}`
     )
     .then((res) => {
       // console.log(res.body)
