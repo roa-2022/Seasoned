@@ -32,7 +32,7 @@ export default function Recipe() {
           ))}
         </ul>
         <h4>Instructions</h4>
-        <a href={recipe.recipe.url}>{recipe.recipe.url}</a>
+        <a href={recipe.recipe.url}>Click this link</a>
       </div>
     </div>
   )

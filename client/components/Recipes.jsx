@@ -1,5 +1,4 @@
 import React from 'react'
-// import Recipe from './Recipe'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
