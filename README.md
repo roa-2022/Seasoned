@@ -118,12 +118,13 @@ Socialize, eat together, music and honey time. (on toast)
 
 ### produce
 
-| Name  | Content                                       |
-| ----- | --------------------------------------------- |
-| id    | Unique ID for the fruit/vegetable             |
-| name  | Name of the fruit/vegetable                   |
-| type  | Type of the produce, i.e. fruit or vegetables |
-| image | Image of the fruit/vegetable                  |
+| Name   | Content                                                         |
+| ------ | --------------------------------------------------------------- |
+| id     | Unique ID for the fruit/vegetable                               |
+| name   | Name of the fruit/vegetable                                     |
+| type   | Type of the produce, i.e. fruit or vegetables                   |
+| image  | Image of the fruit/vegetable                                    |
+| season | An array of months that the produce is available in NZ (1 - 12) |
 
 ### produce_months
 

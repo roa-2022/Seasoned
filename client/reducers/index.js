@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import fruits from './fruits'
 import loggedInUser from './loggedInUser'
+import produce from './produce'
 
 export default combineReducers({
-  fruits,
   loggedInUser,
+  produce,
 })
