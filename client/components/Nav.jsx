@@ -1,9 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
+import { NavLink } from 'react-router-dom'
+
+import { Typography } from '@mui/material'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { NavLink } from 'react-router-dom'
 
 function Nav() {
   const user = useSelector((state) => state.loggedInUser)
@@ -26,7 +28,7 @@ function Nav() {
         <NavLink to="/" onClick={handleLogOff}>
           Log off
         </NavLink>
-        <p>{user.username}</p>
+        <Typography variant="body1">{user.username}</Typography>
       </IfAuthenticated>
       <IfNotAuthenticated>
         <NavLink to="/" onClick={handleSignIn}>
