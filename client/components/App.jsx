@@ -11,8 +11,6 @@ import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
 import { useCacheUser } from '../auth0-utils'
 import { getUser } from '../api'
 
-// import { fetchFruits } from '../actions'
-
 function App() {
   useCacheUser()
   const dispatch = useDispatch()
