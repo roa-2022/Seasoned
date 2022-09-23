@@ -21,8 +21,7 @@ export function displayRecipes(recipes) {
 export function fetchRecipes(userInput) {
   return async (dispatch) => {
     try {
-      dispatch(setLoading())
-      const recipes = await getRecipes(userInput)
+      const recipes = await getRecipes(userInput, 20) // Limits results to 20 recipes
       dispatch(displayRecipes(recipes))
     } catch (err) {
       console.log('Err message: ' + err)
@@ -40,9 +39,12 @@ export function setProduce(produce) {
 }
 
 export function fetchProduce() {
-  return (dispatch) => {
-    return getProduce().then((produce) => {
+  return async (dispatch) => {
+    try {
+      const produce = await getProduce()
       dispatch(setProduce(produce))
-    })
+    } catch (err) {
+      console.log('Err message: ' + err)
+    }
   }
 }

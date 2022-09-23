@@ -5,9 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 import Recipe from './Recipe'
 import SearchRecipe from './SearchRecipe'
-
 import Nav from './Nav'
-
 import Register from './Register'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
@@ -43,7 +41,6 @@ function App() {
         <Route path="/" element={<SearchRecipe />} />
         <Route path="/register" element={<Register />} />
         <Route path="/:id" element={<Recipe />} />
-        
       </Routes>
     </>
   )
