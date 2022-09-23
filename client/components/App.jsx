@@ -5,16 +5,14 @@ import SearchRecipe from './SearchRecipe'
 
 function App() {
   return (
-    <>
-      <div>
-        <h1>SEASONAL!!!</h1>
-        {/* <Recipes /> */}
-        <Routes>
-          <Route path="/" element={<SearchRecipe />} />
-          <Route path="/:recipe" element={<Recipe />} />
-        </Routes>
-      </div>
-    </>
+    <div>
+      <h1>SEASONAL!!!</h1>
+      {/* <Recipes /> */}
+      <Routes>
+        <Route path="/" element={<SearchRecipe />} />
+        <Route path="/:id" element={<Recipe />} />
+      </Routes>
+    </div>
   )
 }
 

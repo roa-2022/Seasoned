@@ -17,26 +17,24 @@ export default function SearchRecipe() {
   }
 
   return (
-    <>
-      <div>
-        <form onSubmit={handleSearch}>
-          <TextField
-            onChange={(e) => {
-              setIngredient(e.target.value)
-            }}
-            label="Search for recipes"
-            variant="outlined"
-            color="primary"
-            placeholder="What ingredients do you have?"
-            size="small"
-            style={{ marginBottom: 20, width: 345 }}
-          />
-          <IconButton type="submit" aria-label="serach">
-            <SearchIcon style={{ fill: 'blue' }} />
-          </IconButton>
-        </form>
-        <Recipes />
-      </div>
-    </>
+    <div>
+      <form onSubmit={handleSearch}>
+        <TextField
+          onChange={(e) => {
+            setIngredient(e.target.value)
+          }}
+          label="Search for recipes"
+          variant="outlined"
+          color="primary"
+          placeholder="What ingredients do you have?"
+          size="small"
+          style={{ marginBottom: 20, width: 345 }}
+        />
+        <IconButton type="submit" aria-label="serach">
+          <SearchIcon style={{ fill: 'blue' }} />
+        </IconButton>
+      </form>
+      <Recipes />
+    </div>
   )
 }
