@@ -8,7 +8,7 @@ exports.up = function (knex) {
     table.string('name')
     table.string('display_name')
     table.enu('type', ['fruit', 'vegetable']).notNullable()
-    table.string('image')
+    table.string('image_url')
   })
 }
 
