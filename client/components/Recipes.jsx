@@ -32,14 +32,16 @@ export default function Recipes() {
                       (string) => string[0].toUpperCase() + string.substring(1)
                     )}
                   </Typography>
-                  <Typography>
+                  <Typography variant="body2" color="text.secondary">
                     Diet Labels:{' '}
                     {dietLabels.map((text) => {
                       const addSpace = text + ' '
                       return addSpace
                     })}
                   </Typography>
-                  <Typography>Meal Type: {mealType}</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Meal Type: {mealType}
+                  </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
