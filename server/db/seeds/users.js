@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-exports.seed = (knex) => {
-  return knex('users')
-    .del()
-    .then(() =>
-      knex('users').insert([
-        { auth0_id: 'auth0|123', username: 'banana_llama' },
-        { auth0_id: 'auth0|456', username: 'grape_gatsby' },
-      ])
-    )
-=======
 exports.seed = function (knex) {
   // Deletes ALL existing entries
   return knex('users')
@@ -17,50 +6,45 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('users').insert([
         {
-          id: 1,
-          name: 'John Doe',
+          auth0_id: 'auth0|123456789',
+          username: 'johndoe',
           created_at: new Date(),
           updated_at: new Date(),
-          username: 'johndoe',
-          auth0_id: 'auth0|123456789',
+          name: 'John Doe',
           email: 'john@doe.com',
           image:
             'https://www.gravatar.com/avatar/639bae9ac6b3e1a84cebb7b403297b79?d=retro&f=y',
         },
         {
-          id: 2,
-          name: 'Jane Doe',
+          auth0_id: 'auth0|987654321',
+          username: 'janedoe',
           created_at: new Date(),
           updated_at: new Date(),
-          username: 'janedoe',
-          auth0_id: 'auth0|987654321',
+          name: 'Jane Doe',
           email: 'jane@doe.com',
           image:
             'https://www.gravatar.com/avatar/128b6697ec11075134e554b0d6e098bd?d=retro&f=y',
         },
         {
-          id: 3,
-          name: 'John Smith',
+          auth0_id: 'auth0|567891234',
+          username: 'johnsmith',
           created_at: new Date(),
           updated_at: new Date(),
-          username: 'johnsmith',
-          auth0_id: 'auth0|123456789',
+          name: 'John Smith',
           email: 'john@smith.com',
           image:
             'https://www.gravatar.com/avatar/e877c56e4fb621e81fd30dbd114a545b?d=retro&f=y',
         },
         {
-          id: 4,
-          name: 'Jane Smith',
+          auth0_id: 'auth0|984321765',
+          username: 'janesmith',
           created_at: new Date(),
           updated_at: new Date(),
-          username: 'janesmith',
-          auth0_id: 'auth0|987654321',
+          name: 'Jane Smith',
           email: 'jane@smith.com',
           image:
             'https://www.gravatar.com/avatar/0cc175b9c0f1b6a831c399e269772661?d=retro&f=y',
         },
       ])
     })
->>>>>>> main
 }
