@@ -31,11 +31,12 @@ function Register() {
   }
 
   const handleSubmit = (evt) => {
+    evt.preventDefault()
+
     const gravatar = `https://www.gravatar.com/avatar/${md5(
       user.email
     )}?d=retro&f=y`
 
-    evt.preventDefault()
     const userInfo = {
       auth0Id: user.auth0Id,
       email: user.email,
