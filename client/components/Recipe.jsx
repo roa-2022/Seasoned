@@ -7,10 +7,7 @@ export default function Recipe() {
   const recipes = useSelector((state) => state.recipes)
   const recipe = recipes[id]
 
-  const { label, images, ingredients, healthLabels, url } = recipe.recipe
-
-  const largeImage = images.LARGE?.url
-  const regularImage = images.REGULAR.url
+  const { label, image, ingredients, healthLabels, url } = recipe.recipe
 
   const dietary = healthLabels.filter((word) => {
     return word === 'Vegan' || word === 'Vegetarian' || word === 'Gluten-Free'
@@ -19,7 +16,7 @@ export default function Recipe() {
   return (
     <div>
       <h3>{label}</h3>
-      <img src={largeImage || regularImage} alt="recipe" />
+      <img src={image} alt="recipe" />
       <p>
         <strong>{dietary.map((e) => e + ' ')} </strong>
       </p>
