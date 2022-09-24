@@ -32,7 +32,7 @@ export default function SearchRecipe() {
           size="small"
           style={{ marginBottom: 20, width: 345 }}
         />
-        <IconButton type="submit" aria-label="serach">
+        <IconButton type="submit" aria-label="search">
           <SearchIcon style={{ fill: 'blue' }} />
         </IconButton>
       </form>
