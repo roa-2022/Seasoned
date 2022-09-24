@@ -61,7 +61,7 @@ function Register() {
           onChange={handleChange}
         />
         <TextField
-          error={errorMsg ? true : false}
+          error={Boolean(errorMsg)}
           type="text"
           id="username"
           name="username"
