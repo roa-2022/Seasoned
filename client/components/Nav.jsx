@@ -1,39 +1,40 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
-import { Typography } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 function Nav() {
   const user = useSelector((state) => state.loggedInUser)
   const { logout, loginWithRedirect } = useAuth0()
+  const navigate = useNavigate()
 
   const handleLogOff = (e) => {
     e.preventDefault()
     logout()
+    navigate('/')
   }
 
   const handleSignIn = (e) => {
     e.preventDefault()
     loginWithRedirect()
+    navigate('/')
   }
 
   return (
     <div>
-      <NavLink to="/">Home</NavLink>
+      <Button as={NavLink} to="/">
+        Home
+      </Button>
       <IfAuthenticated>
-        <NavLink to="/" onClick={handleLogOff}>
-          Log off
-        </NavLink>
+        <Button onClick={handleLogOff}>Log off</Button>
         <Typography variant="body1">{user.username}</Typography>
       </IfAuthenticated>
       <IfNotAuthenticated>
-        <NavLink to="/" onClick={handleSignIn}>
-          Sign In
-        </NavLink>
+        <Button onClick={handleSignIn}>Sign In</Button>
       </IfNotAuthenticated>
     </div>
   )

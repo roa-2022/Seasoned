@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import FormGroup from '@mui/material/FormGroup'
@@ -14,6 +15,7 @@ export default function Recipe() {
   const recipe = recipes[id]
 
   const { label, image, ingredients, healthLabels, url } = recipe.recipe
+
 
   const dietary = healthLabels.filter((word) => {
     return word === 'Vegan' || word === 'Vegetarian' || word === 'Gluten-Free'

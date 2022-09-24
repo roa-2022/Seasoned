@@ -31,11 +31,12 @@ function Register() {
   }
 
   const handleSubmit = (evt) => {
+    evt.preventDefault()
+
     const gravatar = `https://www.gravatar.com/avatar/${md5(
       user.email
     )}?d=retro&f=y`
 
-    evt.preventDefault()
     const userInfo = {
       auth0Id: user.auth0Id,
       email: user.email,
@@ -59,26 +60,15 @@ function Register() {
           value={form.name}
           onChange={handleChange}
         />
-        {errorMsg ? (
-          <TextField
-            error
-            type="text"
-            id="username"
-            name="username"
-            label="Username"
-            value={form.username}
-            onChange={handleChange}
-          />
-        ) : (
-          <TextField
-            type="text"
-            id="username"
-            name="username"
-            label="Username"
-            value={form.username}
-            onChange={handleChange}
-          />
-        )}
+        <TextField
+          error={errorMsg ? true : false}
+          type="text"
+          id="username"
+          name="username"
+          label="Username"
+          value={form.username}
+          onChange={handleChange}
+        />
         <Button
           disabled={!form.username && !form.name}
           variant={form.username ? 'contained' : 'outlined'}
