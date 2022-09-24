@@ -159,15 +159,22 @@ Socialize, eat together, music and honey time. (on toast)
 
 ## Seasoned API
 
-| METHOD | ENDPOINT          | USAGE                      | RETURNS                   |
-| ------ | ----------------- | -------------------------- | ------------------------- |
-| GET    | `/v1/produce`     | Get a list of all produce  | An array of produce       |
-| POST   | `/v1/produce`     | Add a new produce          | The newly created produce |
-| PATCH  | `/v1/produce/:id` | Update an existing produce | The updated produce       |
-| DELETE | `/v1/produce/:id` | Delete an existing produce | Nothing (status OK)       |
+| METHOD | ENDPOINT          | USAGE                      | RETURNS                    |
+| ------ | ----------------- | -------------------------- | -------------------------- |
+| GET    | `/v1/produce`     | Get a list of all produce  | An array of produce        |
+| POST   | `/v1/produce`     | Add a new produce          | The newly created produce  |
+| PATCH  | `/v1/produce/:id` | Update an existing produce | The updated produce        |
+| DELETE | `/v1/produce/:id` | Delete an existing produce | The number of rows deleted |
 
-| METHOD | ENDPOINT                 | USAGE                                       | RETURNS                 |
-| ------ | ------------------------ | ------------------------------------------- | ----------------------- |
-| GET    | `/v1/produce/:id/months` | Get a list of months for a specific produce | An array of months      |
-| POST   | `/v1/produce/:id/months` | Add a new month to a specific produce       | The newly created month |
-| DELETE | `/v1/produce/:id/months` | Delete a month from a specific produce      | Nothing (status OK)     |
+| METHOD | ENDPOINT            | USAGE                                         | RETURNS                        |
+| ------ | ------------------- | --------------------------------------------- | ------------------------------ |
+| GET    | `/v1/available/`    | Get all availability of produce               | An array of availability       |
+| POST   | `/v1/available/`    | Add a new availability for a produce          | The newly created availability |
+| PATCH  | `/v1/available/`    | Update an existing availability for a produce | The updated availability       |
+| DELETE | `/v1/available/:id` | Delete an availability by id                  | The number of rows deleted     |
+
+| METHOD | ENDPOINT                       | USAGE                                    | RETURNS                                                                                                                                                              |
+| ------ | ------------------------------ | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/v1/available/month/:id`      | Get all availability with the same month | An array of availability for that month with name, display_name, and image_url                                                                                       |
+| GET    | `/v1/available/produce/:id`    | Get all availability for a produce       | An array of availability for that produce with name, display_name, and image_url (or an empty array and 200 status okay if there's no availability for that produce) |
+| GET    | `/v1/available/season/:season` | Get all availability for a season        | An array of availability for that season with name, display_name, and image_url                                                                                      |

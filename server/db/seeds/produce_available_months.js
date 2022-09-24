@@ -311,5 +311,16 @@ exports.seed = async function (knex) {
     { id: 303, month: 12, produce_id: 36 },
     { id: 304, month: 12, produce_id: 87 },
     { id: 305, month: 12, produce_id: 37 },
+    { id: 306, month: 11, produce_id: 8 },
+    { id: 307, month: 12, produce_id: 8 },
+    { id: 308, month: 1, produce_id: 8 },
+    { id: 309, month: 1, produce_id: 1 },
+    { id: 310, month: 6, produce_id: 1 },
+    { id: 311, month: 7, produce_id: 1 },
+    { id: 312, month: 8, produce_id: 1 },
+    { id: 313, month: 9, produce_id: 1 },
+    { id: 314, month: 10, produce_id: 1 },
+    { id: 315, month: 11, produce_id: 1 },
+    { id: 316, month: 12, produce_id: 1 },
   ])
 }
