@@ -1,16 +1,26 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import { Button, Typography } from '@mui/material'
+import { Button } from '@mui/material'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+
+// MUI overrides
+// import { useStyles } from '../styles/mui_overrides'
+
 
 function Nav() {
   const user = useSelector((state) => state.loggedInUser)
   const { logout, loginWithRedirect } = useAuth0()
   const navigate = useNavigate()
+  // const classes = useStyles()
+
+  const handleHome = (e) => {
+    e.preventDefault()
+    navigate('/')
+  }
 
   const handleLogOff = (e) => {
     e.preventDefault()
@@ -25,18 +35,27 @@ function Nav() {
   }
 
   return (
-    <div>
-      <Button as={NavLink} to="/">
-        Home
-      </Button>
-      <IfAuthenticated>
-        <Button onClick={handleLogOff}>Log off</Button>
-        <Typography variant="body1">{user.username}</Typography>
-      </IfAuthenticated>
-      <IfNotAuthenticated>
-        <Button onClick={handleSignIn}>Sign In</Button>
-      </IfNotAuthenticated>
-    </div>
+    <>
+      <div className='home-link'>
+        <Button typography={
+          'font'
+        } color='inherit' onClick={handleHome}>Seasoned</Button>
+      </div>
+      
+      <div className='log-in-out'>
+        <IfAuthenticated>
+          <Button color='inherit' onClick={handleLogOff}>
+            Log off
+          </Button>
+          <p>{user.username}</p>
+        </IfAuthenticated>
+        <IfNotAuthenticated>
+          <Button color='inherit' onClick={handleSignIn}>
+            Sign In
+          </Button>
+        </IfNotAuthenticated>
+      </div>
+    </>
   )
 }
 
