@@ -1,5 +1,4 @@
 import React from 'react'
-// import Recipe from './Recipe'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -15,43 +14,44 @@ export default function Recipes() {
   return (
     <div>
       {recipes?.map((recipe, idx) => {
+        const { image, label, cuisineType, dietLabels, mealType } =
+          recipe.recipe
+
         return (
           <>
             <Card sx={{ maxWidth: 345, marginBottom: 2 }}>
               <CardActionArea>
-                <CardMedia
-                  component="img"
-                  image={recipe.recipe.image}
-                  alt="recipe"
-                />
+                <CardMedia component="img" image={image} alt={label} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    {recipe.recipe.label}
+                    {label}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    <p>
-                      Cuisine Type:{' '}
-                      {recipe.recipe.cuisineType.map(
-                        (string) =>
-                          string[0].toUpperCase() + string.substring(1)
-                      )}
-                    </p>
-                    <p>
-                      Diet Labels:{' '}
-                      {recipe.recipe.dietLabels.map((text) => {
-                        const addSpace = text + ' '
-                        return addSpace
-                      })}
-                    </p>
-                    <p>Meal Type: {recipe.recipe.mealType}</p>
+                    Cuisine Type:{' '}
+                    {cuisineType.map(
+                      (string) => string[0].toUpperCase() + string.substring(1)
+                    )}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Diet Labels:{' '}
+                    {dietLabels.map((text) => {
+                      const addSpace = text + ' '
+                      return addSpace
+                    })}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Meal Type: {mealType}
                   </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary">
-                  <Link key={idx} to={`/${idx}`}>
-                    Recipe Here
-                  </Link>
+                <Button
+                  component={Link}
+                  to={`/recipes/${idx}`}
+                  size="small"
+                  color="primary"
+                >
+                  Recipe Here
                 </Button>
               </CardActions>
             </Card>

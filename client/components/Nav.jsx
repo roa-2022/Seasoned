@@ -1,20 +1,21 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
-
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useNavigate } from 'react-router-dom'
+
 import { Button } from '@mui/material'
 
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+
 // MUI overrides
-import { useStyles } from '../styles/mui_overrides'
+// import { useStyles } from '../styles/mui_overrides'
 
 
 function Nav() {
   const user = useSelector((state) => state.loggedInUser)
   const { logout, loginWithRedirect } = useAuth0()
   const navigate = useNavigate()
-  const classes = useStyles()
+  // const classes = useStyles()
 
   const handleHome = (e) => {
     e.preventDefault()

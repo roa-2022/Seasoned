@@ -7,7 +7,9 @@ import SearchRecipe from './SearchRecipe'
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '../styles/theme'
 
+// import Nav from './Nav'
 import Register from './Register'
+import Footer from './Footer'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
 import { useCacheUser } from '../auth0-utils'
@@ -46,6 +48,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/recipes/:id" element={<Recipe />} />
         </Routes>
+        <Footer />
       </ThemeProvider>
   )
 }

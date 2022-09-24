@@ -10,7 +10,7 @@ exports.seed = function (knex) {
           name: 'apple',
           display_name: 'Apple/Āporo',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/73967/imagegen.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -18,7 +18,7 @@ exports.seed = function (knex) {
           name: 'apricot',
           display_name: 'Apricot/Aperekoti',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/14967/apricot.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -26,7 +26,7 @@ exports.seed = function (knex) {
           name: 'avocado',
           display_name: 'Avocado/Awakato',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5210/avocado-one.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -34,7 +34,7 @@ exports.seed = function (knex) {
           name: 'banana',
           display_name: 'Banana/Panana',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/585/banana-main.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -42,7 +42,7 @@ exports.seed = function (knex) {
           name: 'blackberry',
           display_name: 'Blackberry/Parakipere',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/14982/blackberries.jpeg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -50,7 +50,7 @@ exports.seed = function (knex) {
           name: 'blackcurrant',
           display_name: 'Blackcurrants',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/14997/blackcurrants.jpeg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -58,7 +58,7 @@ exports.seed = function (knex) {
           name: 'blueberry',
           display_name: 'Blueberry/Rēua',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15012/blueberry.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -66,7 +66,7 @@ exports.seed = function (knex) {
           name: 'boysenberry',
           display_name: 'Boysenberries',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15027/boysenberries.jpeg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -74,7 +74,7 @@ exports.seed = function (knex) {
           name: 'cherry',
           display_name: 'Cherry/Tiere',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/213574/cherry-banner-2017.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -82,7 +82,7 @@ exports.seed = function (knex) {
           name: 'feijoa',
           display_name: 'Feijoa/Whitoa',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/14943/feijoa.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -90,7 +90,7 @@ exports.seed = function (knex) {
           name: 'gooseberry',
           display_name: 'Gooseberry/Kuihipere',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15057/gooseberries.jpeg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -98,7 +98,7 @@ exports.seed = function (knex) {
           name: 'grapefruit',
           display_name: 'Grapefruit/Huakerepe',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/13718/grapefruit.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -106,7 +106,7 @@ exports.seed = function (knex) {
           name: 'black grapes',
           display_name: 'Grape/Kerepi - Black',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/13734/grapes.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -114,7 +114,7 @@ exports.seed = function (knex) {
           name: 'green grapes',
           display_name: 'Grape/Kerepi - Green',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/144665/grapes-green-copy.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -122,7 +122,7 @@ exports.seed = function (knex) {
           name: 'honeydew melon',
           display_name: 'Honeydew Melon',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15108/honey.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -130,7 +130,7 @@ exports.seed = function (knex) {
           name: 'kiwiberry',
           display_name: 'Kiwiberries',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/192460/kiwiberries.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -138,7 +138,7 @@ exports.seed = function (knex) {
           name: 'gold kiwifruit',
           display_name: 'Kiwifruit/Huakiwi - Gold',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/144823/gold-kiwifruit-copy.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -146,7 +146,7 @@ exports.seed = function (knex) {
           name: 'green kiwifruit',
           display_name: 'Kiwifruit/Huakiwi - Green',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/3435/kiwifruit-lr.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -154,7 +154,7 @@ exports.seed = function (knex) {
           name: 'lemon',
           display_name: 'Lemon/Rēmana',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/77644/lemons.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -162,7 +162,7 @@ exports.seed = function (knex) {
           name: 'lime',
           display_name: 'Lime/Raima',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15087/limes.jpeg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -170,7 +170,7 @@ exports.seed = function (knex) {
           name: 'mandarin',
           display_name: 'Mandarin/Manarini',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15093/mandarin-product-shot.jpeg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -178,7 +178,7 @@ exports.seed = function (knex) {
           name: 'mango',
           display_name: 'Mango',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/141458/mango-copy.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -186,7 +186,7 @@ exports.seed = function (knex) {
           name: 'nashi',
           display_name: 'Nashi',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/13840/nashipear.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -194,7 +194,7 @@ exports.seed = function (knex) {
           name: 'nectarine',
           display_name: 'Nectarine/Pītiti kiri',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15138/nectarine.jpeg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -202,7 +202,7 @@ exports.seed = function (knex) {
           name: 'navel orange',
           display_name: 'Orange/Ārani - Navel',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/13855/orangenavel.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -210,7 +210,7 @@ exports.seed = function (knex) {
           name: 'orange',
           display_name: 'Orange/Ārani - Valencia',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5255/orang.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -218,7 +218,7 @@ exports.seed = function (knex) {
           name: 'passionfruit',
           display_name: 'Passionfruit/Kōhia',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.thespruceeats.com/thmb/8N3vBJJt-hSQm8SHyFkq9d-8c8M=/940x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-185227039-589d5b065f9b58819ce64410.jpg',
         },
         {
@@ -226,7 +226,7 @@ exports.seed = function (knex) {
           name: 'peach',
           display_name: 'Peach/Pītiti',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15162/peaches.jpeg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -234,7 +234,7 @@ exports.seed = function (knex) {
           name: 'pear',
           display_name: 'Pear/Pea',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/213631/pears-group-shot-landscape-copy.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -242,7 +242,7 @@ exports.seed = function (knex) {
           name: 'pineapple',
           display_name: 'Pineapple/Paināporo',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/79584/pinnapple.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -250,7 +250,7 @@ exports.seed = function (knex) {
           name: 'plum',
           display_name: 'Plum/Paramu',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/13910/plums.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -258,7 +258,7 @@ exports.seed = function (knex) {
           name: 'raspberry',
           display_name: 'Raspberry/Rāhipere',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15187/raspberries2.jpeg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -266,7 +266,7 @@ exports.seed = function (knex) {
           name: 'redcurrant',
           display_name: 'Redcurrants',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15202/redcurrants.jpeg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -274,7 +274,7 @@ exports.seed = function (knex) {
           name: 'strawberry',
           display_name: 'Strawberry/Rōpere',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/13961/strawberry.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -282,7 +282,7 @@ exports.seed = function (knex) {
           name: 'tamarillo',
           display_name: 'Tamarillo/Tamariro',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/21897/Tamarillo-SM.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -290,7 +290,7 @@ exports.seed = function (knex) {
           name: 'tangelo',
           display_name: 'Tangelo/Tānero',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/36390/tangelo-2.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -298,7 +298,7 @@ exports.seed = function (knex) {
           name: 'watermelon',
           display_name: 'Watermelon/Waimerengi',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/79561/watermelon.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -306,7 +306,7 @@ exports.seed = function (knex) {
           name: 'rock melon',
           display_name: 'Rock Melon/Rāka merengi',
           type: 'fruit',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15072/rock.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -314,7 +314,7 @@ exports.seed = function (knex) {
           name: 'globe artichoke',
           display_name: 'Artichoke/Atihoka - Globe',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15217/artichoke-green-globe.bmp?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -322,7 +322,7 @@ exports.seed = function (knex) {
           name: 'jerusalem artichoke',
           display_name: 'Artichoke/Atihoka - Jerusalem',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15241/artichoke-j.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -330,7 +330,7 @@ exports.seed = function (knex) {
           name: 'asparagus',
           display_name: 'Asparagus/Apareka',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5325/asparagus.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -338,7 +338,7 @@ exports.seed = function (knex) {
           name: 'beans',
           display_name: 'Bean/Pīni',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/77450/beans.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -346,7 +346,7 @@ exports.seed = function (knex) {
           name: 'beetroot',
           display_name: 'Beetroot/Tāmore whero',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5356/biet.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -354,7 +354,7 @@ exports.seed = function (knex) {
           name: 'broccoli',
           display_name: 'Broccoli/Pūpihi',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/214160/steamed-broccoli-with-miso-vinaigrette-1.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -362,7 +362,7 @@ exports.seed = function (knex) {
           name: 'broccolini',
           display_name: 'Broccolini',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/77494/broccolini.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -370,7 +370,7 @@ exports.seed = function (knex) {
           name: 'brussel sprouts',
           display_name: 'Brussels sprouts/Aonanī',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15286/brussels-sprouts.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -378,7 +378,7 @@ exports.seed = function (knex) {
           name: 'buttercup squash',
           display_name: 'Buttercup Squash',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/78141/buttercup.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -386,7 +386,7 @@ exports.seed = function (knex) {
           name: 'butternut',
           display_name: 'Butternut',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/78252/pumpkin-butternut.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -394,7 +394,7 @@ exports.seed = function (knex) {
           name: 'cabbage',
           display_name: 'Cabbage/Kāpeti',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/78234/cabbage-green.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -402,7 +402,7 @@ exports.seed = function (knex) {
           name: 'capsicum',
           display_name: 'Capsicum/Rapikama',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5449/capsicum.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -410,7 +410,7 @@ exports.seed = function (knex) {
           name: 'carrot',
           display_name: 'Carrot/Kāroti',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/77595/carrots.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -418,7 +418,7 @@ exports.seed = function (knex) {
           name: 'cauliflower',
           display_name: 'Cauliflower/Kareparāoa',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5473/cauliflower.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -426,7 +426,7 @@ exports.seed = function (knex) {
           name: 'celery',
           display_name: 'Celery/Herewī',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5488/celery.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -434,7 +434,7 @@ exports.seed = function (knex) {
           name: 'chilli',
           display_name: 'Chilli/Hiri',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/13764/chilli.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -442,7 +442,7 @@ exports.seed = function (knex) {
           name: 'courgette',
           display_name: 'Courgette/Kamoriki',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5512/courgettes.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -450,7 +450,7 @@ exports.seed = function (knex) {
           name: 'cucumber',
           display_name: 'Cucumber/Kūkama',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5542/cucumber-telegraph.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -458,7 +458,7 @@ exports.seed = function (knex) {
           name: 'eggplant',
           display_name: 'Eggplant/Otahua',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5557/aubergine.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -466,7 +466,7 @@ exports.seed = function (knex) {
           name: 'fennel',
           display_name: 'Fennel/Huahaunga',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/77499/fennel.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -474,7 +474,7 @@ exports.seed = function (knex) {
           name: 'fresh herbs',
           display_name: 'Fresh Herbs/Amiami',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/214246/herbs-libby-2019.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -482,7 +482,7 @@ exports.seed = function (knex) {
           name: 'garlic',
           display_name: 'Garlic/Kārika',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/77778/garlic.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -490,7 +490,7 @@ exports.seed = function (knex) {
           name: 'ginger',
           display_name: 'Ginger/Tinitia',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/13795/ginger-2.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -498,7 +498,7 @@ exports.seed = function (knex) {
           name: 'kale',
           display_name: 'Kale/Kapekape',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/135744/kale-1-copy.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -506,7 +506,7 @@ exports.seed = function (knex) {
           name: 'kohlrabi',
           display_name: 'Kohlrabi/Koapi',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/77613/kohlrabi-2.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -514,7 +514,7 @@ exports.seed = function (knex) {
           name: 'kumara',
           display_name: 'Kūmara',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5587/kumara.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -522,7 +522,7 @@ exports.seed = function (knex) {
           name: 'leek',
           display_name: 'Leeks/Rikiroa',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/77952/leeks-cropped.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -530,7 +530,7 @@ exports.seed = function (knex) {
           name: 'lettuce',
           display_name: 'Lettuce/Rētihi',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5602/letuce.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -538,7 +538,7 @@ exports.seed = function (knex) {
           name: 'mushroom',
           display_name: 'Mushroom/Harore',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/144495/mushroom-medley-copy-cropped.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -546,7 +546,7 @@ exports.seed = function (knex) {
           name: 'onion',
           display_name: 'Onion/Riki',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/78283/onions-q.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -554,7 +554,7 @@ exports.seed = function (knex) {
           name: 'parsnip',
           display_name: 'Parsnip/Tāmore mā',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15325/parsnips.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -562,7 +562,7 @@ exports.seed = function (knex) {
           name: 'pea',
           display_name: 'Peas/Pī',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/79374/peas.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -570,7 +570,7 @@ exports.seed = function (knex) {
           name: 'potato',
           display_name: 'Potato/Rīwai',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/77729/potatoes-3-colours.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -578,7 +578,7 @@ exports.seed = function (knex) {
           name: 'pumpkin',
           display_name: 'Pumpkin/Paukena',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/78159/pumpkin.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -586,7 +586,7 @@ exports.seed = function (knex) {
           name: 'puha',
           display_name: 'Pūhā',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15355/puha.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -594,7 +594,7 @@ exports.seed = function (knex) {
           name: 'radish',
           display_name: 'Radish/Rarihi ',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15370/radish.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -602,7 +602,7 @@ exports.seed = function (knex) {
           name: 'salad greens',
           display_name: 'Salad Greens',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/5737/salad-greens2.png?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -610,7 +610,7 @@ exports.seed = function (knex) {
           name: 'silverbeet',
           display_name: 'Silver Beet/Korare',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/79418/silverbeet.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -618,7 +618,7 @@ exports.seed = function (knex) {
           name: 'snow peas',
           display_name: 'Snow Peas',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/79492/snow-peas.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -626,7 +626,7 @@ exports.seed = function (knex) {
           name: 'spinach',
           display_name: 'Spinach/Kōkihi',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/79579/spinach.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -634,7 +634,7 @@ exports.seed = function (knex) {
           name: 'spring onion',
           display_name: 'Spring Onions/Rikiriki',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/35359/Spring-Onions-small.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -642,7 +642,7 @@ exports.seed = function (knex) {
           name: 'bean sprouts',
           display_name: 'Bean Sprouts',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/80997/sprouts.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -650,7 +650,7 @@ exports.seed = function (knex) {
           name: 'swede',
           display_name: 'Swede/Tuwīti tānapu',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15409/swede-2.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -658,7 +658,7 @@ exports.seed = function (knex) {
           name: 'corn',
           display_name: 'Sweetcorn/Kānga',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/78177/sweetcorn.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -666,7 +666,7 @@ exports.seed = function (knex) {
           name: 'taewa',
           display_name: 'Taewa',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15340/taewa-maori-potato.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -674,7 +674,7 @@ exports.seed = function (knex) {
           name: 'taro',
           display_name: 'Taro',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/15424/taro.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
@@ -682,42 +682,42 @@ exports.seed = function (knex) {
           name: 'tomato',
           display_name: 'Tomato/Tōmato',
           type: 'vegetable',
-          image: '',
+          image_url: '',
         },
         {
           id: 86,
           name: 'turnip',
           display_name: 'Turnip/Tōnape',
           type: 'vegetable',
-          image: '',
+          image_url: '',
         },
         {
           id: 87,
           name: 'watercress',
           display_name: 'Watercress/Wātakirihi',
           type: 'vegetable',
-          image: '',
+          image_url: '',
         },
         {
           id: 88,
           name: 'witloof',
           display_name: 'Witloof',
           type: 'vegetable',
-          image: '',
+          image_url: '',
         },
         {
           id: 89,
           name: 'yam',
           display_name: 'Yam/Uwhi',
           type: 'vegetable',
-          image: '',
+          image_url: '',
         },
         {
           id: 90,
           name: 'rhubarb',
           display_name: 'Rhubarb/Rūpapa',
           type: 'vegetable',
-          image:
+          image_url:
             'https://www.5aday.co.nz/media/77662/rhubarb.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
       ])
