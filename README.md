@@ -159,12 +159,16 @@ Socialize, eat together, music and honey time. (on toast)
 
 ## Seasoned API
 
+### produce
+
 | METHOD | ENDPOINT          | USAGE                      | RETURNS                    |
 | ------ | ----------------- | -------------------------- | -------------------------- |
 | GET    | `/v1/produce`     | Get a list of all produce  | An array of produce        |
 | POST   | `/v1/produce`     | Add a new produce          | The newly created produce  |
 | PATCH  | `/v1/produce/:id` | Update an existing produce | The updated produce        |
 | DELETE | `/v1/produce/:id` | Delete an existing produce | The number of rows deleted |
+
+### produce_available_months
 
 | METHOD | ENDPOINT            | USAGE                                         | RETURNS                        |
 | ------ | ------------------- | --------------------------------------------- | ------------------------------ |
