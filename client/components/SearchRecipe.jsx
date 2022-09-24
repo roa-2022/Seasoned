@@ -7,13 +7,13 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 
 import Recipes from './Recipes'
-import { fetchRecipes } from '../actions'
+import { dietarySelect, dietaryRemove, fetchRecipes } from '../actions'
 
 export default function SearchRecipe() {
   const dispatch = useDispatch()
   const loading = useSelector((state) => state.loading)
 
-  const [ingredient, setIngredient] = useState([])
+  const [ingredient, setIngredient] = useState('')
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -22,7 +22,11 @@ export default function SearchRecipe() {
   }
 
   const handleChange = (e) => {
-    console.log('Label of checked box', e.target.name)
+    if (e.target.checked) {
+      dispatch(dietarySelect(e.target.name))
+    } else {
+      dispatch(dietaryRemove(e.target.name))
+    }
   }
 
   return (
