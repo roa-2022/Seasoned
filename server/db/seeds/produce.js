@@ -720,6 +720,13 @@ exports.seed = function (knex) {
           image_url:
             'https://www.5aday.co.nz/media/77662/rhubarb.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
+        {
+          id: 91,
+          name: 'persimmon',
+          display_name: 'Persimmon/Āporo makimaki',
+          type: 'fruit',
+          image_url: '',
+        },
       ])
     })
 }
