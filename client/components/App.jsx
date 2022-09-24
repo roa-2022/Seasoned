@@ -2,17 +2,29 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate, Routes, Route } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
-
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Recipe from './Recipe'
 import SearchRecipe from './SearchRecipe'
-
-import Nav from './Nav'
 
 import Register from './Register'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
 import { useCacheUser } from '../auth0-utils'
 import { getUser } from '../api'
+import TopNav from './TopNav'
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      // Purple and green play nicely together.
+      main: '#BF572B',
+    },
+    secondary: {
+      // This is green.A700 as hex.
+      main: '#EFF6EE',
+    },
+  },
+});
 
 function App() {
   useCacheUser()
@@ -37,16 +49,16 @@ function App() {
   }, [isAuthenticated])
 
   return (
-    <>
-      <Nav />
-      <h1>Seasoned</h1>
-      <Routes>
-        <Route path="/" element={<SearchRecipe />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/:id" element={<Recipe />} />
+    <ThemeProvider theme={theme}>
+      <TopNav/>
         
-      </Routes>
-    </>
+      <h1>Seasoned</h1>
+        <Routes>
+          <Route path="/" element={<SearchRecipe />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/recipes/:id" element={<Recipe />} />
+        </Routes>
+      </ThemeProvider>
   )
 }
 
