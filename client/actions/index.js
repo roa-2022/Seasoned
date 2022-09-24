@@ -4,10 +4,17 @@ import { getProduce } from '../apis/produce'
 export const DISPLAY_RECIPES = 'DISPLAY_RECIPES'
 
 export const LOADING = 'LOADING'
+export const STOP_LOADING = 'STOP_LOADING'
 
 export function setLoading() {
   return {
     type: LOADING,
+  }
+}
+
+export function stopLoading() {
+  return {
+    type: STOP_LOADING,
   }
 }
 
@@ -21,8 +28,12 @@ export function displayRecipes(recipes) {
 export function fetchRecipes(userInput) {
   return async (dispatch) => {
     try {
-      const recipes = await getRecipes(userInput, 20) // Limits results to 20 recipes
-      dispatch(displayRecipes(recipes))
+      dispatch(setLoading())
+      const recipes = await getRecipes(userInput)
+      setTimeout(() => {
+        dispatch(stopLoading())
+        dispatch(displayRecipes(recipes))
+      }, 1000)
     } catch (err) {
       console.log('fetchRecipes - ' + err)
     }

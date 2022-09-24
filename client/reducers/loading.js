@@ -1,4 +1,4 @@
-import { LOADING, DISPLAY_RECIPES } from '../actions'
+import { LOADING, STOP_LOADING, DISPLAY_RECIPES } from '../actions'
 
 export default function loadingReducer(state = false, action) {
   const { type } = action
@@ -6,6 +6,7 @@ export default function loadingReducer(state = false, action) {
   switch (type) {
     case LOADING:
       return true
+    case STOP_LOADING:
     case DISPLAY_RECIPES:
       return false
     default:
