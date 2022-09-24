@@ -36,7 +36,9 @@ function Nav() {
   return (
     <>
       <div className='home-link'>
-        <Button color='inherit' onClick={handleHome}>Seasoned</Button>
+        <Button typography={
+          'font'
+        } color='inherit' onClick={handleHome}>Seasoned</Button>
       </div>
       
       <div className='log-in-out'>
