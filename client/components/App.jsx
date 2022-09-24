@@ -2,16 +2,21 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate, Routes, Route } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
-
 import Recipe from './Recipe'
 import SearchRecipe from './SearchRecipe'
-import Nav from './Nav'
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '../styles/theme'
+
+// import Nav from './Nav'
 import Register from './Register'
 import Footer from './Footer'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
 import { useCacheUser } from '../auth0-utils'
 import { getUser } from '../api'
+import TopNav from './TopNav'
+
+
 
 function App() {
   useCacheUser()
@@ -36,15 +41,15 @@ function App() {
   }, [isAuthenticated])
 
   return (
-    <>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<SearchRecipe />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/:id" element={<Recipe />} />
-      </Routes>
-      <Footer />
-    </>
+    <ThemeProvider theme={theme}>
+      <TopNav/>
+        <Routes>
+          <Route path="/" element={<SearchRecipe />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/recipes/:id" element={<Recipe />} />
+        </Routes>
+        <Footer />
+      </ThemeProvider>
   )
 }
 

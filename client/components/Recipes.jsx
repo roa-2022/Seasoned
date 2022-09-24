@@ -47,7 +47,7 @@ export default function Recipes() {
               <CardActions>
                 <Button
                   component={Link}
-                  to={`/${idx}`}
+                  to={`/recipes/${idx}`}
                   size="small"
                   color="primary"
                 >
