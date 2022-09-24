@@ -1,6 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import FormGroup from '@mui/material/FormGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Checkbox from '@mui/material/Checkbox'
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
+import Favorite from '@mui/icons-material/Favorite'
+import { pink } from '@mui/material/colors'
 
 export default function Recipe() {
   const { id } = useParams()
@@ -16,7 +22,24 @@ export default function Recipe() {
   return (
     <div>
       <h3>{label}</h3>
-      <img src={image} alt="recipe" />
+      <img src={image} alt={label} />
+      <FormGroup>
+        <FormControlLabel
+          control={
+            <Checkbox
+              icon={<FavoriteBorder />}
+              checkedIcon={<Favorite />}
+              sx={{
+                color: pink[800],
+                '&.Mui-checked': {
+                  color: pink[600],
+                },
+              }}
+            />
+          }
+          label="Add to Favourite"
+        />
+      </FormGroup>
       <p>
         <strong>{dietary.map((e) => e + ' ')} </strong>
       </p>
