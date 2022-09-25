@@ -14,18 +14,8 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const { id, name, display_name, type, image } = req.body
-
-  const produceData = {
-    id,
-    name,
-    display_name,
-    type,
-    image,
-  }
-
   try {
-    const produceResp = await db.createProduce(produceData)
+    const produceResp = await db.createProduce(req.body)
     const allProduceResp = await db.readProduce()
     res.json(allProduceResp)
   } catch (err) {
@@ -33,20 +23,11 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.patch('/:produce', async (req, res) => {
-  const id = req.params.produce
-  const { name, display_name, type, image } = req.body
-
-  const produceData = {
-    id,
-    name,
-    display_name,
-    type,
-    image,
-  }
+router.patch('/:id', async (req, res) => {
+  const id = req.params.id
 
   try {
-    const produceResp = await db.updateProduce(produceData, id)
+    const produceResp = await db.updateProduce(req.body, id)
     const updatedResp = await db.readOneProduce(id)
     res.json(updatedResp)
   } catch (err) {

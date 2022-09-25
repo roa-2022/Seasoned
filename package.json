@@ -6,6 +6,9 @@
   "keywords": [
     "fullstack"
   ],
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "node server",
     "test": "jest",
@@ -13,11 +16,12 @@
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run webpack -- --watch",
     "dev:server": "nodemon --watch server server/index.js",
-    "build": "run-p build:client build:server",
+    "build": "run-p build:client build:server webpack:production",
     "build:client": "npm run webpack -- --mode production",
     "build:server": "npm run knex -- migrate:latest",
     "lint": "eslint --ext .js,.jsx .",
     "webpack": "webpack --config ./client/webpack.config.js",
+    "webpack:production": "webpack --mode=production",
     "knex": "knex --knexfile ./server/db/knexfile.js"
   },
   "babel": {
@@ -38,13 +42,13 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.6",
+    "dotenv": "^16.0.2",
+    "dotenv-webpack": "^8.0.1",
     "express": "^4.17.2",
     "express-jwt": "^7.7.5",
     "jwks-rsa": "^2.1.4",
     "knex": "^2.1.0",
     "pg": "^8.7.1",
-    "sqlite3": "^5.0.8",
-    "styled-components": "^5.3.5",
     "superagent": "7.1.1"
   },
   "devDependencies": {
@@ -69,15 +73,17 @@
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
+    "supertest": "^6.2.2",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
     "react-router-dom": "^6.2.2",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
-    "supertest": "^6.2.2",
-    "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2"
+    "sqlite3": "^5.0.8",
+    "styled-components": "^5.3.5"
   },
   "prettier": {
     "semi": false,
