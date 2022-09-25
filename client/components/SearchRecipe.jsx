@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { TextField, IconButton } from '@mui/material'
+import { Box, TextField, IconButton } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -30,7 +30,7 @@ export default function SearchRecipe() {
   }
 
   return (
-    <div>
+    <Box>
       <form onSubmit={handleSearch}>
         <TextField
           onChange={(e) => {
@@ -43,7 +43,7 @@ export default function SearchRecipe() {
           size="small"
           style={{ marginBottom: 20, width: 345 }}
         />
-        <IconButton type="submit" aria-label="serach">
+        <IconButton type="submit" aria-label="search">
           <SearchIcon style={{ fill: 'blue' }} />
         </IconButton>
       </form>
@@ -70,6 +70,6 @@ export default function SearchRecipe() {
       )}
 
       <Recipes />
-    </div>
+    </Box>
   )
 }
