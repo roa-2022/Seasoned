@@ -2,6 +2,8 @@ import { getRecipes } from '../apis/recipes'
 import { getProduce } from '../apis/produce'
 
 export const DISPLAY_RECIPES = 'DISPLAY_RECIPES'
+export const SELECT_DIETARY = 'SELECT_DIETARY'
+export const REMOVE_DIETARY = 'REMOVE_DIETARY'
 
 export const LOADING = 'LOADING'
 export const STOP_LOADING = 'STOP_LOADING'
@@ -15,6 +17,20 @@ export function setLoading() {
 export function stopLoading() {
   return {
     type: STOP_LOADING,
+  }
+}
+
+export function dietarySelect(dietaryType) {
+  return {
+    type: SELECT_DIETARY,
+    payload: dietaryType,
+  }
+}
+
+export function dietaryRemove(dietaryType) {
+  return {
+    type: REMOVE_DIETARY,
+    payload: dietaryType,
   }
 }
 
