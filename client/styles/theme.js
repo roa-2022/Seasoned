@@ -15,26 +15,27 @@ export const theme = createTheme ({
   },
   typography: {
     fontSize: 16,
+    fontFamily: 'Bree Serif',
     h1: {
-      fontFamily: '"Bree Serif", "Helvetica", "Arial", sans-serif',
+      fontFamily: '"Bree Serif", serif',
     },
     h2: {
-      fontFamily: '"Bree Serif", "Helvetica", "Arial", sans-serif',
+      fontFamily: '"Bree Serif", serif',
     },
-    fontFamily: '"Nobile", "Helvetica", "Arial", sans-serif',
     h3: {
-      fontFamily: '"Bree Serif", "Helvetica", "Arial", sans-serif',
+      fontFamily: '"Bree Serif", serif',
     },
     h4: {
-      fontFamily: '"Bree Serif", "Helvetica", "Arial", sans-serif',
+      fontFamily: 'Bree Serif',
     },
     h5: {
-      fontFamily: '"Bree Serif", "Helvetica", "Arial", sans-serif',
+      fontFamily: '"Bree Serif", serif',
     },
     h6: {
-      fontFamily: '"Bree Serif", "Helvetica", "Arial", sans-serif',
+      fontFamily: '"Bree Serif", serif',
     },
     body1: {
+      fontFamily: '"Nobile", "Helvetica", "Arial", sans-serif',
       fontWeight: 400,
     },
   },
