@@ -1,7 +1,8 @@
 const path = require('path')
 
 // For .env file
-const Dotenv = require('dotenv-webpack')
+const webpack = require('webpack')
+require('dotenv').config()
 
 module.exports = {
   entry: ['./client/index.js'],
@@ -13,8 +14,11 @@ module.exports = {
 
   // For .env file
   plugins: [
-    new Dotenv({
-      path: path.join(__dirname, '../.env'),
+    new webpack.DefinePlugin({
+      'process.env': {
+        APP_ID: JSON.stringify(process.env.APP_ID),
+        EDAMAM_API_KEY: JSON.stringify(process.env.EDAMAM_API_KEY),
+      },
     }),
   ],
 
