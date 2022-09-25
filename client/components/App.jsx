@@ -4,11 +4,8 @@ import { useNavigate, Routes, Route } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import Recipe from './Recipe'
 import SearchRecipe from './SearchRecipe'
-import { ThemeProvider } from '@mui/material/styles'
-import { theme } from '../styles/theme'
 
-// import Nav from './Nav'
-import TopNav from './TopNav'
+import Nav from './Nav'
 import Register from './Register'
 import Footer from './Footer'
 
@@ -39,15 +36,15 @@ function App() {
   }, [isAuthenticated])
 
   return (
-    <ThemeProvider theme={theme}>
-      <TopNav />
+    <>
+      <Nav />
       <Routes>
         <Route path="/" element={<SearchRecipe />} />
         <Route path="/register" element={<Register />} />
         <Route path="/recipes/:id" element={<Recipe />} />
       </Routes>
       <Footer />
-    </ThemeProvider>
+    </>
   )
 }
 
