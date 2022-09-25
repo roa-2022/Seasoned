@@ -13,22 +13,30 @@ router.get('/', async (req, res) => {
   }
 })
 
+// Get a single produce item by id
+router.get('/:id', async (req, res) => {
+  try {
+    const result = await db.readOneProduce(req.params.id)
+    res.json(result)
+  } catch (err) {
+    res.status(500).send(err.message)
+  }
+})
+
 router.post('/', async (req, res) => {
   try {
-    const produceResp = await db.createProduce(req.body)
-    const allProduceResp = await db.readProduce()
-    res.json(allProduceResp)
+    const response = await db.createProduce(req.body)
+    const newProduce = await db.readOneProduce(response)
+    res.json(newProduce)
   } catch (err) {
     res.status(500).send(err.message)
   }
 })
 
 router.patch('/:id', async (req, res) => {
-  const id = req.params.id
-
   try {
-    const produceResp = await db.updateProduce(req.body, id)
-    const updatedResp = await db.readOneProduce(id)
+    const response = await db.updateProduce(req.body, req.params.id)
+    const updatedResp = await db.readOneProduce(req.params.id)
     res.json(updatedResp)
   } catch (err) {
     res.status(500).send(err.message)
@@ -36,11 +44,8 @@ router.patch('/:id', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
-  const deletedProduceId = req.params.id
-  console.log(deletedProduceId)
-
   try {
-    const produceDeletedResp = await db.deleteProduce(deletedProduceId)
+    const produceDeletedResp = await db.deleteProduce(req.params.id)
     res.json(produceDeletedResp)
   } catch (err) {
     res.status(500).send(err.message)

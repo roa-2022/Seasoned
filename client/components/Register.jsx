@@ -2,19 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import {
-  Error,
-  GridForm,
-  ColOne,
-  ColTwoText,
-  ColTwoField,
-  Button,
-  RadioLabel,
-  Radio,
-} from './Styled'
-
 import { addUser } from '../api'
 import { updateLoggedInUser } from '../actions/loggedInUser'
+
+import md5 from 'md5'
+
+import { Button, TextField } from '@mui/material'
 
 function Register() {
   const user = useSelector((state) => state.loggedInUser)
@@ -22,6 +15,7 @@ function Register() {
   const dispatch = useDispatch()
   const [form, setForm] = useState({
     username: '',
+    name: '',
   })
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -38,8 +32,15 @@ function Register() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
+
+    const gravatar = `https://www.gravatar.com/avatar/${md5(
+      user.email
+    )}?d=retro&f=y`
+
     const userInfo = {
       auth0Id: user.auth0Id,
+      email: user.email,
+      image: gravatar,
       ...form,
     }
     addUser(userInfo, user.token)
@@ -47,25 +48,36 @@ function Register() {
       .catch((err) => setErrorMsg(err.message))
   }
 
-  const hideError = () => {
-    setErrorMsg('')
-  }
-
   return (
     <>
       <h2>Complete profile set up</h2>
-      {errorMsg && <Error onClick={hideError}>Error: {errorMsg}</Error>}
-      <GridForm onSubmit={handleSubmit}>
-        <ColOne htmlFor="username">Username:</ColOne>
-        <ColTwoText
+      <form>
+        <TextField
+          type="text"
+          id="name"
+          name="name"
+          label="Name"
+          value={form.name}
+          onChange={handleChange}
+        />
+        <TextField
+          error={Boolean(errorMsg)}
           type="text"
           id="username"
           name="username"
+          label="Username"
           value={form.username}
           onChange={handleChange}
         />
-        <Button disabled={!form.username}>Save Profile</Button>
-      </GridForm>
+        <Button
+          disabled={!form.username && !form.name}
+          variant={form.username ? 'contained' : 'outlined'}
+          onClick={handleSubmit}
+        >
+          Save Profile
+        </Button>
+      </form>
+      {errorMsg && <div style={{ color: 'red' }}>Error: {errorMsg}</div>}
     </>
   )
 }
