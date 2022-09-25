@@ -1,44 +1,68 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from 'react'
 import { Provider } from 'react-redux'
 import { screen, render } from '@testing-library/react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import App from './App'
 import store from '../store'
-import { fetchFruits } from '../actions'
 
-jest.mock('../actions')
-
-fetchFruits.mockImplementation(() => () => {})
-
-test('page header includes fruit', () => {
+test('Renders the Nav component', () => {
   render(
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Router>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Router>
   )
-  const heading = screen.getByRole('heading')
-  expect(heading.innerHTML).toMatch(/Fruit/)
+
+  // Expect the component to load multiple buttons
+  // First button will have innerhtml containing 'Seasoned'
+  expect(screen.getAllByRole('button')[0].innerHTML).toContain('Seasoned')
 })
 
-test('renders an <li> for each fruit', () => {
-  const fruits = ['orange', 'persimmons', 'kiwi fruit']
-  jest.spyOn(store, 'getState')
-  store.getState.mockImplementation(() => ({ fruits }))
-
+test('Sign in button renders', () => {
   render(
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Router>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Router>
   )
-  const li = screen.getAllByRole('listitem')
-  expect(li).toHaveLength(3)
+
+  // Expect the component to load multiple buttons
+  // Second button will have innerhtml containing 'Sign In'
+  expect(screen.getAllByRole('button')[1].innerHTML).toContain('Sign In')
 })
 
-test('dispatches fetchFruits action', () => {
+test('Search for recipe input renders', () => {
   render(
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Router>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Router>
   )
-  expect(fetchFruits).toHaveBeenCalled()
+
+  // Expect the component to load an input
+  // Input will have placeholder containing 'Search for a recipe'
+  expect(screen.getByRole('textbox').placeholder).toBe(
+    'What ingredients do you have?'
+  )
+})
+
+test('Footer renders', () => {
+  render(
+    <Router>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Router>
+  )
+
+  // Expect the component to load a footer
+  // Footer will have innerhtml containing 'Seasoned'
+  expect(screen.getByRole('contentinfo').innerHTML).toContain('Seasoned')
 })

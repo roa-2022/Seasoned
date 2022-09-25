@@ -4,19 +4,16 @@ import { useNavigate, Routes, Route } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import Recipe from './Recipe'
 import SearchRecipe from './SearchRecipe'
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from '../styles/theme'
 
-// import Nav from './Nav'
+import Nav from './Nav'
 import Register from './Register'
 import Footer from './Footer'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
 import { useCacheUser } from '../auth0-utils'
 import { getUser } from '../api'
-import TopNav from './TopNav'
-
-
+import { ThemeProvider } from '@mui/styles'
+import { theme } from '../styles/theme'
 
 function App() {
   useCacheUser()
@@ -41,8 +38,9 @@ function App() {
   }, [isAuthenticated])
 
   return (
-    <ThemeProvider theme={theme}>
-      <TopNav/>
+    <>
+      <ThemeProvider theme={theme}>
+        <Nav />
         <Routes>
           <Route path="/" element={<SearchRecipe />} />
           <Route path="/register" element={<Register />} />
@@ -50,6 +48,7 @@ function App() {
         </Routes>
         <Footer />
       </ThemeProvider>
+    </>
   )
 }
 
