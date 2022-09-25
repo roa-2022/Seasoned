@@ -1,21 +1,29 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
-
-import { Button } from '@mui/material'
+import { useStyles } from '../styles/styles'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
-// MUI overrides
-// import { useStyles } from '../styles/mui_overrides'
+import {
+  AppBar,
+  Button,
+  CssBaseline,
+  Grid,
+  Box,
+  Toolbar,
+  // Typography,
+} from '@material-ui/core'
 
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
 function Nav() {
-  const user = useSelector((state) => state.loggedInUser)
+  // const user = useSelector((state) => state.loggedInUser)
   const { logout, loginWithRedirect } = useAuth0()
   const navigate = useNavigate()
-  // const classes = useStyles()
+
+  const classes = useStyles()
 
   const handleHome = (e) => {
     e.preventDefault()
@@ -35,27 +43,44 @@ function Nav() {
   }
 
   return (
-    <>
-      <div className='home-link'>
-        <Button typography={
-          'font'
-        } color='inherit' onClick={handleHome}>Seasoned</Button>
-      </div>
-      
-      <div className='log-in-out'>
-        <IfAuthenticated>
-          <Button color='inherit' onClick={handleLogOff}>
-            Log off
-          </Button>
-          <p>{user.username}</p>
-        </IfAuthenticated>
-        <IfNotAuthenticated>
-          <Button color='inherit' onClick={handleSignIn}>
-            Sign In
-          </Button>
-        </IfNotAuthenticated>
-      </div>
-    </>
+    <Box>
+      <CssBaseline />
+      <AppBar position="relative">
+        <Toolbar className={classes.navToolbar}>
+          <Grid container justify="flex-start">
+            <Button className="navButton" color="inherit" onClick={handleHome}>
+              Home
+            </Button>
+          </Grid>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <div>
+                <IfAuthenticated>
+                  <Button
+                    startIcon={<AccountCircleIcon />}
+                    className={classes.navButton}
+                    color="inherit"
+                    onClick={handleLogOff}
+                  >
+                    Log off
+                  </Button>
+                </IfAuthenticated>
+                <IfNotAuthenticated>
+                  <Button
+                    startIcon={<AccountCircleIcon />}
+                    className={classes.navButton}
+                    color="inherit"
+                    onClick={handleSignIn}
+                  >
+                    Sign In
+                  </Button>
+                </IfNotAuthenticated>
+              </div>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+    </Box>
   )
 }
 
