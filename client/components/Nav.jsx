@@ -47,12 +47,12 @@ function Nav() {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar className={classes.navToolbar}>
-          <Grid container justify="flex-start">
+          <Grid container justifyContent="flex-start">
             <Button className="navButton" color="inherit" onClick={handleHome}>
               Home
             </Button>
           </Grid>
-          <Grid container justify="flex-end">
+          <Grid container justifyContent="flex-end">
             <Grid item>
               <div>
                 <IfAuthenticated>

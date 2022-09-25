@@ -8,6 +8,7 @@ import Checkbox from '@mui/material/Checkbox'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import { pink } from '@mui/material/colors'
+import { Typography } from '@mui/material'
 
 export default function Recipe() {
   const { id } = useParams()
@@ -46,7 +47,7 @@ export default function Recipe() {
         <strong>{dietary.map((e) => e + ' ')} </strong>
       </p>
       <div>
-        <h4>Ingredients</h4>
+      <Typography variant="h4">Ingredients</Typography>
         <ul>
           {ingredients.map((ingredient, idx) => (
             <li key={idx}>{ingredient.text}</li>

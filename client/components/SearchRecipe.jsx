@@ -37,7 +37,7 @@ export default function SearchRecipe() {
       <form onSubmit={handleSearch}>
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
           <TextField
-            justify="flex-end"
+            justifycontent="flex-end"
             className={classes.searchBar}
             onChange={(e) => {
               setIngredient(e.target.value)
