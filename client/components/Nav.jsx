@@ -3,8 +3,12 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
 import { useStyles } from '../styles/styles'
-
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+// import HomeIcon from '@mui/icons-material/Home'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 import {
   AppBar,
@@ -16,9 +20,8 @@ import {
   // Typography,
 } from '@material-ui/core'
 
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-
 function Nav() {
+  const element = <FontAwesomeIcon icon={faHouse} />
   // const user = useSelector((state) => state.loggedInUser)
   const { logout, loginWithRedirect } = useAuth0()
   const navigate = useNavigate()
@@ -49,7 +52,7 @@ function Nav() {
         <Toolbar className={classes.navToolbar}>
           <Grid container justifyContent="flex-start">
             <Button className="navButton" color="inherit" onClick={handleHome}>
-              Home
+              <FontAwesomeIcon icon={faHouse} />
             </Button>
           </Grid>
           <Grid container justifyContent="flex-end">
