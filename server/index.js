@@ -5,6 +5,7 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   if (envConfig.error) throw envConfig.error
 }
 
+import server from './server'
 const path = require('path')
 const dotenv = require('dotenv')
 
