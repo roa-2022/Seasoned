@@ -26,7 +26,6 @@ export default function SearchRecipe() {
   const [ingredient, setIngredient] = useState('')
   const [season, setSeason] = useState('')
 
-
   const handleSearch = (e) => {
     e.preventDefault()
     dispatch(fetchRecipes(ingredient))
@@ -52,7 +51,6 @@ export default function SearchRecipe() {
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
           <TextField
             justifycontent="flex-end"
-            
             onChange={(e) => {
               setIngredient(e.target.value)
             }}
