@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const result = await db.readOneAvailability(req.params.id)
+    const result = await db.readOneAvailability(parseInt(req.params.id))
     res.json(result)
   } catch (err) {
     res.status(500).send(err.message)
@@ -34,8 +34,8 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   try {
-    const response = await db.updateAvailability(req.body, req.params.id)
-    const updatedResp = await db.readOneAvailability(req.params.id)
+    await db.updateAvailability(req.body, parseInt(req.params.id))
+    const updatedResp = await db.readOneAvailability(parseInt(req.params.id))
     res.json(updatedResp)
   } catch (err) {
     res.status(500).send(err.message)
@@ -44,34 +44,33 @@ router.patch('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    const availabilityDeletedResp = await db.deleteAvailability(req.params.id)
+    const availabilityDeletedResp = await db.deleteAvailability(
+      parseInt(req.params.id)
+    )
     res.json(availabilityDeletedResp)
   } catch (err) {
     res.status(500).send(err.message)
   }
 })
 
-// Get all availability with the same month
 router.get('/month/:month', async (req, res) => {
   try {
-    const result = await db.readAvailabilityByMonth(req.params.month)
+    const result = await db.readAvailabilityForMonth(req.params.month)
     res.json(result)
   } catch (err) {
     res.status(500).send(err.message)
   }
 })
 
-// Get all availability with the same produce_id
 router.get('/produce/:produce_id', async (req, res) => {
   try {
-    const result = await db.readAvailabilityByProduceId(req.params.produce_id)
+    const result = await db.readAvailabilityForProduceId(req.params.produce_id)
     res.json(result)
   } catch (err) {
     res.status(500).send(err.message)
   }
 })
 
-// Get all availability for a season
 router.get('/season/:season', async (req, res) => {
   try {
     const result = await db.readAvailabilityBySeason(req.params.season)
