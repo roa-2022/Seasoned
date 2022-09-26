@@ -8,11 +8,12 @@ import SearchRecipe from './SearchRecipe'
 import Nav from './Nav'
 import Register from './Register'
 import Footer from './Footer'
+import Header from './Header'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
 import { useCacheUser } from '../auth0-utils'
 import { getUser } from '../api'
-import { ThemeProvider } from '@mui/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import { theme } from '../styles/theme'
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <Nav />
+        <Header />
         <Routes>
           <Route path="/" element={<SearchRecipe />} />
           <Route path="/register" element={<Register />} />

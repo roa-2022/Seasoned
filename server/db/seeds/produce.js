@@ -682,35 +682,40 @@ exports.seed = function (knex) {
           name: 'tomato',
           display_name: 'Tomato/Tōmato',
           type: 'vegetable',
-          image_url: '',
+          image_url:
+            'https://www.5aday.co.nz/media/78314/tomatoes-vs1.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
           id: 86,
           name: 'turnip',
           display_name: 'Turnip/Tōnape',
           type: 'vegetable',
-          image_url: '',
+          image_url:
+            'https://www.5aday.co.nz/media/79510/turnips-2.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
           id: 87,
           name: 'watercress',
           display_name: 'Watercress/Wātakirihi',
           type: 'vegetable',
-          image_url: '',
+          image_url:
+            'https://www.5aday.co.nz/media/77698/watercress.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
           id: 88,
           name: 'witloof',
           display_name: 'Witloof',
           type: 'vegetable',
-          image_url: '',
+          image_url:
+            'https://www.5aday.co.nz/media/13976/witloof.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
           id: 89,
           name: 'yam',
           display_name: 'Yam/Uwhi',
           type: 'vegetable',
-          image_url: '',
+          image_url:
+            'https://www.5aday.co.nz/media/13991/yams.jpg?&width=800&height=400&anchor=top&mode=crop',
         },
         {
           id: 90,
@@ -725,7 +730,8 @@ exports.seed = function (knex) {
           name: 'persimmon',
           display_name: 'Persimmon/Āporo makimaki',
           type: 'fruit',
-          image_url: '',
+          image_url:
+            'https://live.staticflickr.com/65535/50641053993_8cf1440382_3k.jpg',
         },
       ])
     })
