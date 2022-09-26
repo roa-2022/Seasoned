@@ -19,7 +19,7 @@ export function displayAvailableProducts(product) {
 export function fetchSeason(season) {
   return async (dispatch) => {
     try {
-      const product = await getAvailableProduct(season)
+      const product = await getAvailableProduct(season)      
       dispatch(displayAvailableProducts(product))
     } catch (err) {
       console.log('fetchSeason - ' + err)
