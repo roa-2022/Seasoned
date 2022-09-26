@@ -44,21 +44,17 @@ function Nav() {
   return (
     <Box>
       <CssBaseline />
-      <AppBar 
-      sx={{
-        backgroundColor: "#BF572B",
-        fontFamily: "Bree Serif, Serif",
-        color: "secondary"
-      }} 
-      position="relative">
+      <AppBar
+        sx={{
+          backgroundColor: '#BF572B',
+          fontFamily: 'Bree Serif, Serif',
+          color: 'secondary',
+        }}
+        position="relative"
+      >
         <Toolbar>
-          <Grid 
-          container 
-          justifyContent="flex-start">
-            <Button 
-            color="inherit"
-            variant="h6" 
-            onClick={handleHome}>
+          <Grid container justifyContent="flex-start">
+            <Button color="inherit" variant="h6" onClick={handleHome}>
               <FontAwesomeIcon icon={faHouse} />
             </Button>
           </Grid>
@@ -67,7 +63,14 @@ function Nav() {
               <div>
                 <IfAuthenticated>
                   <Button
-                    startIcon={<Avatar alt={user.username} src={user.image} />}
+                    startIcon={
+                      <Avatar
+                        alt={user.username}
+                        src={user.image}
+                        sx={{ width: 24, height: 24 }}
+                      />
+                    }
+                    // startIcon={<AccountCircleIcon />}
                     color="inherit"
                     onClick={handleLogOff}
                   >
