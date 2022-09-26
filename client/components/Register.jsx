@@ -38,7 +38,7 @@ function Register() {
     )}?d=retro&f=y`
 
     const userInfo = {
-      auth0Id: user.auth0Id,
+      auth0_id: user.auth0_id,
       email: user.email,
       image: gravatar,
       ...form,
