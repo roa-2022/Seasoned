@@ -6,13 +6,17 @@ const router = express.Router()
 
 // GET /api/v1/users
 router.get('/', checkJwt, (req, res) => {
-  const auth0_id = req.user?.sub
+  const auth0_id = req.auth?.sub || req.user?.sub
+
+  console.log('user.sub: ', auth0_id)
 
   if (!auth0_id) {
     res.send(null)
   } else {
     db.getUser(auth0_id)
       .then((user) => {
+        console.log('user is : ', user)
+        console.log('auth0 id is ', auth0_id)
         res.json(user ? user : null)
       })
       .catch((err) => res.status(500).send(err.message))
@@ -21,12 +25,13 @@ router.get('/', checkJwt, (req, res) => {
 
 // POST /api/v1/users
 router.post('/', checkJwt, (req, res) => {
-  const auth0_id = req.user?.sub
-  const { username, icon } = req.body
+  const auth0_id = req.auth?.sub
+  const { username, email, image } = req.body
   const userDetails = {
     auth0_id,
     username,
-    icon,
+    email,
+    image,
   }
 
   db.userExists(username)

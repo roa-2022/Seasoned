@@ -15,7 +15,6 @@ function Register() {
   const dispatch = useDispatch()
   const [form, setForm] = useState({
     username: '',
-    name: '',
   })
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -33,12 +32,10 @@ function Register() {
   const handleSubmit = (evt) => {
     evt.preventDefault()
 
-    const gravatar = `https://www.gravatar.com/avatar/${md5(
-      user.email
-    )}?d=retro&f=y`
+    const gravatar = `https://www.gravatar.com/avatar/${md5(user.email)}`
 
     const userInfo = {
-      auth0_id: user.auth0_id,
+      auth0_id: user.auth0Id,
       email: user.email,
       image: gravatar,
       ...form,
@@ -51,15 +48,7 @@ function Register() {
   return (
     <>
       <h2>Complete profile set up</h2>
-      <form>
-        <TextField
-          type="text"
-          id="name"
-          name="name"
-          label="Name"
-          value={form.name}
-          onChange={handleChange}
-        />
+      <form onSubmit={handleSubmit}>
         <TextField
           error={Boolean(errorMsg)}
           type="text"
@@ -70,9 +59,9 @@ function Register() {
           onChange={handleChange}
         />
         <Button
-          disabled={!form.username && !form.name}
+          disabled={!form.username}
           variant={form.username ? 'contained' : 'outlined'}
-          onClick={handleSubmit}
+          type="submit"
         >
           Save Profile
         </Button>

@@ -20,18 +20,17 @@ function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0()
 
   useEffect(() => {
     if (!isAuthenticated) {
       dispatch(clearLoggedInUser())
     } else {
-      // console.log(user.sub)
       getAccessTokenSilently()
         .then((token) => getUser(token))
         .then((userInDb) => {
           userInDb
-            ? dispatch(updateLoggedInUser({ ...userInDb, auth0_id: user.sub }))
+            ? dispatch(updateLoggedInUser(userInDb))
             : navigate('/register')
         })
         .catch((err) => console.error(err))
