@@ -46,7 +46,7 @@ function Nav() {
       <AppBar 
       sx={{
         backgroundColor: "#BF572B",
-        
+        fontFamily: "Bree Serif, Serif"
       }} 
       position="relative">
         <Toolbar>
@@ -54,7 +54,8 @@ function Nav() {
           container 
           justifyContent="flex-start">
             <Button 
-            color="inherit" 
+            color="inherit"
+            variant="h6" 
             onClick={handleHome}>
               Home
             </Button>
