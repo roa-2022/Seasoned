@@ -28,10 +28,18 @@ function deleteProduce(id, db = connection) {
   return db('produce').del().where('id', id)
 }
 
+function createFavourite(favouriteObj, auth0_id, db = connection) {
+  return db('favourites').insert({
+    auth0_id: auth0_id,
+    recipe: favouriteObj,
+  })
+}
+
 module.exports = {
   readProduce,
   readOneProduce,
   createProduce,
   updateProduce,
   deleteProduce,
+  createFavourite,
 }

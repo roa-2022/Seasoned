@@ -27,7 +27,9 @@ function App() {
       dispatch(clearLoggedInUser())
     } else {
       getAccessTokenSilently()
-        .then((token) => getUser(token))
+        .then((token) => {
+          getUser(token)
+        })
         .then((userInDb) => {
           userInDb
             ? dispatch(updateLoggedInUser(userInDb))

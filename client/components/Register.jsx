@@ -37,6 +37,8 @@ function Register() {
       user.email
     )}?d=retro&f=y`
 
+    console.log(user)
+
     const userInfo = {
       auth0Id: user.auth0Id,
       email: user.email,

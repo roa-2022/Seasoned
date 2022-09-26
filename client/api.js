@@ -11,6 +11,7 @@ export function getUser(token) {
 }
 
 export function addUser(user, token) {
+  console.log('API user details: ', user)
   return request
     .post(`${rootUrl}/users`)
     .set('Authorization', `Bearer ${token}`)

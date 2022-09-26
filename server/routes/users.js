@@ -22,6 +22,7 @@ router.get('/', checkJwt, (req, res) => {
 // POST /api/v1/users
 router.post('/', checkJwt, (req, res) => {
   const auth0_id = req.body.auth0Id
+
   const { username, name, email, image } = req.body
   const userDetails = {
     auth0_id,
@@ -30,6 +31,8 @@ router.post('/', checkJwt, (req, res) => {
     email,
     image,
   }
+
+  console.log('DB post userdetails: ', userDetails)
 
   db.userExists(username)
     .then((usernameTaken) => {
