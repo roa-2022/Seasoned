@@ -8,7 +8,7 @@ export default function AppPagination({ setProducts }) {
 
   const service = {
     getData: ({ from, to }) => {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         const data = products.slice(from, to)
 
         resolve({
@@ -29,7 +29,6 @@ export default function AppPagination({ setProducts }) {
     service
       .getData({ from: pagination.from, to: pagination.to })
       .then((response) => {
-        // console.log(response)
         setPagination({ ...pagination, count: response.count })
         setProducts(response.data)
       })

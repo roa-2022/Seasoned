@@ -40,9 +40,9 @@ export default function SeasonalProduct() {
             </Grid>
           ))}
         </Grid>
-        {/* {products.length > 0 && ( */}
-        <AppPagination setProducts={(product) => setProducts(product)} />
-        {/* )} */}
+        {seasonalProducts.length > 0 && (
+          <AppPagination setProducts={(product) => setProducts(product)} />
+        )}
       </Container>
     </div>
   )
