@@ -13,8 +13,7 @@ export async function getProduce() {
 
 export async function getAvailableProduct(season) {
   try {
-    const res = await request.get(rootUrl + '/available/season/' + season)
-    console.log(res.body)
+    const res = await request.get(rootUrl + '/available/season/' + season)    
     return res.body
   } catch (err) {
     console.log('Err message: ' + err)
