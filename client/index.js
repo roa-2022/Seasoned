@@ -8,12 +8,6 @@ import store from './store'
 import App from './components/App'
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log(
-    process.env
-    // process.env.AUTH0_DOMAIN,
-    // process.env.AUTH0_CLIENT_ID,
-    // process.env.AUTH0_AUDIENCE
-  )
   ReactDOM.render(
     <Auth0Provider
       domain={process.env.AUTH0_DOMAIN}
