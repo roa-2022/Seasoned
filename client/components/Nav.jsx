@@ -63,8 +63,14 @@ function Nav() {
               <div>
                 <IfAuthenticated>
                   <Button
-                    // startIcon={<Avatar alt={user.username} src={user.image} />}
-                    startIcon={<AccountCircleIcon />}
+                    startIcon={
+                      <Avatar
+                        alt={user.username}
+                        src={user.image}
+                        sx={{ width: 24, height: 24 }}
+                      />
+                    }
+                    // startIcon={<AccountCircleIcon />}
                     color="inherit"
                     onClick={handleLogOff}
                   >
