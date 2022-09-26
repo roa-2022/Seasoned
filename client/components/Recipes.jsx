@@ -7,7 +7,7 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import {
-  Button,  
+  Button,
   CardActionArea,
   CardActions,
   CssBaseline,
@@ -29,7 +29,7 @@ export default function Recipes() {
   })
 
   return (
-    <div>  
+    <div>
       <CssBaseline />
       <Container sx={{ py: 2 }} maxWidth="md">
         <Grid container spacing={4}>
@@ -122,15 +122,15 @@ export default function Recipes() {
                           </Typography>
                         </CardContent>
                       </CardActionArea>
-                      <CardActions>                       
-                          <Button
-                            component={Link}
-                            to={`/recipes/${idx}`}
-                            size="small"
-                            color="primary"
-                          >
-                            Recipe Here
-                          </Button>                        
+                      <CardActions>
+                        <Button
+                          component={Link}
+                          to={`/recipes/${idx}`}
+                          size="small"
+                          color="primary"
+                        >
+                          Recipe Here
+                        </Button>
                       </CardActions>
                     </Card>
                   </Grid>

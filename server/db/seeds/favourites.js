@@ -9,7 +9,7 @@ exports.seed = function (knex) {
           id: 1,
           auth0_id: 'auth0|123456789',
           rating: 5,
-          done: true,
+          done: 1,
           recipe: {
             uri: 'http://www.edamam.com/ontologies/edamam.owl#recipe_ee439691b9844a99086a240633eb12ad',
             label: 'Carrot Limeade',

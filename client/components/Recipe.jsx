@@ -15,8 +15,9 @@ export default function Recipe() {
   const recipes = useSelector((state) => state.recipes)
   const recipe = recipes[id]
 
-  const { label, image, ingredients, healthLabels, url } = recipe.recipe
+  console.log(recipe)
 
+  const { label, image, ingredients, healthLabels, url } = recipe.recipe
 
   const dietary = healthLabels.filter((word) => {
     return word === 'Vegan' || word === 'Vegetarian' || word === 'Gluten-Free'
@@ -47,7 +48,7 @@ export default function Recipe() {
         <strong>{dietary.map((e) => e + ' ')} </strong>
       </p>
       <div>
-      <Typography variant="h4">Ingredients</Typography>
+        <Typography variant="h4">Ingredients</Typography>
         <ul>
           {ingredients.map((ingredient, idx) => (
             <li key={idx}>{ingredient.text}</li>

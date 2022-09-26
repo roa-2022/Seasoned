@@ -22,6 +22,15 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+router.get('/user/:auth0_id', async (req, res) => {
+  try {
+    const result = await db.readUserFavourites(req.params.auth0_id)
+    res.json(result)
+  } catch (err) {
+    res.status(500).send(err.message)
+  }
+})
+
 router.post('/', async (req, res) => {
   try {
     const response = await db.createFavourite(req.body)
