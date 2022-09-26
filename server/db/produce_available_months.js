@@ -44,26 +44,30 @@ function readAvailabilityForProduceId(produce_id, db = connection) {
     .orderBy('produce_available_months.month')
 }
 
-function readAvailabilityByMonths(months, db = connection) {
+function readDistinctAvailabilityByMonths(months, db = connection) {
   return db('produce_available_months')
     .select()
     .whereIn('month', months)
     .join('produce', 'produce.id', 'produce_available_months.produce_id')
     .select('produce.name', 'produce.display_name', 'produce.image_url')
+    .distinct()
+    .orderBy('produce.name')
 }
 
 function readAvailabilityBySeason(season) {
   switch (season) {
     case 'summer':
-      return readAvailabilityByMonths([12, 1, 2])
+      return readDistinctAvailabilityByMonths([12, 1, 2])
     case 'autumn':
-      return readAvailabilityByMonths([3, 4, 5])
+      return readDistinctAvailabilityByMonths([3, 4, 5])
     case 'winter':
-      return readAvailabilityByMonths([6, 7, 8])
+      return readDistinctAvailabilityByMonths([6, 7, 8])
     case 'spring':
-      return readAvailabilityByMonths([9, 10, 11])
+      return readDistinctAvailabilityByMonths([9, 10, 11])
     default:
-      return readAvailabilityByMonths([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+      return readDistinctAvailabilityByMonths([
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+      ])
   }
 }
 
@@ -75,6 +79,6 @@ module.exports = {
   deleteAvailability,
   readAvailabilityForMonth,
   readAvailabilityForProduceId,
-  readAvailabilityByMonths,
+  readDistinctAvailabilityByMonths,
   readAvailabilityBySeason,
 }
