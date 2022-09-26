@@ -1,0 +1,37 @@
+const connection = require('./connection')
+
+function readFavourites(db = connection) {
+  return db('favourites').select()
+}
+
+function readOneFavourite(id, db = connection) {
+  return db('favourites').select().where('id', id).first()
+}
+
+function createFavourite(newFavourite, db = connection) {
+  return db('favourites').insert(newFavourite)
+}
+
+function updateFavourite(updatedFavourite, id, db = connection) {
+  return db('favourites')
+    .update({
+      id: updatedFavourite.id,
+      auth0_id: updatedFavourite.auth0_id,
+      recipe: updatedFavourite.recipe,
+      rating: updatedFavourite.rating,
+      done: updatedFavourite.done,
+    })
+    .where('id', id)
+}
+
+function deleteFavourite(id, db = connection) {
+  return db('favourites').del().where('id', id)
+}
+
+module.exports = {
+  readFavourites,
+  readOneFavourite,
+  createFavourite,
+  updateFavourite,
+  deleteFavourite,
+}
