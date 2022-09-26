@@ -10,38 +10,76 @@ export const theme = createTheme ({
       main: '#3f6c51',
     },
     info: {
-      main: '#598e17',
+      main: '#EFF6EE',
     },
+    background: {
+      default: "#EFF6EE"
+    }
   },
   typography: {
     fontSize: 16,
     fontFamily: 'Bree Serif',
     h1: {
-      fontFamily: '"Bree Serif", serif',
+      fontFamily: 'Bree Serif, serif',
     },
     h2: {
-      fontFamily: '"Bree Serif", serif',
+      fontFamily: 'Bree Serif, serif',
     },
     h3: {
-      fontFamily: '"Bree Serif", serif',
+      fontFamily: 'Bree Serif, serif',
     },
     h4: {
-      fontFamily: 'Bree Serif',
+      fontFamily: 'Bree Serif, serif',
     },
     h5: {
-      fontFamily: '"Bree Serif", serif',
+      fontFamily: 'Bree Serif, serif',
     },
     h6: {
-      fontFamily: '"Bree Serif", serif',
+      fontFamily: 'Bree Serif, serif',
     },
     body1: {
-      fontFamily: '"Nobile", "Helvetica", "Arial", sans-serif',
+      fontFamily: 'Nobile, sans-serif',
       fontWeight: 400,
     },
   },
   props: {
-    MuiAppBar: {
-      color: 'secondary',
+    MuiButton: {
+      size: 'small',
+    },
+    MuiButtonGroup: {
+      size: 'small',
+    },
+    MuiCheckbox: {
+      size: 'small',
+    },
+    MuiFab: {
+      size: 'small',
+    },
+    MuiFormControl: {
+      margin: 'dense',
+      size: 'small',
+    },
+    MuiFormHelperText: {
+      margin: 'dense',
+    },
+    MuiIconButton: {
+      size: 'small',
+    },
+    MuiInputBase: {
+      margin: 'dense',
+    },
+    MuiInputLabel: {
+      margin: 'dense',
+    },
+    MuiRadio: {
+      size: 'small',
+    },
+    MuiSwitch: {
+      size: 'small',
+    },
+    MuiTextField: {
+      margin: 'dense',
+      size: 'small',
     },
   },
   shape: {

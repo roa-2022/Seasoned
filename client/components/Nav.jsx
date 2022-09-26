@@ -1,5 +1,5 @@
 import React from 'react'
-// import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
@@ -11,6 +11,7 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 import {
   AppBar,
+  Avatar,
   Button,
   CssBaseline,
   Grid,
@@ -19,11 +20,9 @@ import {
 } from '@mui/material'
 
 function Nav() {
-  // const user = useSelector((state) => state.loggedInUser)
+  const user = useSelector((state) => state.loggedInUser)
   const { logout, loginWithRedirect } = useAuth0()
   const navigate = useNavigate()
-
-
 
   const handleHome = (e) => {
     e.preventDefault()
@@ -48,7 +47,8 @@ function Nav() {
       <AppBar 
       sx={{
         backgroundColor: "#BF572B",
-        
+        fontFamily: "Bree Serif, Serif",
+        color: "secondary"
       }} 
       position="relative">
         <Toolbar>
@@ -56,19 +56,18 @@ function Nav() {
           container 
           justifyContent="flex-start">
             <Button 
-            color="inherit" 
+            color="inherit"
+            variant="h6" 
             onClick={handleHome}>
               <FontAwesomeIcon icon={faHouse} />
             </Button>
           </Grid>
-          <Grid 
-          container 
-          justifyContent="flex-end">
+          <Grid container justifyContent="flex-end">
             <Grid item>
               <div>
                 <IfAuthenticated>
                   <Button
-                    startIcon={<AccountCircleIcon />}
+                    startIcon={<Avatar alt={user.username} src={user.image} />}
                     color="inherit"
                     onClick={handleLogOff}
                   >

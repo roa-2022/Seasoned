@@ -46,7 +46,7 @@ export default function SearchRecipe() {
   }
 
   return (
-    <Box>
+    <Box sx={{ }}>
       <form onSubmit={handleSearch}>
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
           <TextField
@@ -77,10 +77,10 @@ export default function SearchRecipe() {
             size="small"
             sx={{ m: 1, width: '20ch' }}
           >
-            <MenuItem value="summer">summer</MenuItem>
-            <MenuItem value="autumn">autumn</MenuItem>
-            <MenuItem value="winter">winter</MenuItem>
-            <MenuItem value="spring">spring</MenuItem>
+            <MenuItem value="summer">Summer</MenuItem>
+            <MenuItem value="autumn">Autumn</MenuItem>
+            <MenuItem value="winter">Winter</MenuItem>
+            <MenuItem value="spring">Spring</MenuItem>
           </Select>
         </FormControl>
       </Box>
