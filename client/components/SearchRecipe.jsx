@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Box, TextField, IconButton } from '@mui/material'
+import { Box, TextField, IconButton, InputAdornment } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -9,6 +9,7 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
+
 
 import Recipes from './Recipes'
 import SeasonalProduct from './SeasonalProduct'
@@ -46,47 +47,74 @@ export default function SearchRecipe() {
   }
 
   return (
-    <Box sx={{}}>
+    <Box>
       <form onSubmit={handleSearch}>
-        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+        <Box sx={{
+          display: 'flex', 
+          alignItems: 'flex-end',
+          flexDirection: "row",
+          justifyContent: "center",
+          }}>
+          <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+            <FormControl>
+              <InputLabel id="season-label">Season</InputLabel>
+              <Select
+                id="season"
+                labelId="season-label"
+                justifycontent="flex-end"
+                onChange={handleSeason}
+                value={season}
+                variant="outlined"
+                label="Season"
+                size="small"
+                sx={{ m: 1, width: '12ch' }}
+              >
+                <MenuItem value="summer">Summer</MenuItem>
+                <MenuItem value="autumn">Autumn</MenuItem>
+                <MenuItem value="winter">Winter</MenuItem>
+                <MenuItem value="spring">Spring</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
           <TextField
             justifycontent="flex-end"
             onChange={(e) => {
               setIngredient(e.target.value)
             }}
-            label="Search for recipes"
+            label="Search"
             variant="outlined"
             color="primary"
-            placeholder="What ingredients do you have?"
+            placeholder="eg, potato"
             size="small"
-            sx={{ m: 1, width: '50ch' }}
+            sx={{ m: 1, width: '25ch' }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton type="submit" aria-label="search" sx={{ p: '' }}>
+                    <SearchIcon />
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
           />
-          <IconButton type="submit" aria-label="search" sx={{ p: '10px' }}>
-            <SearchIcon />
-          </IconButton>
         </Box>
       </form>
 
-      <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-        <FormControl fullWidth>
-          <InputLabel>Season</InputLabel>
-          <Select
-            onChange={handleSeason}
-            value={season}
-            label="Season"
-            size="small"
-            sx={{ m: 1, width: '20ch' }}
-          >
-            <MenuItem value="summer">Summer</MenuItem>
-            <MenuItem value="autumn">Autumn</MenuItem>
-            <MenuItem value="winter">Winter</MenuItem>
-            <MenuItem value="spring">Spring</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
+      
 
-      <FormGroup onChange={handleDietary}>
-        <FormControlLabel control={<Checkbox />} label="Vegan" name="Vegan" />
+      <FormGroup sx={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        padding: "10px"
+        
+      }} size="small"
+      onChange={handleDietary}>
+        <FormControlLabel 
+          control={<Checkbox />} 
+          label="Vegan" 
+          name="Vegan" 
+        />
         <FormControlLabel
           control={<Checkbox />}
           label="Vegetarian"
@@ -100,7 +128,7 @@ export default function SearchRecipe() {
       </FormGroup>
 
       {loading && (
-        <img
+        <img width={"100%"}
           src="https://cdn.dribbble.com/users/393062/screenshots/14492170/media/67f661f7f825b62980571026e1280675.gif"
           alt="loading gif"
         />

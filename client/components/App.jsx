@@ -43,12 +43,14 @@ function App() {
       <ThemeProvider theme={theme}>
         <Nav />
         <Header />
-        <Routes>
-          <Route path="/" element={<SearchRecipe />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/recipes/:id" element={<Recipe />} />
-        </Routes>
-        {/* <Footer /> */}
+        <div style={{marginBottom: 300}}>
+          <Routes>
+            <Route path="/" element={<SearchRecipe />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/recipes/:id" element={<Recipe />} />
+          </Routes>
+        </div>
+        <Footer />
       </ThemeProvider>
     </>
   )
