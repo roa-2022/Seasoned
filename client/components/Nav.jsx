@@ -6,7 +6,7 @@ import { useStyles } from '../styles/styles'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-// import HomeIcon from '@mui/icons-material/Home'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
@@ -21,7 +21,6 @@ import {
 } from '@material-ui/core'
 
 function Nav() {
-  const element = <FontAwesomeIcon icon={faHouse} />
   // const user = useSelector((state) => state.loggedInUser)
   const { logout, loginWithRedirect } = useAuth0()
   const navigate = useNavigate()
