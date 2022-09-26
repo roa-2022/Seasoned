@@ -28,7 +28,7 @@ export default function Recipe() {
     console.log(user)
     setChecked(e.target.checked)
     console.log(checked)
-    // const favourite = await postFavouriteProduct(user.auth0_id)
+    const favourite = await postFavouriteProduct(recipe, user.auth0_id)
   }
 
   const { label, image, ingredients, healthLabels, url } = recipe.recipe

@@ -53,15 +53,14 @@ router.delete('/:id', async (req, res) => {
 })
 
 //FAVOURITE FUNCTIONALITIES
-router.post('/:id/favourites', async (req, res) => {
-  const id = req.params.id
+router.post('/favourites', async (req, res) => {
   const auth0Id = req.body.auth0_id
+  const recipe = req.body.recipe
 
   console.log('favourite router auth0: ', auth0Id)
 
   try {
-    const favouriteClickResp = await db.readOneProduce(id)
-    const favouriteResp = await db.createFavourite(favouriteClickResp, auth0Id)
+    const favouriteResp = await db.createFavourite(recipe, auth0Id)
     console.log('favourite resp Router: ', favouriteResp)
     res.json(favouriteResp)
   } catch (err) {

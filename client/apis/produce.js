@@ -21,11 +21,12 @@ export async function getAvailableProduct(season) {
   }
 }
 
-export async function postFavouriteProduct(auth0Id) {
+export async function postFavouriteProduct(recipe, auth0Id) {
+  console.log(auth0Id)
   try {
-    const res = await (
-      await request.post(`${rootUrl}/produce/${id}/favourites`)
-    ).send(auth0Id)
+    const res = await request
+      .post(`${rootUrl}/produce/favourites`)
+      .send(recipe, auth0Id)
     console.log(res.body)
     return res.body
   } catch (err) {

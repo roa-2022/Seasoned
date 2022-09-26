@@ -19,6 +19,8 @@ function Register() {
   })
   const [errorMsg, setErrorMsg] = useState('')
 
+  console.log('Register user: ', user)
+
   useEffect(() => {
     if (user.username) navigate('/')
   }, [user])
