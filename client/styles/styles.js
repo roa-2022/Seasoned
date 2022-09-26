@@ -1,14 +1,15 @@
-import { makeStyles } from '@material-ui/core/styles'
+// import { makeStyles } from '@mui/material/styles'
 
-export const useStyles = makeStyles(() => ({
-  newBgColour: {
-    backgroundColor: '#BF572B',
-  },
-  navToolbar: {
-    backgroundColor: '#BF572B',
-    padding: '8px',
-  },
-  searchBar: {
-    textAlign: 'center',
-  },
-}))
+// export const useStyles = makeStyles(() => ({
+//   footerBg: {
+//     backgroundColor: '#BF572B',
+//     padding: '3rem 0'
+//   },
+//   navToolbar: {
+//     backgroundColor: '#BF572B',
+//     padding: '8px',
+//   },
+//   searchBar: {
+//     textAlign: 'center',
+//   },
+// }))
