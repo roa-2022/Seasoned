@@ -15,7 +15,14 @@ export default function Recipe() {
   const recipes = useSelector((state) => state.recipes)
   const recipe = recipes[id]
 
-  console.log(recipe)
+  // Function to take the recipe
+  // Save it to the database
+  // As a favorite
+  // send { auth0_id: user.auth0_id, recipe: recipe }
+  // to the backend
+  const handleFavorite = () => {
+    console.log('You have picked this as a favourite')
+  }
 
   const { label, image, ingredients, healthLabels, url } = recipe.recipe
 
@@ -39,6 +46,7 @@ export default function Recipe() {
                   color: pink[600],
                 },
               }}
+              onChange={handleFavorite}
             />
           }
           label="Add to Favourite"
