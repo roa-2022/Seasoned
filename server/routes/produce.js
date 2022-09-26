@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   try {
-    const response = await db.updateProduce(req.body, req.params.id)
+    await db.updateProduce(req.body, req.params.id)
     const updatedResp = await db.readOneProduce(req.params.id)
     res.json(updatedResp)
   } catch (err) {
