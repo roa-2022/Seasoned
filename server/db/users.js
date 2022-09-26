@@ -1,11 +1,5 @@
 const connection = require('./connection')
 
-module.exports = {
-  userExists,
-  getUser,
-  createUser,
-}
-
 function userExists(username, db = connection) {
   return db('users')
     .where('username', username)
@@ -18,4 +12,10 @@ function getUser(id, db = connection) {
 
 function createUser(user, db = connection) {
   return db('users').insert(user)
+}
+
+module.exports = {
+  userExists,
+  getUser,
+  createUser,
 }

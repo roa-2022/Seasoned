@@ -48,7 +48,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/recipes/:id" element={<Recipe />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </ThemeProvider>
     </>
   )

@@ -15,8 +15,6 @@ router.get('/', checkJwt, (req, res) => {
   } else {
     db.getUser(auth0_id)
       .then((user) => {
-        console.log('user is : ', user)
-        console.log('auth0 id is ', auth0_id)
         res.json(user ? user : null)
       })
       .catch((err) => res.status(500).send(err.message))
