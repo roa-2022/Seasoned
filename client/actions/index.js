@@ -1,12 +1,31 @@
 import { getRecipes } from '../apis/recipes'
-import { getProduce } from '../apis/produce'
+import { getProduce, getAvailableProduct } from '../apis/produce'
 
 export const DISPLAY_RECIPES = 'DISPLAY_RECIPES'
 export const SELECT_DIETARY = 'SELECT_DIETARY'
 export const REMOVE_DIETARY = 'REMOVE_DIETARY'
+export const DISPLAY_PRODUCT = 'DISPLAY_PRODUCT'
 
 export const LOADING = 'LOADING'
 export const STOP_LOADING = 'STOP_LOADING'
+
+export function displayAvailableProducts(product) {
+  return {
+    type: DISPLAY_PRODUCT,
+    payload: product,
+  }
+}
+
+export function fetchSeason(season) {
+  return async (dispatch) => {
+    try {
+      const product = await getAvailableProduct(season)
+      dispatch(displayAvailableProducts(product))
+    } catch (err) {
+      console.log('fetchSeason - ' + err)
+    }
+  }
+}
 
 export function setLoading() {
   return {
