@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Box, TextField, IconButton } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
-import { useStyles } from '../styles/styles'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
@@ -27,7 +26,6 @@ export default function SearchRecipe() {
   const [ingredient, setIngredient] = useState('')
   const [season, setSeason] = useState('')
 
-  const classes = useStyles()
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -53,8 +51,8 @@ export default function SearchRecipe() {
       <form onSubmit={handleSearch}>
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
           <TextField
-            justify="flex-end"
-            className={classes.searchBar}
+            justifycontent="flex-end"
+            
             onChange={(e) => {
               setIngredient(e.target.value)
             }}

@@ -2,9 +2,12 @@ import React from 'react'
 // import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
-import { useStyles } from '../styles/styles'
-
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 import {
   AppBar,
@@ -13,17 +16,14 @@ import {
   Grid,
   Box,
   Toolbar,
-  // Typography,
-} from '@material-ui/core'
-
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+} from '@mui/material'
 
 function Nav() {
   // const user = useSelector((state) => state.loggedInUser)
   const { logout, loginWithRedirect } = useAuth0()
   const navigate = useNavigate()
 
-  const classes = useStyles()
+
 
   const handleHome = (e) => {
     e.preventDefault()
@@ -45,20 +45,30 @@ function Nav() {
   return (
     <Box>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar className={classes.navToolbar}>
-          <Grid container justify="flex-start">
-            <Button className="navButton" color="inherit" onClick={handleHome}>
-              Home
+      <AppBar 
+      sx={{
+        backgroundColor: "#BF572B",
+        
+      }} 
+      position="relative">
+        <Toolbar>
+          <Grid 
+          container 
+          justifyContent="flex-start">
+            <Button 
+            color="inherit" 
+            onClick={handleHome}>
+              <FontAwesomeIcon icon={faHouse} />
             </Button>
           </Grid>
-          <Grid container justify="flex-end">
+          <Grid 
+          container 
+          justifyContent="flex-end">
             <Grid item>
               <div>
                 <IfAuthenticated>
                   <Button
                     startIcon={<AccountCircleIcon />}
-                    className={classes.navButton}
                     color="inherit"
                     onClick={handleLogOff}
                   >
@@ -68,7 +78,6 @@ function Nav() {
                 <IfNotAuthenticated>
                   <Button
                     startIcon={<AccountCircleIcon />}
-                    className={classes.navButton}
                     color="inherit"
                     onClick={handleSignIn}
                   >

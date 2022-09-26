@@ -12,6 +12,8 @@ import Footer from './Footer'
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
 import { useCacheUser } from '../auth0-utils'
 import { getUser } from '../api'
+import { ThemeProvider } from '@mui/styles'
+import { theme } from '../styles/theme'
 
 function App() {
   useCacheUser()
@@ -37,13 +39,15 @@ function App() {
 
   return (
     <>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<SearchRecipe />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/recipes/:id" element={<Recipe />} />
-      </Routes>
-      <Footer />
+      <ThemeProvider theme={theme}>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<SearchRecipe />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/recipes/:id" element={<Recipe />} />
+        </Routes>
+        <Footer />
+      </ThemeProvider>
     </>
   )
 }
