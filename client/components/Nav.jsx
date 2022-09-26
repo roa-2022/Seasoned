@@ -44,15 +44,21 @@ function Nav() {
   return (
     <Box>
       <CssBaseline />
-      <AppBar
-        sx={{
-          backgroundColor: '#BF572B',
-        }}
-        position="relative"
-      >
+      <AppBar 
+      sx={{
+        backgroundColor: "#BF572B",
+        fontFamily: "Bree Serif, Serif",
+        color: "secondary"
+      }} 
+      position="relative">
         <Toolbar>
-          <Grid container justifyContent="flex-start">
-            <Button color="inherit" onClick={handleHome}>
+          <Grid 
+          container 
+          justifyContent="flex-start">
+            <Button 
+            color="inherit"
+            variant="h6" 
+            onClick={handleHome}>
               <FontAwesomeIcon icon={faHouse} />
             </Button>
           </Grid>

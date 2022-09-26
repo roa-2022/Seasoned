@@ -8,6 +8,7 @@ import SearchRecipe from './SearchRecipe'
 import Nav from './Nav'
 import Register from './Register'
 import Footer from './Footer'
+import Header from './Header'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
 import { useCacheUser } from '../auth0-utils'
@@ -41,6 +42,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <Nav />
+        <Header />
         <Routes>
           <Route path="/" element={<SearchRecipe />} />
           <Route path="/register" element={<Register />} />
