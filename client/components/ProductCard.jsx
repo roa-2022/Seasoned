@@ -22,7 +22,8 @@ export default function ProductCard({ product }) {
         />
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
-            {product.name}
+            {/* Converting the first letter to UpperCase using Regex */}
+            {product.name.replace(/^./, product.name[0].toUpperCase())}
           </Typography>
         </CardContent>
       </CardActionArea>
