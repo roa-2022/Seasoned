@@ -46,7 +46,7 @@ export default function SearchRecipe() {
   }
 
   return (
-    <Box sx={{ }}>
+    <Box sx={{}}>
       <form onSubmit={handleSearch}>
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
           <TextField
