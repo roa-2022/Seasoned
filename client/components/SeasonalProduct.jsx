@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import Stack from '@mui/material/Stack'
+// import Stack from '@mui/material/Stack'
 import { Box, Grid, Container } from '@mui/material'
 import Typography from '@mui/material/Typography'
 
@@ -21,6 +21,7 @@ export default function SeasonalProduct() {
       md={4}
       display="flex"
       flexDirection={'column'}
+      g
       alignItems="center"
     >
       <img
