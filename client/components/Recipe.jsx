@@ -27,7 +27,7 @@ export default function Recipe() {
     return word === 'Vegan' || word === 'Vegetarian' || word === 'Gluten-Free'
   })
 
-  useEffect(() => dispatch(fetchRecipes(ingredient)), [])
+  recipes.length = 0 && useEffect(() => dispatch(fetchRecipes(ingredient)), [])
 
   return (
     <div>
