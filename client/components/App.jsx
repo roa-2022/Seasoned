@@ -8,7 +8,7 @@ import SearchRecipe from './SearchRecipe'
 import Nav from './Nav'
 import Register from './Register'
 import Favourites from './Favourites'
-import Footer from './Footer'
+// import Footer from './Footer'
 import Header from './Header'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
