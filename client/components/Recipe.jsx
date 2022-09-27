@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -10,18 +10,28 @@ import Favorite from '@mui/icons-material/Favorite'
 import { pink } from '@mui/material/colors'
 import { Typography } from '@mui/material'
 
+import { useAuth0 } from '@auth0/auth0-react'
+import { postFavourite } from '../apis/favourites'
+
 export default function Recipe() {
   const { id } = useParams()
+  const { user } = useAuth0()
   const recipes = useSelector((state) => state.recipes)
+  const [checked, setChecked] = useState(false)
   const recipe = recipes[id]
-
-  console.log(recipe)
 
   const { label, image, ingredients, healthLabels, url } = recipe.recipe
 
   const dietary = healthLabels.filter((word) => {
     return word === 'Vegan' || word === 'Vegetarian' || word === 'Gluten-Free'
   })
+
+  const handleFavorite = async (e) => {
+    setChecked(!e.target.checked)
+
+    console.log('Posting to the database now: ', user.sub, recipe)
+    await postFavourite(user.sub, recipe)
+  }
 
   return (
     <div>
@@ -33,6 +43,8 @@ export default function Recipe() {
             <Checkbox
               icon={<FavoriteBorder />}
               checkedIcon={<Favorite />}
+              checked={checked}
+              onChange={handleFavorite}
               sx={{
                 color: pink[800],
                 '&.Mui-checked': {
