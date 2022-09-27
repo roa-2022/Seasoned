@@ -12,6 +12,7 @@ export default function Footer() {
       <Link underline="none" href="/">
         <Typography 
         sx={{
+          padding: "20px 0",
           color: "#3F6C51",
           textAlign: "center",
         }} 
