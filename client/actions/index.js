@@ -127,19 +127,27 @@ export function getFavourites(auth0_id) {
 export function removeFavouriteAction(id, auth0_id) {
   return async (dispatch) => {
     try {
-      await removeFavourite(id)
-      return dispatch(getUserFavourites(auth0_id))
+      removeFavourite(id)
+      return dispatch(getFavourites(auth0_id))
     } catch (err) {
       console.log('removeFavouriteAction - ', err.message)
     }
   }
 }
 
-export function editFavourite(id, recipeObj, auth0_id) {
+export function changeFavourite(id) {
+  return {
+    type: EDIT_FAVOURITE,
+    payload: id,
+  }
+}
+
+export function editFavourite(id, recipeObj) {
+  changeFavourite(id)
   return async (dispatch) => {
     try {
-      await patchFavouriteDone(id, recipeObj)
-      return dispatch(getUserFavourites(auth0_id))
+      const res = await patchFavouriteDone(id, recipeObj)
+      return dispatch(changeFavourite(id))
     } catch (err) {
       console.log('editFavourite - ', err.message)
     }

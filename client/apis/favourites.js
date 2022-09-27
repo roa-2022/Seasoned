@@ -22,13 +22,9 @@ export async function getUserFavourites(auth0_id) {
   }
 }
 
-export async function patchFavouriteDone(id, done) {
-  try {
-    const res = await request.patch(`${rootUrl}/favourites/${id}`).send(done)
-    return res.body
-  } catch (err) {
-    console.log('Err message: ' + err)
-  }
+export async function patchFavouriteDone(id, favourite) {
+  const res = await request.patch('/api/v1/favourites/' + id).send(favourite)
+  return res.body
 }
 
 export async function removeFavourite(id) {

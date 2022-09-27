@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
+import { Typography } from '@mui/material'
 
 import { getFavourites, removeFavouriteAction, editFavourite } from '../actions'
 
@@ -34,13 +35,13 @@ function Favourites() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {favourites.map((favourite) => (
+          {favourites?.map((favourite) => (
             <TableRow key={favourite.id}>
               <TableCell component="th" scope="row">
                 {favourite.id}
               </TableCell>
-              <TableCell align="right">{favourite.recipe.label}</TableCell>
-              <TableCell align="right">{favourite.recipe.uri}</TableCell>
+              <TableCell align="right">{favourite.label}</TableCell>
+              <TableCell align="right">{favourite.url}</TableCell>
               <TableCell align="right">
                 <input
                   type="checkbox"
@@ -55,6 +56,7 @@ function Favourites() {
                   }
                 />
               </TableCell>
+              <TableCell align="right">{favourite.rating}</TableCell>
               <TableCell align="right">
                 <button
                   onClick={() =>

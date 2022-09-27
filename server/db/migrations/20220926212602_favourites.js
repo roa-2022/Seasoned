@@ -4,7 +4,8 @@ exports.up = (knex) => {
     table.string('auth0_id')
     table.integer('rating').defaultTo(0)
     table.boolean('done').defaultTo(false)
-    table.json('recipe')
+    table.string('label')
+    table.string('url')
   })
 }
 

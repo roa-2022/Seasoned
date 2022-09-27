@@ -25,7 +25,7 @@ export default function Recipe() {
   const handleFavorite = async (e) => {
     setChecked(e.target.checked)
     await postFavouriteProduct(
-      { recipe: { name: recipe.label, uri: recipe.uri } },
+      { label: recipe.label, url: recipe.uri },
       user.auth0_id
     )
   }
