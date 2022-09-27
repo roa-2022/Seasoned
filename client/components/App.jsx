@@ -7,7 +7,7 @@ import SearchRecipe from './SearchRecipe'
 
 import Nav from './Nav'
 import Register from './Register'
-// import Footer from './Footer'
+import Footer from './Footer'
 import Header from './Header'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
@@ -47,7 +47,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SearchRecipe />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/recipes/:id" element={<Recipe />} />
+            <Route path="/recipes/:ingredient/:id" element={<Recipe />} />            
           </Routes>
         </div>
         <Footer />

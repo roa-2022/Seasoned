@@ -136,7 +136,7 @@ export default function SearchRecipe() {
       )}
 
       <SeasonalProduct />
-      <Recipes />
+      <Recipes ingredient={ingredient} />
     </Box>
   )
 }
