@@ -36,6 +36,7 @@ export default function SearchRecipe() {
     for (const key in dietaryForm) {
       if (dietaryForm[key]) {
         dietary += `&health=${key}`
+        dietaryForm[key] = false
       }
     }
 
