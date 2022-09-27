@@ -35,6 +35,8 @@ router.post('/', async (req, res) => {
   const auth0Id = req.body.auth0_id
   const recipe = req.body.recipe
 
+  console.log('req.body is', req.body)
+
   console.log('favourite router auth0: ', auth0Id)
 
   try {

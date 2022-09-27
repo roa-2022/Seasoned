@@ -39,7 +39,7 @@ function Register() {
     console.log(user)
 
     const userInfo = {
-      auth0_id: user.auth0Id,
+      auth0_id: user.auth0_id,
       email: user.email,
       image: gravatar,
       ...form,

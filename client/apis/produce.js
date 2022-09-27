@@ -13,7 +13,7 @@ export async function getProduce() {
 
 export async function getAvailableProduct(season) {
   try {
-    const res = await request.get(rootUrl + '/available/season/' + season)    
+    const res = await request.get(rootUrl + '/available/season/' + season)
     return res.body
   } catch (err) {
     console.log('Err message: ' + err)
@@ -21,12 +21,10 @@ export async function getAvailableProduct(season) {
 }
 
 export async function postFavouriteProduct(recipe, auth0Id) {
-  console.log(auth0Id)
   try {
     const res = await request
       .post(`${rootUrl}/produce/favourites`)
-      .send(recipe, auth0Id)
-    console.log(res.body)
+      .send({ recipe: recipe, auth0_id: auth0Id })
     return res.body
   } catch (err) {
     console.log('Err message: ' + err)

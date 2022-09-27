@@ -2,8 +2,8 @@ exports.up = (knex) => {
   return knex.schema.createTable('favourites', (table) => {
     table.increments('id').primary()
     table.string('auth0_id')
-    table.integer('rating')
-    table.boolean('done')
+    table.integer('rating').defaultTo(0)
+    table.boolean('done').defaultTo(false)
     table.json('recipe')
   })
 }
