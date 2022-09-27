@@ -127,8 +127,8 @@ export default function SearchRecipe() {
           alt="loading gif"
         />
       )}
+      <Recipes ingredient={ingredient} />
       <SeasonalProduct />
-      <Recipes />
     </Box>
   )
 }
