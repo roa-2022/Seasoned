@@ -7,9 +7,10 @@ import Checkbox from '@mui/material/Checkbox'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import { pink } from '@mui/material/colors'
-import { Box, Typography } from '@mui/material'
+import { OpenInNew } from '@mui/icons-material'
+import { Box, List, ListItem, Typography, Button } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSeedling } from '@fortawesome/free-solid-svg-icons'
+import { faSeedling, faBook } from '@fortawesome/free-solid-svg-icons'
 import { postFavouriteProduct } from '../apis/produce'
 
 import { fetchRecipes } from '../actions'
@@ -50,11 +51,6 @@ export default function Recipe() {
       )}
       {label && (
         <>
-          <Typography sx={{
-            textAlign: "center",
-            marginBottom: "30px",
-          }} 
-          variant="h4">{label}</Typography>
           <Box sx={{
             margin: "0px auto",
             width: {
@@ -65,6 +61,11 @@ export default function Recipe() {
               xl: 500, // theme.breakpoints.up('xl')
             },
           }}>
+          <Typography sx={{
+            textAlign: "center",
+            marginBottom: "30px",
+          }} 
+          variant="h4">{label}</Typography>
             <img width={"100%"} src={image} alt={label} />
           
           <FormGroup>
@@ -105,15 +106,27 @@ export default function Recipe() {
         <div>
           {ingredients && (
             <>
-              <Typography variant="h4">Ingredients<FontAwesomeIcon icon={faSeedling} /></Typography> 
-              <ul>
+              <Typography paddingTop={"20px"} variant="h4">Ingredients{' '}<FontAwesomeIcon color="#3F6C51" icon={faSeedling} /></Typography> 
+              <List>
                 {ingredients.map((ingredient, idx) => (
-                  <li key={idx}>{ingredient.text}</li>
+                  <ListItem key={idx}>{ingredient.text}</ListItem>
                 ))}
-              </ul>
+              </List>
 
-              <h4>Instructions</h4>
-              <a href={url}>Click this link</a>
+              <Typography paddingTop={"20px"} variant="h4">Instructions{' '}<FontAwesomeIcon color="#BF572B" icon={faBook} /></Typography>
+              <Box>
+                <Button sx={{
+                  textAlign: "center",
+                }} 
+                component="a" 
+                href={url} 
+                variant="body1" 
+                startDecorator={<OpenInNew />} 
+                color="#3F6C51">
+                  Recipe Here
+                </Button>
+              </Box>
+              
             </>
           )}
         </div>
