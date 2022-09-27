@@ -22,10 +22,8 @@ import {
 export default function SearchRecipe() {
   const dispatch = useDispatch()
   const loading = useSelector((state) => state.loading)
-
   const [ingredient, setIngredient] = useState('')
   const [season, setSeason] = useState('')
-
   const handleSearch = (e) => {
     e.preventDefault()
     dispatch(fetchRecipes(ingredient))
@@ -60,6 +58,7 @@ export default function SearchRecipe() {
             <FormControl>
               <InputLabel id="season-label">Season</InputLabel>
               <Select
+                defaultValue="summer"
                 id="season"
                 labelId="season-label"
                 justifycontent="flex-end"
@@ -100,19 +99,20 @@ export default function SearchRecipe() {
           />
         </Box>
       </form>
-
-      <FormGroup
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          fontSize: '0.8em',
-          padding: '10px',
-        }}
-        size="small"
-        onChange={handleDietary}
-      >
-        <FormControlLabel control={<Checkbox />} label="Vegan" name="Vegan" />
+      <FormGroup sx={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        fontSize: "0.8em",
+        padding: "10px"
+        
+      }} size="small"
+      onChange={handleDietary}>
+        <FormControlLabel 
+          control={<Checkbox />}
+          label="Vegan" 
+          name="Vegan" 
+        />
         <FormControlLabel
           control={<Checkbox />}
           label="Vegetarian"
@@ -124,7 +124,6 @@ export default function SearchRecipe() {
           name="Gluten-Free"
         />
       </FormGroup>
-
       {loading && (
         <img
           width={'100%'}

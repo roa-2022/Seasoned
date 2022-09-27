@@ -7,6 +7,7 @@ import loggedInUser from './loggedInUser'
 import produce from './produce'
 import recipesReducer from './recipes'
 import seasonalProductReducer from './seasonalProduct'
+import favourites from './favourites'
 
 export default combineReducers({
   loggedInUser,
@@ -15,5 +16,6 @@ export default combineReducers({
   loading: loadingReducer,
   dietary: dietaryReducer,
   seasonalProduct: seasonalProductReducer,
+  favourites,
   ingredient: ingredientReducer,
 })

@@ -52,4 +52,17 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
+//FAVOURITE FUNCTIONALITIES
+router.post('/favourites', async (req, res) => {
+  const auth0Id = req.body.auth0_id
+  const recipe = req.body.recipe
+
+  try {
+    const favouriteResp = await db.createFavourite(recipe, auth0Id)
+    res.json(favouriteResp)
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 module.exports = router

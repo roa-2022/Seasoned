@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
 import { useParams } from 'react-router-dom'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -8,7 +7,10 @@ import Checkbox from '@mui/material/Checkbox'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import { pink } from '@mui/material/colors'
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSeedling } from '@fortawesome/free-solid-svg-icons'
+import { postFavouriteProduct } from '../apis/produce'
 
 import { fetchRecipes } from '../actions'
 
@@ -17,7 +19,9 @@ export default function Recipe() {
   const loading = useSelector((state) => state.loading)
   const dispatch = useDispatch()
   const recipes = useSelector((state) => state.recipes)
+  const user = useSelector((state) => state.loggedInUser)
   const recipe = recipes[id]
+  const [checked, setChecked] = useState(false)
 
   const { label, image, ingredients, healthLabels, url } = recipe
     ? recipe.recipe
@@ -28,6 +32,12 @@ export default function Recipe() {
   })
 
   recipes.length = 0 && useEffect(() => dispatch(fetchRecipes(ingredient)), [])
+
+  const handleFavourite = async (e) => {
+    const favourite = { label: label, url: url }
+    setChecked(e.target.checked)
+    await postFavouriteProduct(favourite, user.auth0_id)
+  }
 
   return (
     <div>
@@ -40,12 +50,29 @@ export default function Recipe() {
       )}
       {label && (
         <>
-          <Typography variant="h3">{label}</Typography>
-          <img src={image} alt={label} />
+          <Typography sx={{
+            textAlign: "center",
+            marginBottom: "30px",
+          }} 
+          variant="h4">{label}</Typography>
+          <Box sx={{
+            margin: "0px auto",
+            width: {
+              xs: "90%", // theme.breakpoints.up('xs')
+              sm: 200, // theme.breakpoints.up('sm')
+              md: 300, // theme.breakpoints.up('md')
+              lg: 400, // theme.breakpoints.up('lg')
+              xl: 500, // theme.breakpoints.up('xl')
+            },
+          }}>
+            <img width={"100%"} src={image} alt={label} />
+          
           <FormGroup>
             <FormControlLabel
               control={
                 <Checkbox
+                  checked={checked}
+                  onChange={handleFavourite}
                   icon={<FavoriteBorder />}
                   checkedIcon={<Favorite />}
                   sx={{
@@ -59,27 +86,39 @@ export default function Recipe() {
               label="Add to Favourite"
             />
           </FormGroup>
+          </Box>
         </>
       )}
+        <Box sx={{
+          margin: "0px auto",
+          width: {
+            xs: "90%", // theme.breakpoints.up('xs')
+            sm: 200, // theme.breakpoints.up('sm')
+            md: 300, // theme.breakpoints.up('md')
+            lg: 400, // theme.breakpoints.up('lg')
+            xl: 500, // theme.breakpoints.up('xl')
+          },
+        }}>
+        <Typography>
+          <strong>{dietary?.map((e) => e + ' ')} </strong>
+        </Typography>
+        <div>
+          {ingredients && (
+            <>
+              <Typography variant="h4">Ingredients<FontAwesomeIcon icon={faSeedling} /></Typography> 
+              <ul>
+                {ingredients.map((ingredient, idx) => (
+                  <li key={idx}>{ingredient.text}</li>
+                ))}
+              </ul>
 
-      <Typography>
-        <strong>{dietary?.map((e) => e + ' ')} </strong>
-      </Typography>
-      <div>
-        {ingredients && (
-          <>
-            <Typography variant="h4">Ingredients</Typography>
-            <ul>
-              {ingredients.map((ingredient, idx) => (
-                <li key={idx}>{ingredient.text}</li>
-              ))}
-            </ul>
+              <h4>Instructions</h4>
+              <a href={url}>Click this link</a>
+            </>
+          )}
+        </div>
 
-            <h4>Instructions</h4>
-            <a href={url}>Click this link</a>
-          </>
-        )}
-      </div>
+      </Box>
     </div>
   )
 }
