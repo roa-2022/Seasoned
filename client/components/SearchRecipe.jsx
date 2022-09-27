@@ -106,12 +106,13 @@ export default function SearchRecipe() {
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
+        fontSize: "0.8em",
         padding: "10px"
         
       }} size="small"
       onChange={handleDietary}>
         <FormControlLabel 
-          control={<Checkbox />} 
+          control={<Checkbox />}
           label="Vegan" 
           name="Vegan" 
         />
