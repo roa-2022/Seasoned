@@ -8,7 +8,7 @@ import SearchRecipe from './SearchRecipe'
 import Nav from './Nav'
 import Register from './Register'
 import Favourites from './Favourites'
-// import Footer from './Footer'
+import Footer from './Footer'
 import Header from './Header'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
@@ -46,13 +46,15 @@ function App() {
       <ThemeProvider theme={theme}>
         <Nav />
         <Header />
-        <Routes>
-          <Route path="/" element={<SearchRecipe />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/recipes/:id" element={<Recipe />} />
-          <Route path="/favourites" element={<Favourites />} />
-        </Routes>
-        {/* <Footer /> */}
+        <div style={{ marginBottom: 40 }}>
+          <Routes>
+            <Route path="/" element={<SearchRecipe />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/recipes/:ingredient/:id" element={<Recipe />} />
+            <Route path="/favourites" element={<Favourites />} />
+          </Routes>
+        </div>
+        <Footer />
       </ThemeProvider>
     </>
   )
