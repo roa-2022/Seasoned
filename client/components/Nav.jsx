@@ -54,7 +54,12 @@ function Nav() {
       >
         <Toolbar>
           <Grid container justifyContent="flex-start">
-            <Button color="inherit" variant="h5" sx={{ fontSize: "24px" }} onClick={handleHome}>
+            <Button
+              color="inherit"
+              variant="h5"
+              sx={{ fontSize: '24px' }}
+              onClick={handleHome}
+            >
               <FontAwesomeIcon icon={faHouse} />
             </Button>
           </Grid>
@@ -62,7 +67,8 @@ function Nav() {
             <Grid item>
               <div>
                 <IfAuthenticated>
-                  <Button sx={{ width: 30, height: 30 }}
+                  <Button
+                    sx={{ width: 30, height: 30 }}
                     startIcon={
                       <Avatar
                         alt={user.username}
@@ -70,7 +76,6 @@ function Nav() {
                         sx={{ width: 30, height: 30 }}
                       />
                     }
-                    // startIcon={<AccountCircleIcon />}
                     color="inherit"
                     onClick={handleLogOff}
                   >

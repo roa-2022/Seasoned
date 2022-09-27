@@ -7,7 +7,7 @@ import SearchRecipe from './SearchRecipe'
 
 import Nav from './Nav'
 import Register from './Register'
-// import Footer from './Footer'
+import Footer from './Footer'
 import Header from './Header'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
@@ -43,7 +43,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Nav />
         <Header />
-        <div style={{marginBottom: 300}}>
+        <div style={{ marginBottom: 300 }}>
           <Routes>
             <Route path="/" element={<SearchRecipe />} />
             <Route path="/register" element={<Register />} />
