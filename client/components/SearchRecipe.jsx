@@ -9,6 +9,8 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
+import Toggle from '@mui/material/ToggleButton'
+import { FilterAlt, FilterAltOff } from '@mui/icons-material'
 
 import Recipes from './Recipes'
 import SeasonalProduct from './SeasonalProduct'
@@ -24,6 +26,7 @@ export default function SearchRecipe() {
   const loading = useSelector((state) => state.loading)
   const [ingredient, setIngredient] = useState('')
   const [season, setSeason] = useState('')
+  const [toggleFilters, setToggleFilters] = useState(false)
   const [dietaryForm, setDietaryForm] = useState({
     vegan: false,
     vegetarian: false,
@@ -119,144 +122,162 @@ export default function SearchRecipe() {
               ),
             }}
           />
+          <Toggle
+            value="filters"
+            name="filters"
+            aria-label="search filters"
+            selected={toggleFilters}
+            onChange={() => setToggleFilters(!toggleFilters)}
+          >
+            {toggleFilters ? <FilterAltOff /> : <FilterAlt />}
+          </Toggle>
         </Box>
       </form>
-      <FormGroup
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          fontSize: '0.8em',
-          padding: '10px',
-        }}
-        size="small"
-      >
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={dietaryForm.vegan}
-              name="Vegan"
-              onChange={() =>
-                setDietaryForm({ ...dietaryForm, vegan: !dietaryForm.vegan })
+
+      {/* Show/Hide these FormGroups when a Toggle is toggled */}
+      {toggleFilters && (
+        <>
+          <FormGroup
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              fontSize: '0.8em',
+              padding: '10px',
+            }}
+            size="small"
+          >
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={dietaryForm.vegan}
+                  name="Vegan"
+                  onChange={() =>
+                    setDietaryForm({
+                      ...dietaryForm,
+                      vegan: !dietaryForm.vegan,
+                    })
+                  }
+                />
               }
+              label="Vegan"
             />
-          }
-          label="Vegan"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={dietaryForm.vegetarian}
-              name="Vegetarian"
-              onChange={() =>
-                setDietaryForm({
-                  ...dietaryForm,
-                  vegetarian: !dietaryForm.vegetarian,
-                })
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={dietaryForm.vegetarian}
+                  name="Vegetarian"
+                  onChange={() =>
+                    setDietaryForm({
+                      ...dietaryForm,
+                      vegetarian: !dietaryForm.vegetarian,
+                    })
+                  }
+                />
               }
+              label="Vegetarian"
             />
-          }
-          label="Vegetarian"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={dietaryForm['gluten-free']}
-              name="Gluten-Free"
-              onChange={() =>
-                setDietaryForm({
-                  ...dietaryForm,
-                  'gluten-free': !dietaryForm['gluten-free'],
-                })
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={dietaryForm['gluten-free']}
+                  name="Gluten-Free"
+                  onChange={() =>
+                    setDietaryForm({
+                      ...dietaryForm,
+                      'gluten-free': !dietaryForm['gluten-free'],
+                    })
+                  }
+                />
               }
+              label="Gluten-Free"
             />
-          }
-          label="Gluten-Free"
-        />
-      </FormGroup>
-      <FormGroup
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          fontSize: '0.8em',
-          padding: '10px',
-        }}
-        size="small"
-      >
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={mealType.breakfast}
-              name="Breakfast"
-              onChange={() =>
-                setMealType({ ...mealType, breakfast: !mealType.breakfast })
+          </FormGroup>
+          <FormGroup
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              fontSize: '0.8em',
+              padding: '10px',
+            }}
+            size="small"
+          >
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={mealType.breakfast}
+                  name="Breakfast"
+                  onChange={() =>
+                    setMealType({ ...mealType, breakfast: !mealType.breakfast })
+                  }
+                />
               }
+              label="Breakfast"
             />
-          }
-          label="Breakfast"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={mealType.teatime}
-              name="Teatime"
-              onChange={() =>
-                setMealType({
-                  ...mealType,
-                  teatime: !mealType.teatime,
-                })
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={mealType.teatime}
+                  name="Teatime"
+                  onChange={() =>
+                    setMealType({
+                      ...mealType,
+                      teatime: !mealType.teatime,
+                    })
+                  }
+                />
               }
+              label="Teatime"
             />
-          }
-          label="Teatime"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={mealType.lunch}
-              name="Lunch"
-              onChange={() =>
-                setMealType({
-                  ...mealType,
-                  lunch: !mealType.lunch,
-                })
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={mealType.lunch}
+                  name="Lunch"
+                  onChange={() =>
+                    setMealType({
+                      ...mealType,
+                      lunch: !mealType.lunch,
+                    })
+                  }
+                />
               }
+              label="Lunch"
             />
-          }
-          label="Lunch"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={mealType.dinner}
-              name="Dinner"
-              onChange={() =>
-                setMealType({
-                  ...mealType,
-                  dinner: !mealType.dinner,
-                })
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={mealType.dinner}
+                  name="Dinner"
+                  onChange={() =>
+                    setMealType({
+                      ...mealType,
+                      dinner: !mealType.dinner,
+                    })
+                  }
+                />
               }
+              label="Dinner"
             />
-          }
-          label="Dinner"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={mealType.snack}
-              name="Snack"
-              onChange={() =>
-                setMealType({
-                  ...mealType,
-                  snack: !mealType.snack,
-                })
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={mealType.snack}
+                  name="Snack"
+                  onChange={() =>
+                    setMealType({
+                      ...mealType,
+                      snack: !mealType.snack,
+                    })
+                  }
+                />
               }
+              label="Snack"
             />
-          }
-          label="Snack"
-        />
-      </FormGroup>
+          </FormGroup>
+        </>
+      )}
       {loading && (
         <img
           width={'100%'}
