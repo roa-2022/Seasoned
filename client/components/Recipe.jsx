@@ -7,8 +7,8 @@ import Checkbox from '@mui/material/Checkbox'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import { pink } from '@mui/material/colors'
-import { OpenInNew } from '@mui/icons-material'
 import { Box, List, ListItem, Typography, Button } from '@mui/material'
+// import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSeedling, faBook } from '@fortawesome/free-solid-svg-icons'
 import { postFavouriteProduct } from '../apis/produce'
@@ -114,19 +114,11 @@ export default function Recipe() {
               </List>
 
               <Typography paddingTop={"20px"} variant="h4">Instructions{' '}<FontAwesomeIcon color="#BF572B" icon={faBook} /></Typography>
-              <Box>
-                <Button sx={{
-                  textAlign: "center",
-                }} 
-                component="a" 
-                href={url} 
-                variant="body1" 
-                startDecorator={<OpenInNew />} 
-                color="#3F6C51">
-                  Recipe Here
-                </Button>
-              </Box>
-              
+
+              <Button
+              variant='contained'>
+                Recipe Here
+              </Button>
             </>
           )}
         </div>
