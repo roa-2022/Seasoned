@@ -15,9 +15,10 @@ import {
   Container,
 } from '@mui/material'
 
-export default function Recipes(props) {
+export default function Recipes() {
   const recipes = useSelector((state) => state.recipes)
   const dietary = useSelector((state) => state.dietary)
+  const ingredient = useSelector((state) => state.ingredient)
 
   const shortlistedRecipe = recipes.filter((recipe) => {
     const filtered = dietary.every((dietaryType) =>
@@ -48,7 +49,7 @@ export default function Recipes(props) {
                     >
                       <CardActionArea
                         component={Link}
-                        to={`/recipes/${props.ingredient}/${idx}`}
+                        to={`/recipes/${ingredient}/${idx}`}
                       >
                         <CardMedia component="img" image={image} alt={label} />
                         <CardContent sx={{ flexGrow: 1 }}>
@@ -74,15 +75,6 @@ export default function Recipes(props) {
                           </Typography>
                         </CardContent>
                       </CardActionArea>
-
-                      {/* <Button
-                          component={Link}
-                          to={`/recipes/${idx}`}
-                          size="small"
-                          color="primary"
-                        >
-                          Recipe Here
-                        </Button> */}
                     </Card>
                   </Grid>
                 )
@@ -127,7 +119,7 @@ export default function Recipes(props) {
                       <CardActions>
                         <Button
                           component={Link}
-                          to={`/recipes/${idx}`}
+                          to={`/recipes/${ingredient}/${idx}`}
                           size="small"
                           color="primary"
                         >
