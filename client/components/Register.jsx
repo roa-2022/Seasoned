@@ -7,7 +7,7 @@ import { updateLoggedInUser } from '../actions/loggedInUser'
 
 import md5 from 'md5'
 
-import { Button, TextField } from '@mui/material'
+import { Button, TextField, Box, Typography } from '@mui/material'
 
 function Register() {
   const user = useSelector((state) => state.loggedInUser)
@@ -47,25 +47,41 @@ function Register() {
 
   return (
     <>
-      <h2>Complete profile set up</h2>
+      <Typography variant="h5" align="center" sx={{ marginTop: '50px' }}>
+        Please choose a username
+      </Typography>
       <form onSubmit={handleSubmit}>
-        <TextField
-          error={Boolean(errorMsg)}
-          type="text"
-          id="username"
-          name="username"
-          label="Username"
-          value={form.username}
-          onChange={handleChange}
-        />
-        <Button
-          disabled={!form.username}
-          variant={form.username ? 'contained' : 'outlined'}
-          type="submit"
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            flexDirection: 'row',
+            justifyContent: 'center',
+          }}
         >
-          Save Profile
-        </Button>
+          <TextField
+            sx={{ marginTop: '30px' }}
+            error={Boolean(errorMsg)}
+            type="text"
+            id="username"
+            name="username"
+            label="Username"
+            size="small"
+            value={form.username}
+            onChange={handleChange}
+          />
+
+          <Button
+            sx={{ p: '7px 10px', marginTop: '30px', marginLeft: '5px' }}
+            disabled={!form.username}
+            variant={form.username ? 'contained' : 'outlined'}
+            type="submit"
+          >
+            Save Profile
+          </Button>
+        </Box>
       </form>
+
       {errorMsg && <div style={{ color: 'red' }}>Error: {errorMsg}</div>}
     </>
   )

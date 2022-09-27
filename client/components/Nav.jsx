@@ -80,7 +80,6 @@ function Nav() {
                         sx={{ width: 30, height: 30 }}
                       />
                     }
-                    // startIcon={<AccountCircleIcon />}
                     color="inherit"
                     onClick={handleLogOff}
                   >
