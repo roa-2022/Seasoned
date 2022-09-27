@@ -18,10 +18,8 @@ function Register() {
   })
   const [errorMsg, setErrorMsg] = useState('')
 
-  console.log('Register user: ', user)
-
   useEffect(() => {
-    if (user.username) navigate('/')
+    if (user.auth0_id) navigate('/')
   }, [user])
 
   const handleChange = (evt) => {

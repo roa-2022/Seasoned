@@ -39,17 +39,18 @@ function Favourites() {
               <TableCell component="th" scope="row">
                 {favourite.id}
               </TableCell>
-              <TableCell align="right">
-                {favourite.recipe.recipe.label}
-              </TableCell>
-              <TableCell align="right">{favourite.recipe.recipe.uri}</TableCell>
+              <TableCell align="right">{favourite.recipe.label}</TableCell>
+              <TableCell align="right">{favourite.recipe.uri}</TableCell>
               <TableCell align="right">
                 <input
                   type="checkbox"
                   checked={favourite.done}
                   onChange={() =>
                     dispatch(
-                      editFavourite(favourite.id, favourite, user.auth0_id)
+                      editFavourite(favourite.id, {
+                        ...favourite,
+                        done: !favourite.done,
+                      })
                     )
                   }
                 />
