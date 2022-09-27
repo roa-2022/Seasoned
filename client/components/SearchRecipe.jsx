@@ -218,21 +218,6 @@ export default function SearchRecipe() {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={mealType.teatime}
-                  name="Teatime"
-                  onChange={() =>
-                    setMealType({
-                      ...mealType,
-                      teatime: !mealType.teatime,
-                    })
-                  }
-                />
-              }
-              label="Teatime"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
                   checked={mealType.lunch}
                   name="Lunch"
                   onChange={() =>
@@ -244,6 +229,21 @@ export default function SearchRecipe() {
                 />
               }
               label="Lunch"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={mealType.teatime}
+                  name="Teatime"
+                  onChange={() =>
+                    setMealType({
+                      ...mealType,
+                      teatime: !mealType.teatime,
+                    })
+                  }
+                />
+              }
+              label="Teatime"
             />
             <FormControlLabel
               control={
