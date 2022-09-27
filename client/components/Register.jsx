@@ -18,6 +18,8 @@ function Register() {
   })
   const [errorMsg, setErrorMsg] = useState('')
 
+  console.log('Register user: ', user)
+
   useEffect(() => {
     if (user.username) navigate('/')
   }, [user])
@@ -33,6 +35,8 @@ function Register() {
     evt.preventDefault()
 
     const gravatar = `https://www.gravatar.com/avatar/${md5(user.email)}`
+
+    console.log(user)
 
     const userInfo = {
       auth0_id: user.auth0Id,

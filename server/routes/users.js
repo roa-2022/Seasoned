@@ -30,6 +30,8 @@ router.post('/', checkJwt, (req, res) => {
     image,
   }
 
+  console.log('DB post userdetails: ', userDetails)
+
   db.userExists(username)
     .then((usernameTaken) => {
       if (usernameTaken) throw new Error('Username Taken')

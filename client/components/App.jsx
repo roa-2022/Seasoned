@@ -23,12 +23,21 @@ function App() {
 
   const { isAuthenticated, getAccessTokenSilently } = useAuth0()
 
+  console.log(
+    'App: isAuthenticated ',
+    isAuthenticated,
+    ' getAccess ',
+    getAccessTokenSilently
+  )
+
   useEffect(() => {
     if (!isAuthenticated) {
       dispatch(clearLoggedInUser())
     } else {
       getAccessTokenSilently()
-        .then((token) => getUser(token))
+        .then((token) => {
+          getUser(token)
+        })
         .then((userInDb) => {
           userInDb
             ? dispatch(updateLoggedInUser(userInDb))
