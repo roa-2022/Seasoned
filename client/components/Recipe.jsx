@@ -18,11 +18,8 @@ export default function Recipe() {
   const recipe = recipes[id]
   const [checked, setChecked] = useState(false)
 
-  // Function to take the recipe
-  // Save it to the database
-  // As a favorite
-  // send { auth0_id: user.auth0_id, recipe: recipe }
-  // to the backend
+  console.log(recipe)
+
   const handleFavorite = async (e) => {
     setChecked(e.target.checked)
     await postFavouriteProduct(recipe, user.auth0_id)

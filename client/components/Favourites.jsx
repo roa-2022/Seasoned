@@ -13,10 +13,11 @@ import { getFavourites, removeFavouriteAction, editFavourite } from '../actions'
 
 function Favourites() {
   const favourites = useSelector((state) => state.favourites)
+  const user = useSelector((state) => state.loggedInUser)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getFavourites())
+    dispatch(getFavourites(user.auth0_id))
   }, [])
 
   const handleClick = (id) => {
@@ -41,8 +42,10 @@ function Favourites() {
               <TableCell component="th" scope="row">
                 {favourite.id}
               </TableCell>
-              <TableCell align="right">{favourite.label}</TableCell>
-              <TableCell align="right">{favourite.uri}</TableCell>
+              <TableCell align="right">
+                {favourite.recipe.recipe.label}
+              </TableCell>
+              <TableCell align="right">{favourite.recipe.recipe.uri}</TableCell>
               <TableCell align="right">
                 <input
                   type="checkbox"

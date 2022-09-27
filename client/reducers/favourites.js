@@ -10,7 +10,17 @@ function favourites(state = [], action) {
 
   switch (type) {
     case SHOW_FAVOURITES:
-      return payload
+      // return payload
+      return payload.map((favourite) => {
+        return {
+          id: favourite.id,
+          auth0_id: favourite.auth0_id,
+          rating: favourite.rating,
+          done: favourite.done,
+          recipe: JSON.parse(favourite.recipe),
+        }
+      })
+
     case SAVE_FAVOURITE:
       return [...state, payload]
     case DEL_FAVOURITE:
