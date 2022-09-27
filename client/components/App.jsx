@@ -43,17 +43,33 @@ function App() {
   }, [isAuthenticated])
 
   useEffect(() => {
-    dispatch(fetchSeason('winter'))
+    dispatch(fetchSeason(currentSeason))
   }, [])
-  
-  // const month = new Date().getMonth()
 
-  // switch (month) {
-  //   case 1: 'December'
-  //           'January'
-  //           'February'
-  //           'March'
-  // }
+  const currentSeason = function () {
+    const currentMonth = new Date().getMonth() + 1
+    switch (currentMonth) {
+      case 9:
+      case 10:
+      case 11:
+        return 'spring'
+
+      case 12:
+      case 1:
+      case 2:
+        return 'summer'
+
+      case 3:
+      case 4:
+      case 5:
+        return 'autumn'
+
+      case 6:
+      case 7:
+      case 8:
+        return 'winter'
+    }
+  }
 
   return (
     <>
