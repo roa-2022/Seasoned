@@ -24,12 +24,8 @@ export default function Recipe() {
   // send { auth0_id: user.auth0_id, recipe: recipe }
   // to the backend
   const handleFavorite = async (e) => {
-    console.log('You have picked this as a favourite')
-    console.log(user)
     setChecked(e.target.checked)
-    console.log(checked)
-    const favourite = await postFavouriteProduct(recipe, user.auth0_id)
-    console.log(favourite)
+    await postFavouriteProduct(recipe, user.auth0_id)
   }
 
   const { label, image, ingredients, healthLabels, url } = recipe.recipe

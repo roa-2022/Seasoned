@@ -3,12 +3,10 @@ import request from 'superagent'
 const rootUrl = '/api/v1'
 
 export async function postFavourite(recipe, auth0Id) {
-  console.log(auth0Id)
   try {
     const res = await request
       .post(`${rootUrl}/favourites`)
       .send(recipe, auth0Id)
-    console.log(res.body)
     return res.body
   } catch (err) {
     console.log('Err message: ' + err)

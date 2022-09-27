@@ -36,8 +36,6 @@ function Register() {
 
     const gravatar = `https://www.gravatar.com/avatar/${md5(user.email)}`
 
-    console.log(user)
-
     const userInfo = {
       auth0_id: user.auth0_id,
       email: user.email,
