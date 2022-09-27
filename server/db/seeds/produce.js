@@ -80,7 +80,7 @@ exports.seed = function (knex) {
           name: 'gooseberry',
           display_name: 'Gooseberry/Kuihipere',
           type: 'fruit',
-          image_url: 'images/gooseberries.jpg',
+          image_url: 'images/gooseberries.jpeg',
         },
         {
           id: 12,
@@ -144,7 +144,7 @@ exports.seed = function (knex) {
           name: 'lime',
           display_name: 'Lime/Raima',
           type: 'fruit',
-          image_url: 'images/lime.jpg',
+          image_url: 'images/limes.jpeg',
         },
         {
           id: 21,
@@ -201,7 +201,7 @@ exports.seed = function (knex) {
           name: 'peach',
           display_name: 'Peach/Pītiti',
           type: 'fruit',
-          image_url: 'images/peaches.jpg',
+          image_url: 'images/peaches.jpeg',
         },
         {
           id: 29,
@@ -222,21 +222,21 @@ exports.seed = function (knex) {
           name: 'plum',
           display_name: 'Plum/Paramu',
           type: 'fruit',
-          image_url: 'images/plum.jpg',
+          image_url: 'images/plums.jpg',
         },
         {
           id: 32,
           name: 'raspberry',
           display_name: 'Raspberry/Rāhipere',
           type: 'fruit',
-          image_url: 'images/raspberries.jpg',
+          image_url: 'images/raspberries.jpeg',
         },
         {
           id: 33,
           name: 'redcurrant',
           display_name: 'Redcurrants',
           type: 'fruit',
-          image_url: 'images/redcurrants.jpg',
+          image_url: 'images/redcurrants.jpeg',
         },
         {
           id: 34,
