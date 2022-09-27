@@ -48,9 +48,7 @@ test('Search for recipe input renders', () => {
 
   // Expect the component to load an input
   // Input will have placeholder containing 'Search for a recipe'
-  expect(screen.getByRole('textbox').placeholder).toBe(
-    'What ingredients do you have?'
-  )
+  expect(screen.getByRole('textbox').placeholder).toBe('Find a recipe')
 })
 
 test('Footer renders', () => {
