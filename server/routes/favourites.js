@@ -32,11 +32,8 @@ router.get('/user/:auth0_id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const auth0Id = req.body.auth0_id
-  const recipe = req.body.recipe
-
   try {
-    const favouriteResp = await db.createFavourite(recipe, auth0Id)
+    const favouriteResp = await db.createFavourite(req.body)
     res.json(favouriteResp)
   } catch (err) {
     console.log(err)
