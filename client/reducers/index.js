@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import dietaryReducer from './dietary'
+import ingredientReducer from './ingredient'
 import loadingReducer from './loading'
 
 import loggedInUser from './loggedInUser'
@@ -16,4 +17,5 @@ export default combineReducers({
   dietary: dietaryReducer,
   seasonalProduct: seasonalProductReducer,
   favourites,
+  ingredient: ingredientReducer,
 })

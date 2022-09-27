@@ -21,6 +21,7 @@ export const SET_PRODUCE = 'SET_PRODUCE'
 
 export const LOADING = 'LOADING'
 export const STOP_LOADING = 'STOP_LOADING'
+export const GET_INGREDIENT = 'GET_INGREDIENT'
 
 export function displayAvailableProducts(product) {
   return {
@@ -73,13 +74,21 @@ export function displayRecipes(recipes) {
   }
 }
 
-export function fetchRecipes(userInput) {
+export function getIngredient(ingredient) {
+  return {
+    type: GET_INGREDIENT,
+    payload: ingredient,
+  }
+}
+
+export function fetchRecipes(ingredient) {
   return async (dispatch) => {
     try {
       dispatch(setLoading())
-      const recipes = await getRecipes(userInput)
+      const recipes = await getRecipes(ingredient)
       setTimeout(() => {
         dispatch(stopLoading())
+        dispatch(getIngredient(ingredient))
         dispatch(displayRecipes(recipes))
       }, 1000)
     } catch (err) {
