@@ -13,8 +13,8 @@ import Select from '@mui/material/Select'
 import Recipes from './Recipes'
 import SeasonalProduct from './SeasonalProduct'
 import {
-  dietarySelect,
-  dietaryRemove,
+  // dietarySelect,
+  // dietaryRemove,
   fetchRecipes,
   fetchSeason,
 } from '../actions'
@@ -24,18 +24,23 @@ export default function SearchRecipe() {
   const loading = useSelector((state) => state.loading)
   const [ingredient, setIngredient] = useState('')
   const [season, setSeason] = useState('')
+  const [dietaryForm, setDietaryForm] = useState({
+    vegan: false,
+    vegetarian: false,
+    'gluten-free': false,
+  })
   const handleSearch = (e) => {
     e.preventDefault()
-    dispatch(fetchRecipes(ingredient))
-    e.target.reset()
-  }
 
-  const handleDietary = (e) => {
-    if (e.target.checked) {
-      dispatch(dietarySelect(e.target.name))
-    } else {
-      dispatch(dietaryRemove(e.target.name))
+    let dietary = ''
+    for (const key in dietaryForm) {
+      if (dietaryForm[key]) {
+        dietary += `&health=${key}`
+      }
     }
+
+    dispatch(fetchRecipes(ingredient + dietary))
+    e.target.reset()
   }
 
   const handleSeason = (e) => {
@@ -84,7 +89,7 @@ export default function SearchRecipe() {
             label="Search"
             variant="outlined"
             color="primary"
-            placeholder="eg, potato"
+            placeholder="Find a recipe"
             size="small"
             sx={{ m: 1, width: '25ch' }}
             InputProps={{
@@ -99,36 +104,64 @@ export default function SearchRecipe() {
           />
         </Box>
       </form>
-      <FormGroup sx={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        fontSize: "0.8em",
-        padding: "10px"
-        
-      }} size="small"
-      onChange={handleDietary}>
-        <FormControlLabel 
-          control={<Checkbox />}
-          label="Vegan" 
-          name="Vegan" 
+      <FormGroup
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          fontSize: '0.8em',
+          padding: '10px',
+        }}
+        size="small"
+      >
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={dietaryForm.vegan}
+              name="Vegan"
+              onChange={() =>
+                setDietaryForm({ ...dietaryForm, vegan: !dietaryForm.vegan })
+              }
+            />
+          }
+          label="Vegan"
         />
         <FormControlLabel
-          control={<Checkbox />}
+          control={
+            <Checkbox
+              checked={dietaryForm.vegetarian}
+              name="Vegetarian"
+              onChange={() =>
+                setDietaryForm({
+                  ...dietaryForm,
+                  vegetarian: !dietaryForm.vegetarian,
+                })
+              }
+            />
+          }
           label="Vegetarian"
-          name="Vegetarian"
         />
         <FormControlLabel
-          control={<Checkbox />}
+          control={
+            <Checkbox
+              checked={dietaryForm['gluten-free']}
+              name="Gluten-Free"
+              onChange={() =>
+                setDietaryForm({
+                  ...dietaryForm,
+                  'gluten-free': !dietaryForm['gluten-free'],
+                })
+              }
+            />
+          }
           label="Gluten-Free"
-          name="Gluten-Free"
         />
       </FormGroup>
       {loading && (
         <img
           width={'100%'}
           src="https://cdn.dribbble.com/users/393062/screenshots/14492170/media/67f661f7f825b62980571026e1280675.gif"
-          alt="loading gif"
+          alt="Loading animation"
         />
       )}
 
