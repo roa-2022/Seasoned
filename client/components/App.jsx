@@ -46,7 +46,8 @@ function App() {
         <Routes>
           <Route path="/" element={<SearchRecipe />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/recipes/:id" element={<Recipe />} />
+          <Route path="/recipes/:ingredient/:id" element={<Recipe />} />
+          {/* <Route path="/recipes/:id" element={<Recipe />} /> */}
         </Routes>
         {/* <Footer /> */}
       </ThemeProvider>
