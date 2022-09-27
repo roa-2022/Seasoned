@@ -7,7 +7,9 @@ import Checkbox from '@mui/material/Checkbox'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import { pink } from '@mui/material/colors'
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSeedling } from '@fortawesome/free-solid-svg-icons'
 
 import { fetchRecipes } from '../actions'
 
@@ -39,8 +41,23 @@ export default function Recipe() {
       )}
       {label && (
         <>
-          <Typography variant="h3">{label}</Typography>
-          <img src={image} alt={label} />
+          <Typography sx={{
+            textAlign: "center",
+            marginBottom: "30px",
+          }} 
+          variant="h4">{label}</Typography>
+          <Box sx={{
+            margin: "0px auto",
+            width: {
+              xs: "90%", // theme.breakpoints.up('xs')
+              sm: 200, // theme.breakpoints.up('sm')
+              md: 300, // theme.breakpoints.up('md')
+              lg: 400, // theme.breakpoints.up('lg')
+              xl: 500, // theme.breakpoints.up('xl')
+            },
+          }}>
+            <img width={"100%"} src={image} alt={label} />
+          
           <FormGroup>
             <FormControlLabel
               control={
@@ -58,27 +75,39 @@ export default function Recipe() {
               label="Add to Favourite"
             />
           </FormGroup>
+          </Box>
         </>
       )}
+        <Box sx={{
+          margin: "0px auto",
+          width: {
+            xs: "90%", // theme.breakpoints.up('xs')
+            sm: 200, // theme.breakpoints.up('sm')
+            md: 300, // theme.breakpoints.up('md')
+            lg: 400, // theme.breakpoints.up('lg')
+            xl: 500, // theme.breakpoints.up('xl')
+          },
+        }}>
+        <Typography>
+          <strong>{dietary?.map((e) => e + ' ')} </strong>
+        </Typography>
+        <div>
+          {ingredients && (
+            <>
+              <Typography variant="h4">Ingredients<FontAwesomeIcon icon={faSeedling} /></Typography> 
+              <ul>
+                {ingredients.map((ingredient, idx) => (
+                  <li key={idx}>{ingredient.text}</li>
+                ))}
+              </ul>
 
-      <Typography>
-        <strong>{dietary?.map((e) => e + ' ')} </strong>
-      </Typography>
-      <div>
-        {ingredients && (
-          <>
-            <Typography variant="h4">Ingredients</Typography>
-            <ul>
-              {ingredients.map((ingredient, idx) => (
-                <li key={idx}>{ingredient.text}</li>
-              ))}
-            </ul>
+              <h4>Instructions</h4>
+              <a href={url}>Click this link</a>
+            </>
+          )}
+        </div>
 
-            <h4>Instructions</h4>
-            <a href={url}>Click this link</a>
-          </>
-        )}
-      </div>
+      </Box>
     </div>
   )
 }

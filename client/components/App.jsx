@@ -15,6 +15,7 @@ import { useCacheUser } from '../auth0-utils'
 import { getUser } from '../api'
 import { ThemeProvider } from '@mui/material/styles'
 import { theme } from '../styles/theme'
+import { fetchSeason } from '../actions'
 
 function App() {
   useCacheUser()
@@ -37,6 +38,19 @@ function App() {
         .catch((err) => console.error(err))
     }
   }, [isAuthenticated])
+
+  useEffect(() => {
+    dispatch(fetchSeason('winter'))
+  }, [])
+  
+  // const month = new Date().getMonth()
+
+  // switch (month) {
+  //   case 1: 'December'
+  //           'January'
+  //           'February'
+  //           'March'
+  // }
 
   return (
     <>

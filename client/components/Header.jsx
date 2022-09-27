@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Box, Link, Typography } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function Footer() {
+  const [bounce, setBounce] = useState(true) 
 
+  useEffect(() => {
+    setTimeout(() => {
+      setBounce(false)
+    },1000)
+  }, [])
 
   return (
     <Box>
@@ -17,12 +23,12 @@ export default function Footer() {
           textAlign: "center",
         }} 
         variant="h2">
-          Seasoned 
+          Seasoned{" "}
           <FontAwesomeIcon
-            
             color='#BF572B'
             fontSize={50}
-            icon={faCarrot} />
+            icon={faCarrot}
+            bounce={bounce} />
         </Typography>
       </Link>
     </Box>

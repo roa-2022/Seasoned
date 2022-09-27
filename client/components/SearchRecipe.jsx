@@ -56,6 +56,7 @@ export default function SearchRecipe() {
             <FormControl>
               <InputLabel id="season-label">Season</InputLabel>
               <Select
+                defaultValue="summer"
                 id="season"
                 labelId="season-label"
                 justifycontent="flex-end"
