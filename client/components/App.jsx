@@ -7,6 +7,7 @@ import SearchRecipe from './SearchRecipe'
 
 import Nav from './Nav'
 import Register from './Register'
+import Favourites from './Favourites'
 import Footer from './Footer'
 import Header from './Header'
 
@@ -29,7 +30,9 @@ function App() {
       dispatch(clearLoggedInUser())
     } else {
       getAccessTokenSilently()
-        .then((token) => getUser(token))
+        .then((token) => {
+          getUser(token)
+        })
         .then((userInDb) => {
           userInDb
             ? dispatch(updateLoggedInUser(userInDb))
@@ -57,11 +60,12 @@ function App() {
       <ThemeProvider theme={theme}>
         <Nav />
         <Header />
-        <div style={{marginBottom: 40}}>
+        <div style={{ marginBottom: 40 }}>
           <Routes>
             <Route path="/" element={<SearchRecipe />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/recipes/:ingredient/:id" element={<Recipe />} />            
+            <Route path="/recipes/:ingredient/:id" element={<Recipe />} />
+            <Route path="/favourites" element={<Favourites />} />
           </Routes>
         </div>
         <Footer />

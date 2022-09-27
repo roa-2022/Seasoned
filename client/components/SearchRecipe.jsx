@@ -46,12 +46,14 @@ export default function SearchRecipe() {
   return (
     <Box>
       <form onSubmit={handleSearch}>
-        <Box sx={{
-          display: 'flex', 
-          alignItems: 'flex-end',
-          flexDirection: "row",
-          justifyContent: "center",
-          }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            flexDirection: 'row',
+            justifyContent: 'center',
+          }}
+        >
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <FormControl>
               <InputLabel id="season-label">Season</InputLabel>
@@ -92,7 +94,7 @@ export default function SearchRecipe() {
                     <SearchIcon />
                   </IconButton>
                 </InputAdornment>
-              )
+              ),
             }}
           />
         </Box>
@@ -123,12 +125,14 @@ export default function SearchRecipe() {
         />
       </FormGroup>
       {loading && (
-        <img width={"100%"}
+        <img
+          width={'100%'}
           src="https://cdn.dribbble.com/users/393062/screenshots/14492170/media/67f661f7f825b62980571026e1280675.gif"
           alt="loading gif"
         />
       )}
-      <Recipes ingredient={ingredient} />
+
+      <Recipes />
       <SeasonalProduct />
     </Box>
   )

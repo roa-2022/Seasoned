@@ -6,7 +6,7 @@ const recipesReducer = (state = initialState, action) => {
   const { type, payload } = action
   switch (type) {
     case DISPLAY_RECIPES:
-      return payload
+      return payload    
     default:
       return state
   }
