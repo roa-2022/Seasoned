@@ -2,7 +2,7 @@ import {
   SHOW_FAVOURITES,
   SAVE_FAVOURITE,
   DEL_FAVOURITE,
-  EDIT_FAVOURITES,
+  EDIT_FAVOURITE,
 } from '../actions'
 
 function favourites(state = [], action) {
@@ -25,7 +25,7 @@ function favourites(state = [], action) {
       return [...state, payload]
     case DEL_FAVOURITE:
       return state.filter((favourite) => !favourite.id === payload.id)
-    case EDIT_FAVOURITES:
+    case EDIT_FAVOURITE:
       // TODO: Edit the state
       return state
     default:

@@ -14,6 +14,7 @@ export const DISPLAY_PRODUCT = 'DISPLAY_PRODUCT'
 
 export const SHOW_FAVOURITES = 'SHOW_FAVOURITES'
 export const SAVE_FAVOURITE = 'SAVE_FAVOURITE'
+export const EDIT_FAVOURITE = 'EDIT_FAVOURITE'
 export const DEL_FAVOURITE = 'DEL_FAVOURITE'
 
 export const SET_PRODUCE = 'SET_PRODUCE'
@@ -123,25 +124,24 @@ export function getFavourites(auth0_id) {
   }
 }
 
-export function removeFavouriteAction(id) {
+export function removeFavouriteAction(id, auth0_id) {
   return async (dispatch) => {
     try {
-      const res = await removeFavourite(id)
-      return dispatch(getFavourites())
+      await removeFavourite(id)
+      return dispatch(getUserFavourites(auth0_id))
     } catch (err) {
-      dispatch(showError(err.message))
+      console.log('removeFavouriteAction - ', err.message)
     }
   }
 }
 
-export function editFavourite(id, recipe) {
+export function editFavourite(id, recipe, auth0_id) {
   return async (dispatch) => {
-    dispatch(editFavourites())
     try {
-      const res = await editFavouriteApi(id, recipe)
-      return dispatch(getFavourites())
+      await patchFavourite(id, recipe)
+      return dispatch(getUserFavourites(auth0_id))
     } catch (err) {
-      dispatch(showError(err.message))
+      console.log('editFavourite - ', err.message)
     }
   }
 }

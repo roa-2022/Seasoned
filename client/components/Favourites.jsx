@@ -20,10 +20,6 @@ function Favourites() {
     dispatch(getFavourites(user.auth0_id))
   }, [])
 
-  const handleClick = (id) => {
-    dispatch(removeFavouriteAction(id))
-  }
-
   return (
     <TableContainer component={Paper}>
       <Table aria-label="Favourites table">
@@ -33,6 +29,7 @@ function Favourites() {
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Link</TableCell>
             <TableCell align="right">Done</TableCell>
+            <TableCell align="right">Rating</TableCell>
             <TableCell align="right">Delete</TableCell>
           </TableRow>
         </TableHead>
@@ -50,11 +47,19 @@ function Favourites() {
                 <input
                   type="checkbox"
                   checked={favourite.done}
-                  onChange={() => dispatch(editFavourite(favourite.id))}
+                  onChange={() =>
+                    dispatch(
+                      editFavourite(favourite.id, favourite, user.auth0_id)
+                    )
+                  }
                 />
               </TableCell>
               <TableCell align="right">
-                <button onClick={() => handleClick(favourite.id)}>
+                <button
+                  onClick={() =>
+                    dispatch(removeFavouriteAction(favourite.id, user.auth0_id))
+                  }
+                >
                   Delete
                 </button>
               </TableCell>
