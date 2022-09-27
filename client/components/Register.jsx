@@ -19,7 +19,7 @@ function Register() {
   const [errorMsg, setErrorMsg] = useState('')
 
   useEffect(() => {
-    if (user.username) navigate('/')
+    if (user.auth0_id) navigate('/')
   }, [user])
 
   const handleChange = (evt) => {
@@ -35,7 +35,7 @@ function Register() {
     const gravatar = `https://www.gravatar.com/avatar/${md5(user.email)}`
 
     const userInfo = {
-      auth0_id: user.auth0Id,
+      auth0_id: user.auth0_id,
       email: user.email,
       image: gravatar,
       ...form,

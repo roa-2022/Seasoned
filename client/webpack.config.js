@@ -1,6 +1,5 @@
 const path = require('path')
 
-// For .env file
 const webpack = require('webpack')
 require('dotenv').config()
 
@@ -12,7 +11,6 @@ module.exports = {
   },
   mode: 'development',
 
-  // For .env file
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

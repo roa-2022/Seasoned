@@ -8,8 +8,6 @@ const router = express.Router()
 router.get('/', checkJwt, (req, res) => {
   const auth0_id = req.auth?.sub || req.user?.sub
 
-  console.log('user.sub: ', auth0_id)
-
   if (!auth0_id) {
     res.send(null)
   } else {
