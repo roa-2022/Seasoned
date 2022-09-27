@@ -1,7 +1,6 @@
 import { getRecipes } from '../apis/recipes'
 import { getProduce, getAvailableProduct } from '../apis/produce'
 import {
-  postFavourite,
   getUserFavourites,
   patchFavouriteDone,
   removeFavourite,

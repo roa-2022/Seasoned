@@ -3,9 +3,7 @@ import { Grid, Container, Box, Link, Typography } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
-
 export default function Footer() {
-
 
   return (
     <Box 
