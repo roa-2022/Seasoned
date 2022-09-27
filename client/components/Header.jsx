@@ -19,6 +19,7 @@ export default function Footer() {
         variant="h2">
           Seasoned 
           <FontAwesomeIcon
+            
             color='#BF572B'
             fontSize={50}
             icon={faCarrot} />

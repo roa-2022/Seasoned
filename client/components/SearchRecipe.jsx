@@ -10,7 +10,6 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 
-
 import Recipes from './Recipes'
 import SeasonalProduct from './SeasonalProduct'
 import {
@@ -23,10 +22,8 @@ import {
 export default function SearchRecipe() {
   const dispatch = useDispatch()
   const loading = useSelector((state) => state.loading)
-
   const [ingredient, setIngredient] = useState('')
   const [season, setSeason] = useState('')
-
   const handleSearch = (e) => {
     e.preventDefault()
     dispatch(fetchRecipes(ingredient))
@@ -99,9 +96,6 @@ export default function SearchRecipe() {
           />
         </Box>
       </form>
-
-      
-
       <FormGroup sx={{
         display: "flex",
         flexDirection: "row",
@@ -127,14 +121,12 @@ export default function SearchRecipe() {
           name="Gluten-Free"
         />
       </FormGroup>
-
       {loading && (
         <img width={"100%"}
           src="https://cdn.dribbble.com/users/393062/screenshots/14492170/media/67f661f7f825b62980571026e1280675.gif"
           alt="loading gif"
         />
       )}
-
       <SeasonalProduct />
       <Recipes />
     </Box>
