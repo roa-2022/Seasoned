@@ -154,7 +154,7 @@ export function editFavourite(id, recipeObj) {
   changeFavourite(id)
   return async (dispatch) => {
     try {
-      const res = await patchFavouriteDone(id, recipeObj)
+      await patchFavouriteDone(id, recipeObj)
       return dispatch(changeFavourite(id))
     } catch (err) {
       console.log('editFavourite - ', err.message)
