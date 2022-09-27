@@ -22,14 +22,6 @@ export default function Recipe() {
   const recipe = recipes[id]
   const [checked, setChecked] = useState(false)
 
-  const handleFavorite = async (e) => {
-    setChecked(e.target.checked)
-    await postFavouriteProduct(
-      { label: recipe.label, url: recipe.uri },
-      user.auth0_id
-    )
-  }
-
   const { label, image, ingredients, healthLabels, url } = recipe
     ? recipe.recipe
     : {}
@@ -39,6 +31,12 @@ export default function Recipe() {
   })
 
   useEffect(() => dispatch(fetchRecipes(ingredient)), [])
+
+  const handleFavourite = async (e) => {
+    const favourite = { label: label, url: url }
+    setChecked(e.target.checked)
+    await postFavouriteProduct(favourite, user.auth0_id)
+  }
 
   return (
     <div>
@@ -58,7 +56,7 @@ export default function Recipe() {
               control={
                 <Checkbox
                   checked={checked}
-                  onChange={handleFavorite}
+                  onChange={handleFavourite}
                   icon={<FavoriteBorder />}
                   checkedIcon={<Favorite />}
                   sx={{
