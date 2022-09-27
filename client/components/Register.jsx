@@ -47,7 +47,7 @@ function Register() {
 
   return (
     <>
-      <Typography variant="h5" align="center" sx={{ marginTop: '50px' }}>
+      <Typography variant="h5" align="center" sx={{ marginTop: '30px' }}>
         Please choose a username
       </Typography>
       <form onSubmit={handleSubmit}>
