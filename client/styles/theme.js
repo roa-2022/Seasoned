@@ -13,11 +13,11 @@ export const theme = createTheme ({
       main: '#EFF6EE',
     },
     background: {
-      default: "#EFF6EE"
+      default: "white"
     }
   },
   typography: {
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: 'Bree Serif',
     h1: {
       fontFamily: 'Bree Serif, serif',
