@@ -29,6 +29,14 @@ export default function SearchRecipe() {
     vegetarian: false,
     'gluten-free': false,
   })
+  const [mealType, setMealType] = useState({
+    breakfast: false,
+    teatime: false,
+    lunch: false,
+    dinner: false,
+    snack: false,
+  })
+
   const handleSearch = (e) => {
     e.preventDefault()
 
@@ -40,7 +48,15 @@ export default function SearchRecipe() {
       }
     }
 
-    dispatch(fetchRecipes(ingredient + dietary))
+    let meal = ''
+    for (const key in mealType) {
+      if (mealType[key]) {
+        meal += `&mealType=${key}`
+        mealType[key] = false
+      }
+    }
+
+    dispatch(fetchRecipes(ingredient + dietary + meal))
     e.target.reset()
   }
 
@@ -156,6 +172,89 @@ export default function SearchRecipe() {
             />
           }
           label="Gluten-Free"
+        />
+      </FormGroup>
+      <FormGroup
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          fontSize: '0.8em',
+          padding: '10px',
+        }}
+        size="small"
+      >
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={mealType.breakfast}
+              name="Breakfast"
+              onChange={() =>
+                setMealType({ ...mealType, breakfast: !mealType.breakfast })
+              }
+            />
+          }
+          label="Breakfast"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={mealType.teatime}
+              name="Teatime"
+              onChange={() =>
+                setMealType({
+                  ...mealType,
+                  teatime: !mealType.teatime,
+                })
+              }
+            />
+          }
+          label="Teatime"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={mealType.lunch}
+              name="Lunch"
+              onChange={() =>
+                setMealType({
+                  ...mealType,
+                  lunch: !mealType.lunch,
+                })
+              }
+            />
+          }
+          label="Lunch"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={mealType.dinner}
+              name="Dinner"
+              onChange={() =>
+                setMealType({
+                  ...mealType,
+                  dinner: !mealType.dinner,
+                })
+              }
+            />
+          }
+          label="Dinner"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={mealType.snack}
+              name="Snack"
+              onChange={() =>
+                setMealType({
+                  ...mealType,
+                  snack: !mealType.snack,
+                })
+              }
+            />
+          }
+          label="Snack"
         />
       </FormGroup>
       {loading && (
