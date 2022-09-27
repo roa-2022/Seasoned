@@ -46,9 +46,10 @@ function Nav() {
       <CssBaseline />
       <AppBar
         sx={{
-          backgroundColor: '#BF572B',
-          fontFamily: 'Bree Serif, Serif',
-          color: 'secondary',
+          backgroundColor: "#BF572B",
+          fontFamily: "Bree Serif, Serif",
+          color: "secondary",
+          padding: "5px",
         }}
         position="relative"
       >

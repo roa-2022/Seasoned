@@ -48,7 +48,7 @@ export default function AppPagination({ setProducts }) {
       justifyContent={'center'}
       alignItems="center"
       display={'flex'}
-      sx={{ margin: '20px 0px' }}
+      sx={{ margin: '40px 0px' }}
     >
       <Pagination
         color="primary"
