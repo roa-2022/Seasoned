@@ -31,7 +31,10 @@ export default function Recipe() {
     return word === 'Vegan' || word === 'Vegetarian' || word === 'Gluten-Free'
   })
 
-  useEffect(() => dispatch(fetchRecipes(ingredient)), [])
+   useEffect(
+     () => recipes.length === 0 && dispatch(fetchRecipes(ingredient)),
+     []
+   )
 
   const handleFavourite = async (e) => {
     const favourite = { label: label, url: url }
