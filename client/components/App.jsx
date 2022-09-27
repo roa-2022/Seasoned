@@ -7,6 +7,7 @@ import SearchRecipe from './SearchRecipe'
 
 import Nav from './Nav'
 import Register from './Register'
+import Favourites from './Favourites'
 import Footer from './Footer'
 import Header from './Header'
 
@@ -49,6 +50,7 @@ function App() {
           <Route path="/" element={<SearchRecipe />} />
           <Route path="/register" element={<Register />} />
           <Route path="/recipes/:id" element={<Recipe />} />
+          <Route path="/favourites" element={<Favourites />} />
         </Routes>
         {/* <Footer /> */}
       </ThemeProvider>

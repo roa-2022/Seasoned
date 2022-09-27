@@ -1,10 +1,22 @@
 import { getRecipes } from '../apis/recipes'
 import { getProduce, getAvailableProduct } from '../apis/produce'
+import {
+  postFavourite,
+  getUserFavourites,
+  patchFavourite,
+  removeFavourite,
+} from '../apis/favourites'
 
 export const DISPLAY_RECIPES = 'DISPLAY_RECIPES'
 export const SELECT_DIETARY = 'SELECT_DIETARY'
 export const REMOVE_DIETARY = 'REMOVE_DIETARY'
 export const DISPLAY_PRODUCT = 'DISPLAY_PRODUCT'
+
+export const SHOW_FAVOURITES = 'SHOW_FAVOURITES'
+export const SAVE_FAVOURITE = 'SAVE_FAVOURITE'
+export const DEL_FAVOURITE = 'DEL_FAVOURITE'
+
+export const SET_PRODUCE = 'SET_PRODUCE'
 
 export const LOADING = 'LOADING'
 export const STOP_LOADING = 'STOP_LOADING'
@@ -19,7 +31,7 @@ export function displayAvailableProducts(product) {
 export function fetchSeason(season) {
   return async (dispatch) => {
     try {
-      const product = await getAvailableProduct(season)      
+      const product = await getAvailableProduct(season)
       dispatch(displayAvailableProducts(product))
     } catch (err) {
       console.log('fetchSeason - ' + err)
@@ -75,8 +87,6 @@ export function fetchRecipes(userInput) {
   }
 }
 
-export const SET_PRODUCE = 'SET_PRODUCE'
-
 export function setProduce(produce) {
   return {
     type: SET_PRODUCE,
@@ -91,6 +101,47 @@ export function fetchProduce() {
       dispatch(setProduce(produce))
     } catch (err) {
       console.log('fetchProduce - ' + err)
+    }
+  }
+}
+
+export function showFavourites(favourites) {
+  return {
+    type: SHOW_FAVOURITES,
+    payload: favourites,
+  }
+}
+
+export function getFavourites(auth0_id) {
+  return async (dispatch) => {
+    try {
+      const res = await getUserFavourites(auth0_id)
+      return dispatch(showFavourites(res))
+    } catch (err) {
+      console.log('getFavourites - ', err.message)
+    }
+  }
+}
+
+export function removeFavouriteAction(id) {
+  return async (dispatch) => {
+    try {
+      const res = await removeFavourite(id)
+      return dispatch(getFavourites())
+    } catch (err) {
+      dispatch(showError(err.message))
+    }
+  }
+}
+
+export function editFavourite(id, recipe) {
+  return async (dispatch) => {
+    dispatch(editFavourites())
+    try {
+      const res = await editFavouriteApi(id, recipe)
+      return dispatch(getFavourites())
+    } catch (err) {
+      dispatch(showError(err.message))
     }
   }
 }
