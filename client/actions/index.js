@@ -1,10 +1,23 @@
 import { getRecipes } from '../apis/recipes'
 import { getProduce, getAvailableProduct } from '../apis/produce'
+import {
+  postFavourite,
+  getUserFavourites,
+  patchFavouriteDone,
+  removeFavourite,
+} from '../apis/favourites'
 
 export const DISPLAY_RECIPES = 'DISPLAY_RECIPES'
 export const SELECT_DIETARY = 'SELECT_DIETARY'
 export const REMOVE_DIETARY = 'REMOVE_DIETARY'
 export const DISPLAY_PRODUCT = 'DISPLAY_PRODUCT'
+
+export const SHOW_FAVOURITES = 'SHOW_FAVOURITES'
+export const SAVE_FAVOURITE = 'SAVE_FAVOURITE'
+export const EDIT_FAVOURITE = 'EDIT_FAVOURITE'
+export const DEL_FAVOURITE = 'DEL_FAVOURITE'
+
+export const SET_PRODUCE = 'SET_PRODUCE'
 
 export const LOADING = 'LOADING'
 export const STOP_LOADING = 'STOP_LOADING'
@@ -84,8 +97,6 @@ export function fetchRecipes(ingredient) {
   }
 }
 
-export const SET_PRODUCE = 'SET_PRODUCE'
-
 export function setProduce(produce) {
   return {
     type: SET_PRODUCE,
@@ -100,6 +111,54 @@ export function fetchProduce() {
       dispatch(setProduce(produce))
     } catch (err) {
       console.log('fetchProduce - ' + err)
+    }
+  }
+}
+
+export function showFavourites(favourites) {
+  return {
+    type: SHOW_FAVOURITES,
+    payload: favourites,
+  }
+}
+
+export function getFavourites(auth0_id) {
+  return async (dispatch) => {
+    try {
+      const res = await getUserFavourites(auth0_id)
+      return dispatch(showFavourites(res))
+    } catch (err) {
+      console.log('getFavourites - ', err.message)
+    }
+  }
+}
+
+export function removeFavouriteAction(id, auth0_id) {
+  return async (dispatch) => {
+    try {
+      removeFavourite(id)
+      return dispatch(getFavourites(auth0_id))
+    } catch (err) {
+      console.log('removeFavouriteAction - ', err.message)
+    }
+  }
+}
+
+export function changeFavourite(id) {
+  return {
+    type: EDIT_FAVOURITE,
+    payload: id,
+  }
+}
+
+export function editFavourite(id, recipeObj) {
+  changeFavourite(id)
+  return async (dispatch) => {
+    try {
+      const res = await patchFavouriteDone(id, recipeObj)
+      return dispatch(changeFavourite(id))
+    } catch (err) {
+      console.log('editFavourite - ', err.message)
     }
   }
 }

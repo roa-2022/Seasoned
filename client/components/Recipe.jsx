@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { useParams } from 'react-router-dom'
@@ -9,6 +9,7 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import { pink } from '@mui/material/colors'
 import { Typography } from '@mui/material'
+import { postFavouriteProduct } from '../apis/produce'
 
 import { fetchRecipes } from '../actions'
 
@@ -17,7 +18,17 @@ export default function Recipe() {
   const loading = useSelector((state) => state.loading)
   const dispatch = useDispatch()
   const recipes = useSelector((state) => state.recipes)
+  const user = useSelector((state) => state.loggedInUser)
   const recipe = recipes[id]
+  const [checked, setChecked] = useState(false)
+
+  const handleFavorite = async (e) => {
+    setChecked(e.target.checked)
+    await postFavouriteProduct(
+      { label: recipe.label, url: recipe.uri },
+      user.auth0_id
+    )
+  }
 
   const { label, image, ingredients, healthLabels, url } = recipe
     ? recipe.recipe
@@ -46,6 +57,8 @@ export default function Recipe() {
             <FormControlLabel
               control={
                 <Checkbox
+                  checked={checked}
+                  onChange={handleFavorite}
                   icon={<FavoriteBorder />}
                   checkedIcon={<Favorite />}
                   sx={{

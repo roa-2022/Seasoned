@@ -1,15 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link as RouterLink } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
-
 import {
+  Link,
   AppBar,
   Avatar,
   Button,
@@ -18,6 +14,10 @@ import {
   Box,
   Toolbar,
 } from '@mui/material'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 function Nav() {
   const user = useSelector((state) => state.loggedInUser)
@@ -46,10 +46,10 @@ function Nav() {
       <CssBaseline />
       <AppBar
         sx={{
-          backgroundColor: "#BF572B",
-          fontFamily: "Bree Serif, Serif",
-          color: "secondary",
-          padding: "5px",
+          backgroundColor: '#BF572B',
+          fontFamily: 'Bree Serif, Serif',
+          color: 'secondary',
+          padding: '5px',
         }}
         position="relative"
       >
@@ -68,6 +68,9 @@ function Nav() {
             <Grid item>
               <div>
                 <IfAuthenticated>
+                  <Link variant="body2" component={RouterLink} to="/favourites">
+                    Favourites
+                  </Link>
                   <Button
                     sx={{ width: 30, height: 30 }}
                     startIcon={
