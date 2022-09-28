@@ -51,9 +51,9 @@ describe('GET /api/v1/available', () => {
   })
 })
 
-// TEST readAllAvailability function
+// TEST readOneAvailability function
 describe('GET /api/v1/available/1', () => {
-  test('returns the correct specific recipe', () => {
+  test('returns the correct specific available product for that month', () => {
     const fakeResult = {
       id: 1,
       name: 'apple',
@@ -104,7 +104,7 @@ describe('GET /api/v1/available/1', () => {
 
 // TEST createAvailability function
 describe('POST /api/v1/available', () => {
-  test('returns the recently created recipe', () => {
+  test('returns the recently created available product for specific month', () => {
     const fakeProduce = { month: 1, produce_id: 2 }
 
     const fakeResult = { id: 317, month: 1, produce_id: 2 }
