@@ -26,27 +26,23 @@ function Favourites() {
       <Table aria-label="Favourites table">
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Link</TableCell>
-            <TableCell align="right">Done</TableCell>
-            {/* <TableCell align="right">Rating</TableCell> */}
-            <TableCell align="right">Delete</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell>Link</TableCell>
+            <TableCell>Done</TableCell>
+            {/* <TableCell>Rating</TableCell> */}
+            <TableCell>Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {favourites?.map((favourite) => (
             <TableRow key={favourite.id}>
-              <TableCell component="th" scope="row">
-                {favourite.id}
-              </TableCell>
-              <TableCell align="right">{favourite.label}</TableCell>
-              <TableCell align="right">
+              <TableCell>{favourite.label}</TableCell>
+              <TableCell>
                 <Link target="_blank" href={favourite.url} rel="noreferrer">
                   {favourite.url}
                 </Link>
               </TableCell>
-              <TableCell align="right">
+              <TableCell>
                 <input
                   type="checkbox"
                   checked={favourite.done}
@@ -60,8 +56,8 @@ function Favourites() {
                   }
                 />
               </TableCell>
-              {/* <TableCell align="right">{favourite.rating}</TableCell> */}
-              <TableCell align="right">
+              {/* <TableCell>{favourite.rating}</TableCell> */}
+              <TableCell>
                 <button
                   onClick={() =>
                     dispatch(removeFavouriteAction(favourite.id, user.auth0_id))
