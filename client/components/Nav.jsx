@@ -54,7 +54,7 @@ function Nav() {
         position="relative"
       >
         <Toolbar>
-          <Grid container justifyContent="flex-start">
+          <Grid container width="0">
             <Button
               color="inherit"
               variant="h5"
@@ -66,8 +66,11 @@ function Nav() {
           </Grid>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <div>
-                <IfAuthenticated>
+                <IfAuthenticated sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center"
+                }}>
                   <Button
                     variant="body2"
                     component={RouterLink}
@@ -100,7 +103,6 @@ function Nav() {
                     Sign In
                   </Button>
                 </IfNotAuthenticated>
-              </div>
             </Grid>
           </Grid>
         </Toolbar>
