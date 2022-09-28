@@ -12,7 +12,6 @@ import { Box, List, ListItem, Typography, Button } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSeedling, faBook } from '@fortawesome/free-solid-svg-icons'
 import { postFavouriteProduct } from '../apis/produce'
-
 import { fetchRecipes } from '../actions'
 
 export default function Recipe() {
@@ -32,7 +31,10 @@ export default function Recipe() {
     return word === 'Vegan' || word === 'Vegetarian' || word === 'Gluten-Free'
   })
 
-  useEffect(() => dispatch(fetchRecipes(ingredient)), [])
+   useEffect(
+     () => recipes.length === 0 && dispatch(fetchRecipes(ingredient)),
+     []
+   )
 
   const handleFavourite = async (e) => {
     const favourite = { label: label, url: url }
@@ -55,11 +57,11 @@ export default function Recipe() {
             sx={{
               margin: '0px auto',
               width: {
-                xs: '90%', // theme.breakpoints.up('xs')
-                sm: '90%', // theme.breakpoints.up('sm')
-                md: '75%', // theme.breakpoints.up('md')
-                lg: '50%', // theme.breakpoints.up('lg')
-                xl: '40%', // theme.breakpoints.up('xl')
+                xs: '90%',
+                sm: '90%',
+                md: '75%',
+                lg: '50%',
+                xl: '40%',
               },
             }}
           >
@@ -100,11 +102,11 @@ export default function Recipe() {
         sx={{
           margin: '0px auto',
           width: {
-            xs: '90%', // theme.breakpoints.up('xs')
-            sm: '90%', // theme.breakpoints.up('sm')
-            md: '75%', // theme.breakpoints.up('md')
-            lg: '50%', // theme.breakpoints.up('lg')
-            xl: '40%', // theme.breakpoints.up('xl')
+            xs: '90%',
+            sm: '90%',
+            md: '75%',
+            lg: '50%',
+            xl: '40%',
           },
         }}
       >

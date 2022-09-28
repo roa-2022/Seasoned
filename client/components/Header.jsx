@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Link } from '@mui/material'
+import { Link, Box } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
