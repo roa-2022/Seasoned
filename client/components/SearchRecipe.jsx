@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+<<<<<<< HEAD
 import {
   Autocomplete,
   Box,
@@ -19,15 +20,28 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import Toggle from '@mui/material/ToggleButton'
 import { FilterAlt, FilterAltOff } from '@mui/icons-material'
+=======
+import { fetchRecipes, fetchSeason } from '../actions'
+>>>>>>> 75a21d9b825bd9a9a702e8913e0faea4fc037907
 
 import Recipes from './Recipes'
 import SeasonalProduct from './SeasonalProduct'
+
+import { FilterAlt, FilterAltOff } from '@mui/icons-material'
+import SearchIcon from '@mui/icons-material/Search'
 import {
-  // dietarySelect,
-  // dietaryRemove,
-  fetchRecipes,
-  fetchSeason,
-} from '../actions'
+  Box,
+  TextField,
+  IconButton,
+  InputAdornment,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  MenuItem,
+  FormControl,
+  ToggleButton,
+  Typography,
+} from '@mui/material'
 
 export default function SearchRecipe() {
   const dispatch = useDispatch()
@@ -58,7 +72,7 @@ export default function SearchRecipe() {
     for (const key in dietaryForm) {
       if (dietaryForm[key]) {
         dietary += `&health=${key}`
-        dietaryForm[key] = false
+        // dietaryForm[key] = false
       }
     }
 
@@ -66,12 +80,12 @@ export default function SearchRecipe() {
     for (const key in mealType) {
       if (mealType[key]) {
         meal += `&mealType=${key}`
-        mealType[key] = false
+        // mealType[key] = false
       }
     }
 
-    dispatch(fetchRecipes(ingredient.join('&q=') + dietary + meal))
-    e.target.reset()
+    dispatch(fetchRecipes(ingredient + dietary + meal))
+    // e.target.reset()
   }
 
   const handleSeason = (e) => {
@@ -81,36 +95,89 @@ export default function SearchRecipe() {
 
   return (
     <Box>
-      <form onSubmit={handleSearch}>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'row',
-            justifyContent: 'center',
-          }}
-        >
-          <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <FormControl>
-              <InputLabel id="season-label">Season</InputLabel>
-              <Select
-                defaultValue={season}
-                id="season"
-                labelId="season-label"
-                justifycontent="flex-end"
-                onChange={handleSeason}
-                value={season}
-                variant="outlined"
-                label="Season"
-                size="small"
-                autoWidth
+      <Typography
+        variant="body2"
+        sx={{
+          fontWeight: '200',
+          textAlign: 'center',
+          paddingBottom: '5px',
+        }}
+      >
+        Search ingredients in season to find delicious recipes!
+      </Typography>
+      <Box marginBottom="30px">
+        <form onSubmit={handleSearch}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              width: '95%',
+              margin: '0 auto',
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+              <FormControl
+                sx={{
+                  m: 0.5,
+                  width: '12ch',
+                }}
               >
-                <MenuItem value="summer">Summer</MenuItem>
-                <MenuItem value="autumn">Autumn</MenuItem>
-                <MenuItem value="winter">Winter</MenuItem>
-                <MenuItem value="spring">Spring</MenuItem>
-              </Select>
-            </FormControl>
+                <TextField
+                  select
+                  id="season-label"
+                  label="Season"
+                  size="small"
+                  value={season}
+                  onChange={handleSeason}
+                >
+                  <MenuItem value="summer">Summer</MenuItem>
+                  <MenuItem value="autumn">Autumn</MenuItem>
+                  <MenuItem value="winter">Winter</MenuItem>
+                  <MenuItem value="spring">Spring</MenuItem>
+                </TextField>
+              </FormControl>
+            </Box>
+            <TextField
+              justifycontent="flex-end"
+              onChange={(e) => {
+                setIngredient(e.target.value)
+              }}
+              label="Search"
+              variant="outlined"
+              color="primary"
+              placeholder="e.g potato"
+              size="small"
+              sx={{ m: 0.5, width: '25ch' }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      type="submit"
+                      aria-label="search"
+                      sx={{ p: '' }}
+                    >
+                      <SearchIcon />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <ToggleButton
+              sx={{
+                alignSelf: 'center',
+                m: 0.5,
+              }}
+              size="small"
+              value="filters"
+              name="filters"
+              aria-label="search filters"
+              selected={toggleFilters}
+              onChange={() => setToggleFilters(!toggleFilters)}
+            >
+              {toggleFilters ? <FilterAltOff /> : <FilterAlt />}
+            </ToggleButton>
           </Box>
           <Autocomplete
             multiple

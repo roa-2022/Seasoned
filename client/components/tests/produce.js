@@ -3,6 +3,8 @@
 // import nock from 'nock'
 // import { getProduce } from '../../apis/produce'
 
+// Mocking a test to our internal DB
+
 // test('getProduce', () => {
 //   const mockApple = [
 //     {

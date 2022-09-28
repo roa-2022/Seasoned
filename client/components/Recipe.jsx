@@ -8,11 +8,10 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import { pink } from '@mui/material/colors'
 import { OpenInNew } from '@mui/icons-material'
-import { Box, List, Link, ListItem, Typography, Button } from '@mui/material'
+import { Box, List, ListItem, Typography, Button } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSeedling, faBook } from '@fortawesome/free-solid-svg-icons'
 import { postFavouriteProduct } from '../apis/produce'
-
 import { fetchRecipes } from '../actions'
 
 export default function Recipe() {
@@ -32,7 +31,10 @@ export default function Recipe() {
     return word === 'Vegan' || word === 'Vegetarian' || word === 'Gluten-Free'
   })
 
-  useEffect(() => dispatch(fetchRecipes(ingredient)), [])
+   useEffect(
+     () => recipes.length === 0 && dispatch(fetchRecipes(ingredient)),
+     []
+   )
 
   const handleFavourite = async (e) => {
     const favourite = { label: label, url: url }
@@ -55,11 +57,11 @@ export default function Recipe() {
             sx={{
               margin: '0px auto',
               width: {
-                xs: '90%', // theme.breakpoints.up('xs')
-                sm: 200, // theme.breakpoints.up('sm')
-                md: 300, // theme.breakpoints.up('md')
-                lg: 400, // theme.breakpoints.up('lg')
-                xl: 500, // theme.breakpoints.up('xl')
+                xs: '90%',
+                sm: '90%',
+                md: '75%',
+                lg: '50%',
+                xl: '40%',
               },
             }}
           >
@@ -100,11 +102,11 @@ export default function Recipe() {
         sx={{
           margin: '0px auto',
           width: {
-            xs: '90%', // theme.breakpoints.up('xs')
-            sm: 200, // theme.breakpoints.up('sm')
-            md: 300, // theme.breakpoints.up('md')
-            lg: 400, // theme.breakpoints.up('lg')
-            xl: 500, // theme.breakpoints.up('xl')
+            xs: '90%',
+            sm: '90%',
+            md: '75%',
+            lg: '50%',
+            xl: '40%',
           },
         }}
       >
@@ -129,12 +131,17 @@ export default function Recipe() {
               </Typography>
               <Box>
                 <Button
-                  variant="body1"
-                  startIcon={<OpenInNew />}
+                sx={{
+                  textAlign: "center",
+                  marginTop: "30px",
+                  bgcolor: "primary",
+                  padding: "8px 16px"
+                }}
+                  variant="outlined"
+                  endIcon={<OpenInNew />}
                   target="_blank"
                   href={url}
                   rel="noreferrer"
-                  color="#3F6C51"
                   aria-label="Open recipe in new tab"
                 >
                   Recipe here!

@@ -1,15 +1,19 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TableRow from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
-
 import { getFavourites, removeFavouriteAction, editFavourite } from '../actions'
+import DeleteIcon from '@mui/icons-material/Delete'
+import {
+  Link,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Checkbox,
+  Typography,
+} from '@mui/material'
 
 function Favourites() {
   const favourites = useSelector((state) => state.favourites)
@@ -21,30 +25,60 @@ function Favourites() {
   }, [])
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer
+      component={Paper}
+      sx={{
+        margin: '0 auto',
+        width: {
+          xs: '90%',
+          sm: '90%',
+          md: '75%',
+          lg: '50%',
+          xl: '40%',
+        },
+      }}
+    >
       <Table aria-label="Favourites table">
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Link</TableCell>
-            <TableCell align="right">Done</TableCell>
-            {/* <TableCell align="right">Rating</TableCell> */}
-            <TableCell align="right">Delete</TableCell>
+            <TableCell width="33%" align="center" vertical-align="top">
+              <Typography variant="h5" color="inherit" gutterBottom>
+                Name
+              </Typography>
+            </TableCell>
+            <TableCell width="33%" variant="h1" align="center" color="inherit">
+              <Typography variant="h5" color="inherit" gutterBottom>
+                Done
+              </Typography>
+            </TableCell>
+            <TableCell width="33%" variant="h1" align="center" color="inherit">
+              <Typography variant="h5" color="inherit" gutterBottom>
+                Delete
+              </Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {favourites?.map((favourite) => (
             <TableRow key={favourite.id}>
-              <TableCell component="th" scope="row">
-                {favourite.id}
+              <TableCell align="center">
+                <Link
+                  variant="body3"
+                  color="inherit"
+                  textAlign="center"
+                  target="_blank"
+                  href={favourite.url}
+                  rel="noreferrer"
+                  underline="hover"
+                >
+                  {favourite.label}
+                </Link>
               </TableCell>
-              <TableCell align="right">{favourite.label}</TableCell>
-              <TableCell align="right">{favourite.url}</TableCell>
-              <TableCell align="right">
-                <input
-                  type="checkbox"
-                  checked={favourite.done}
+
+              <TableCell align="center">
+                <Checkbox
+                  size="large"
+                  checked={Boolean(favourite.done)}
                   onChange={() =>
                     dispatch(
                       editFavourite(favourite.id, {
@@ -55,15 +89,15 @@ function Favourites() {
                   }
                 />
               </TableCell>
-              {/* <TableCell align="right">{favourite.rating}</TableCell> */}
-              <TableCell align="right">
-                <button
+              {/* <TableCell>{favourite.rating}</TableCell> */}
+              <TableCell align="center">
+                <DeleteIcon
+                  size="large"
+                  underline="hover"
                   onClick={() =>
                     dispatch(removeFavouriteAction(favourite.id, user.auth0_id))
                   }
-                >
-                  Delete
-                </button>
+                ></DeleteIcon>
               </TableCell>
             </TableRow>
           ))}
