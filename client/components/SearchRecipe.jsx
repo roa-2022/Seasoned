@@ -12,10 +12,7 @@ import { FilterAlt, FilterAltOff } from '@mui/icons-material'
 
 import Recipes from './Recipes'
 import SeasonalProduct from './SeasonalProduct'
-import {
-  fetchRecipes,
-  fetchSeason,
-} from '../actions'
+import { fetchRecipes, fetchSeason } from '../actions'
 
 export default function SearchRecipe() {
   const dispatch = useDispatch()
@@ -73,8 +70,8 @@ export default function SearchRecipe() {
             alignItems: 'flex-end',
             flexDirection: 'row',
             justifyContent: 'center',
-            width: "95%",
-            margin: "0 auto"
+            width: '95%',
+            margin: '0 auto',
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -82,7 +79,8 @@ export default function SearchRecipe() {
               sx={{
                 m: 0.5,
                 width: '12ch',
-              }}>
+              }}
+            >
               <TextField
                 select
                 defaultValue="summer"
@@ -122,7 +120,7 @@ export default function SearchRecipe() {
           />
           <ToggleButton
             sx={{
-              alignSelf: "center",
+              alignSelf: 'center',
               m: 0.5,
             }}
             size="small"
