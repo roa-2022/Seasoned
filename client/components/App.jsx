@@ -42,6 +42,8 @@ function App() {
     }
   }, [isAuthenticated])
 
+  // ---------- Show products of current season based on current month when loading ---------- //
+
   useEffect(() => {
     dispatch(fetchSeason(currentSeason()))
   }, [])

@@ -9,7 +9,7 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
-import Toggle from '@mui/material/ToggleButton'
+import ToggleButton from '@mui/material/ToggleButton'
 import { FilterAlt, FilterAltOff } from '@mui/icons-material'
 
 import Recipes from './Recipes'
@@ -101,6 +101,7 @@ export default function SearchRecipe() {
               </Select>
             </FormControl>
           </Box>
+
           <TextField
             justifycontent="flex-end"
             onChange={(e) => {
@@ -122,7 +123,11 @@ export default function SearchRecipe() {
               ),
             }}
           />
-          <Toggle
+          <ToggleButton
+            sx={{
+              alignSelf: 'center',
+            }}
+            size="small"
             value="filters"
             name="filters"
             aria-label="search filters"
@@ -130,7 +135,7 @@ export default function SearchRecipe() {
             onChange={() => setToggleFilters(!toggleFilters)}
           >
             {toggleFilters ? <FilterAltOff /> : <FilterAlt />}
-          </Toggle>
+          </ToggleButton>
         </Box>
       </form>
 
