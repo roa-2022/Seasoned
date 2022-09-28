@@ -60,6 +60,7 @@ function Nav() {
               variant="h5"
               sx={{ fontSize: '24px' }}
               onClick={handleHome}
+              aria-label="home"
             >
               <FontAwesomeIcon icon={faHouse} />
             </Button>
@@ -73,6 +74,7 @@ function Nav() {
                     component={RouterLink}
                     to="/favourites"
                     startIcon={<FavoriteIcon color={'white'} />}
+                    aria-label="favourites"
                   >
                     Favourites
                   </Button>
@@ -86,6 +88,7 @@ function Nav() {
                       />
                     }
                     color="inherit"
+                    aria-label="log out"
                     onClick={handleLogOff}
                   >
                     Log off
@@ -96,6 +99,7 @@ function Nav() {
                     startIcon={<AccountCircleIcon />}
                     color="inherit"
                     onClick={handleSignIn}
+                    aria-label="login"
                   >
                     Sign In
                   </Button>
