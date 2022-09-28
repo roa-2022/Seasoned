@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Box, TextField, IconButton, InputAdornment } from '@mui/material'
+import {
+  Autocomplete,
+  Box,
+  Chip,
+  TextField,
+  IconButton,
+  InputAdornment,
+  Button,
+} from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -39,6 +47,9 @@ export default function SearchRecipe() {
     dinner: false,
     snack: false,
   })
+  const seasonalProduce = useSelector((state) => state.seasonalProduct).map(
+    (produce) => produce.name
+  )
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -59,7 +70,7 @@ export default function SearchRecipe() {
       }
     }
 
-    dispatch(fetchRecipes(ingredient + dietary + meal))
+    dispatch(fetchRecipes(ingredient.join('&q=') + dietary + meal))
     e.target.reset()
   }
 
@@ -74,7 +85,7 @@ export default function SearchRecipe() {
         <Box
           sx={{
             display: 'flex',
-            alignItems: 'flex-end',
+            alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'center',
           }}
@@ -92,7 +103,7 @@ export default function SearchRecipe() {
                 variant="outlined"
                 label="Season"
                 size="small"
-                sx={{ m: 1, width: '12ch' }}
+                sx={{ width: '12ch' }}
               >
                 <MenuItem value="summer">Summer</MenuItem>
                 <MenuItem value="autumn">Autumn</MenuItem>
@@ -101,36 +112,54 @@ export default function SearchRecipe() {
               </Select>
             </FormControl>
           </Box>
-          <TextField
+          <Autocomplete
+            multiple
             justifycontent="flex-end"
-            onChange={(e) => {
-              setIngredient(e.target.value)
+            options={seasonalProduce}
+            freeSolo
+            onChange={(event, newValue) => {
+              setIngredient(newValue)
             }}
-            label="Search"
-            variant="outlined"
-            color="primary"
-            placeholder="Find a recipe"
-            size="small"
-            sx={{ m: 1, width: '25ch' }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton type="submit" aria-label="search" sx={{ p: '' }}>
-                    <SearchIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
+            onInputChange={(event, newInputValue) => {
+              setIngredient(newInputValue)
             }}
+            limitTags={2}
+            onSubmit={handleSearch}
+            renderTags={(value, getTagProps) =>
+              value.map((option, index) => (
+                <Chip
+                  key={index}
+                  size="small"
+                  variant="outlined"
+                  label={option}
+                  {...getTagProps({ index })}
+                />
+              ))
+            }
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="filled"
+                label="Find a recipe"
+                placeholder="Ingredients"
+                sx={{ m: 1, width: '30ch' }}
+              />
+            )}
           />
-          <Toggle
-            value="filters"
-            name="filters"
-            aria-label="search filters"
-            selected={toggleFilters}
-            onChange={() => setToggleFilters(!toggleFilters)}
-          >
-            {toggleFilters ? <FilterAltOff /> : <FilterAlt />}
-          </Toggle>
+          <FormGroup row>
+            <Toggle
+              value="filters"
+              name="filters"
+              aria-label="search filters"
+              selected={toggleFilters}
+              onChange={() => setToggleFilters(!toggleFilters)}
+            >
+              {toggleFilters ? <FilterAltOff /> : <FilterAlt />}
+            </Toggle>
+            <Button type="submit" aria-label="search">
+              <SearchIcon />
+            </Button>
+          </FormGroup>
         </Box>
       </form>
 
