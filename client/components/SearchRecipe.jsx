@@ -14,12 +14,7 @@ import { FilterAlt, FilterAltOff } from '@mui/icons-material'
 
 import Recipes from './Recipes'
 import SeasonalProduct from './SeasonalProduct'
-import {
-  // dietarySelect,
-  // dietaryRemove,
-  fetchRecipes,
-  fetchSeason,
-} from '../actions'
+import { fetchRecipes, fetchSeason } from '../actions'
 
 export default function SearchRecipe() {
   const dispatch = useDispatch()
