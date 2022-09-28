@@ -32,7 +32,7 @@ export default function Recipes() {
   return (
     <div>
       <CssBaseline />
-      <Container sx={{ py: 2 }} maxWidth="md">
+      <Container sx={{ py: 0.5 }} maxWidth="md">
         <Grid container spacing={4}>
           {shortlistedRecipe
             ? shortlistedRecipe.map((recipe, idx) => {

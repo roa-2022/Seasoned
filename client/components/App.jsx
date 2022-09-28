@@ -42,29 +42,23 @@ function App() {
     }
   }, [isAuthenticated])
 
+  // ---------- Show products of current season based on current month when loading ---------- //
+
   useEffect(() => {
     dispatch(fetchSeason(currentSeason()))
   }, [])
-  
-  const month = new Date().getMonth() + 1
-  const currentSeason = function() {
-    switch (month) {
-      case 12:
-      case 1:
-      case 2:
-        return 'summer'
-      case 3:
-      case 4:
-      case 5:
-        return 'autumn'
-      case 6:
-      case 7:
-      case 8:
-        return 'winter'
-      case 9:
-      case 10:
-      case 11:
+
+  const currentSeason = () => {
+    const currentMonth = new Date().getMonth() + 1
+    switch (currentMonth) {
+      case 9 || 10 || 11:
         return 'spring'
+      case 12 || 1 || 2:
+        return 'summer'
+      case 3 || 4 || 5:
+        return 'autumn'
+      case 6 || 7 || 8:
+        return 'winter'
     }
   }
 
@@ -73,7 +67,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Nav />
         <Header />
-        <div style={{ marginBottom: 40 }}>
+        <div style={{ minHeight: "calc(85vh - 180px)" }}>
           <Routes>
             <Route path="/" element={<SearchRecipe />} />
             <Route path="/register" element={<Register />} />

@@ -8,6 +8,8 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
+import DeleteIcon from '@mui/icons-material/Delete'
+import { Link } from '@mui/material'
 
 import { getFavourites, removeFavouriteAction, editFavourite } from '../actions'
 
@@ -25,23 +27,28 @@ function Favourites() {
       <Table aria-label="Favourites table">
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Link</TableCell>
-            <TableCell align="right">Done</TableCell>
-            {/* <TableCell align="right">Rating</TableCell> */}
-            <TableCell align="right">Delete</TableCell>
+            <TableCell variant="h6">Name</TableCell>
+            <TableCell variant="h6">Link</TableCell>
+            <TableCell variant="h6">Done</TableCell>
+            {/* <TableCell>Rating</TableCell> */}
+            <TableCell>Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {favourites?.map((favourite) => (
             <TableRow key={favourite.id}>
-              <TableCell component="th" scope="row">
-                {favourite.id}
+              <TableCell>{favourite.label}</TableCell>
+              <TableCell>
+                <Link
+                  target="_blank"
+                  href={favourite.url}
+                  rel="noreferrer"
+                  underline="hover"
+                >
+                  {favourite.url}
+                </Link>
               </TableCell>
-              <TableCell align="right">{favourite.label}</TableCell>
-              <TableCell align="right">{favourite.url}</TableCell>
-              <TableCell align="right">
+              <TableCell>
                 <input
                   type="checkbox"
                   checked={favourite.done}
@@ -55,15 +62,14 @@ function Favourites() {
                   }
                 />
               </TableCell>
-              {/* <TableCell align="right">{favourite.rating}</TableCell> */}
-              <TableCell align="right">
-                <button
+              {/* <TableCell>{favourite.rating}</TableCell> */}
+              <TableCell>
+                <DeleteIcon
                   onClick={() =>
                     dispatch(removeFavouriteAction(favourite.id, user.auth0_id))
                   }
-                >
-                  Delete
-                </button>
+                  underline="hover"
+                ></DeleteIcon>
               </TableCell>
             </TableRow>
           ))}
