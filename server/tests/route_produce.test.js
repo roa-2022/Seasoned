@@ -32,6 +32,15 @@ describe('GET /api/v1/produce', () => {
       },
     ]
 
+    const expected = {
+      id: 2,
+      name: 'apricot',
+      display_name: 'Apricot/Aperekoti',
+      type: 'fruit',
+      image_url:
+        'https://www.5aday.co.nz/media/14967/apricot.jpg?&width=800&height=400&anchor=top&mode=crop',
+    }
+
     db.readProduce.mockImplementation(() => {
       return Promise.resolve(fakeResult)
     })
@@ -43,15 +52,6 @@ describe('GET /api/v1/produce', () => {
 
         expect(resp.body).not.toEqual({})
         expect(resp.body).toHaveLength(2)
-
-        const expected = {
-          id: 2,
-          name: 'apricot',
-          display_name: 'Apricot/Aperekoti',
-          type: 'fruit',
-          image_url:
-            'https://www.5aday.co.nz/media/14967/apricot.jpg?&width=800&height=400&anchor=top&mode=crop',
-        }
 
         expect(resp.body[1]).toEqual(expected)
       })
@@ -127,7 +127,7 @@ describe('GET /api/v1/produce/1', () => {
 // TEST createProduce function
 describe('POST /api/v1/produce', () => {
   test('returns the recently created recipe', () => {
-    const fakeResult = {
+    const fakeProduce = {
       name: 'apple',
       display_name: 'Apple/Āporo',
       type: 'fruit',
@@ -135,32 +135,36 @@ describe('POST /api/v1/produce', () => {
         'https://www.5aday.co.nz/media/73967/imagegen.jpg?&width=800&height=400&anchor=top&mode=crop',
     }
 
-    const expected = '1'
-    // {
-    // id: 1,
-    // name: 'apple',
-    // display_name: 'Apple/Āporo',
-    // type: 'fruit',
-    // image_url:
-    //   'https://www.5aday.co.nz/media/73967/imagegen.jpg?&width=800&height=400&anchor=top&mode=crop',
-    // }
+    const fakeResult = {
+      id: 92,
+      name: 'apple',
+      display_name: 'Apple/Āporo',
+      type: 'fruit',
+      image_url:
+        'https://www.5aday.co.nz/media/73967/imagegen.jpg?&width=800&height=400&anchor=top&mode=crop',
+    }
 
     db.createProduce.mockImplementation(() => {
+      return Promise.resolve('92')
+    })
+
+    db.readOneProduce.mockImplementation(() => {
       return Promise.resolve(fakeResult)
     })
 
     return request(server)
       .post('/api/v1/produce')
+      .send(fakeProduce)
       .then((req) => {
-        expect(db.createProduce).toHaveBeenCalled()
+        expect(db.createProduce).toHaveBeenCalledWith(fakeProduce)
 
-        expect(req.body).not.toEqual(null)
-        expect(req.body).toContain(fakeResult)
+        expect(req.body).not.toEqual({})
+        expect(req.body).toEqual(fakeResult)
       })
   })
 
   it('throws an appropriate error if the db promise is rejected', () => {
-    db.readOneProduce.mockImplementation(() => {
+    db.createProduce.mockImplementation(() => {
       return Promise.reject(new Error('Produce Database Error'))
     })
 

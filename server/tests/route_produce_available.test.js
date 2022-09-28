@@ -1,71 +1,49 @@
 const request = require('supertest')
 const server = require('../server')
-const db = require('../db/produce')
+const db = require('../db/produce_available_months')
 
-jest.mock('../db/produce', () => {
+jest.mock('../db/produce_available_months', () => {
   return {
-    readProduce: jest.fn(),
-    readOneProduce: jest.fn(),
-    createProduce: jest.fn(),
+    readAllAvailable: jest.fn(),
+    readOneAvailability: jest.fn(),
+    createAvailability: jest.fn(),
   }
 })
 
-// TEST readProduce function
-describe('GET /api/v1/produce', () => {
-  test('return all the products if the db promise resolves', () => {
+// TEST readAvailable function
+describe('GET /api/v1/available', () => {
+  test('return all the available products if the db promise resolves', () => {
     const fakeResult = [
-      {
-        id: 1,
-        name: 'apple',
-        display_name: 'Apple/Āporo',
-        type: 'fruit',
-        image_url:
-          'https://www.5aday.co.nz/media/73967/imagegen.jpg?&width=800&height=400&anchor=top&mode=crop',
-      },
-      {
-        id: 2,
-        name: 'apricot',
-        display_name: 'Apricot/Aperekoti',
-        type: 'fruit',
-        image_url:
-          'https://www.5aday.co.nz/media/14967/apricot.jpg?&width=800&height=400&anchor=top&mode=crop',
-      },
+      { id: 1, month: 1, produce_id: 2 },
+      { id: 2, month: 1, produce_id: 3 },
     ]
 
-    db.readProduce.mockImplementation(() => {
+    const expected = { id: 2, month: 1, produce_id: 3 }
+
+    db.readAllAvailable.mockImplementation(() => {
       return Promise.resolve(fakeResult)
     })
 
     return request(server)
-      .get('/api/v1/produce')
+      .get('/api/v1/available')
       .then((resp) => {
-        expect(db.readProduce).toHaveBeenCalled()
+        expect(db.readAllAvailable).toHaveBeenCalled()
 
         expect(resp.body).not.toEqual({})
         expect(resp.body).toHaveLength(2)
-
-        const expected = {
-          id: 2,
-          name: 'apricot',
-          display_name: 'Apricot/Aperekoti',
-          type: 'fruit',
-          image_url:
-            'https://www.5aday.co.nz/media/14967/apricot.jpg?&width=800&height=400&anchor=top&mode=crop',
-        }
-
         expect(resp.body[1]).toEqual(expected)
       })
   })
 
   it('throws an appropriate error if the db promise is rejected', () => {
-    db.readProduce.mockImplementation(() => {
+    db.readAllAvailable.mockImplementation(() => {
       return Promise.reject(new Error('Produce Database Error'))
     })
 
     return request(server)
-      .get('/api/v1/produce')
+      .get('/api/v1/available')
       .then((resp) => {
-        expect(db.readProduce).toHaveBeenCalled()
+        expect(db.readAllAvailable).toHaveBeenCalled()
 
         expect(resp.status).toBe(500)
         expect(resp.text).toContain('Produce Database Error')
@@ -73,8 +51,8 @@ describe('GET /api/v1/produce', () => {
   })
 })
 
-// TEST readOneProduce function
-describe('GET /api/v1/produce/1', () => {
+// TEST readAllAvailability function
+describe('GET /api/v1/available/1', () => {
   test('returns the correct specific recipe', () => {
     const fakeResult = {
       id: 1,
@@ -94,14 +72,14 @@ describe('GET /api/v1/produce/1', () => {
         'https://www.5aday.co.nz/media/73967/imagegen.jpg?&width=800&height=400&anchor=top&mode=crop',
     }
 
-    db.readOneProduce.mockImplementation(() => {
+    db.readOneAvailability.mockImplementation(() => {
       return Promise.resolve(fakeResult)
     })
 
     return request(server)
-      .get('/api/v1/produce/1')
+      .get('/api/v1/available/1')
       .then((resp) => {
-        expect(db.readOneProduce).toHaveBeenCalled()
+        expect(db.readOneAvailability).toHaveBeenCalled()
 
         expect(resp.body).not.toEqual({})
         expect(resp.body).toEqual(expected)
@@ -109,14 +87,14 @@ describe('GET /api/v1/produce/1', () => {
   })
 
   it('throws an appropriate error if the db promise is rejected', () => {
-    db.readOneProduce.mockImplementation(() => {
+    db.readOneAvailability.mockImplementation(() => {
       return Promise.reject(new Error('Produce Database Error'))
     })
 
     return request(server)
-      .get('/api/v1/produce/1')
+      .get('/api/v1/available/1')
       .then((resp) => {
-        expect(db.readOneProduce).toHaveBeenCalled()
+        expect(db.readOneAvailability).toHaveBeenCalled()
 
         expect(resp.status).toBe(500)
         expect(resp.text).toContain('Produce Database Error')
@@ -124,50 +102,41 @@ describe('GET /api/v1/produce/1', () => {
   })
 })
 
-// TEST createProduce function
-describe('POST /api/v1/produce', () => {
+// TEST createAvailability function
+describe('POST /api/v1/available', () => {
   test('returns the recently created recipe', () => {
-    const fakeResult = {
-      name: 'apple',
-      display_name: 'Apple/Āporo',
-      type: 'fruit',
-      image_url:
-        'https://www.5aday.co.nz/media/73967/imagegen.jpg?&width=800&height=400&anchor=top&mode=crop',
-    }
+    const fakeProduce = { month: 1, produce_id: 2 }
 
-    const expected = '1'
-    // {
-    // id: 1,
-    // name: 'apple',
-    // display_name: 'Apple/Āporo',
-    // type: 'fruit',
-    // image_url:
-    //   'https://www.5aday.co.nz/media/73967/imagegen.jpg?&width=800&height=400&anchor=top&mode=crop',
-    // }
+    const fakeResult = { id: 317, month: 1, produce_id: 2 }
 
-    db.createProduce.mockImplementation(() => {
+    db.createAvailability.mockImplementation(() => {
+      return Promise.resolve('317')
+    })
+
+    db.readOneAvailability.mockImplementation(() => {
       return Promise.resolve(fakeResult)
     })
 
     return request(server)
-      .post('/api/v1/produce')
+      .post('/api/v1/available')
+      .send(fakeProduce)
       .then((req) => {
-        expect(db.createProduce).toHaveBeenCalled()
+        expect(db.createAvailability).toHaveBeenCalledWith(fakeProduce)
 
-        expect(req.body).not.toEqual(null)
-        expect(req.body).toContain(fakeResult)
+        expect(req.body).not.toEqual({})
+        expect(req.body).toEqual(fakeResult)
       })
   })
 
   it('throws an appropriate error if the db promise is rejected', () => {
-    db.readOneProduce.mockImplementation(() => {
+    db.createAvailability.mockImplementation(() => {
       return Promise.reject(new Error('Produce Database Error'))
     })
 
     return request(server)
-      .get('/api/v1/produce')
+      .get('/api/v1/available')
       .then((resp) => {
-        expect(db.createProduce).toHaveBeenCalled()
+        expect(db.createAvailability).toHaveBeenCalled()
 
         expect(resp.status).toBe(500)
         expect(resp.text).toContain('Produce Database Error')
