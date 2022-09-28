@@ -85,7 +85,6 @@ export default function SearchRecipe() {
               }}>
               <TextField
                 select
-                defaultValue="summer"
                 id="season-label"
                 label="Season"
                 size="small"
