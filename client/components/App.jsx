@@ -67,7 +67,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Nav />
         <Header />
-        <div style={{ minHeight: "calc(85vh - 180px)" }}>
+        <div style={{ minHeight: 'calc(85vh - 180px)' }}>
           <Routes>
             <Route path="/" element={<SearchRecipe />} />
             <Route path="/register" element={<Register />} />

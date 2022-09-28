@@ -78,7 +78,7 @@ function Favourites() {
               <TableCell align="center">
                 <Checkbox
                   size="large"
-                  checked={favourite.done}
+                  checked={Boolean(favourite.done)}
                   onChange={() =>
                     dispatch(
                       editFavourite(favourite.id, {
