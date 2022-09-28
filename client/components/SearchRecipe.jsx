@@ -5,18 +5,14 @@ import SearchIcon from '@mui/icons-material/Search'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
-import Select from '@mui/material/Select'
 import ToggleButton from '@mui/material/ToggleButton'
 import { FilterAlt, FilterAltOff } from '@mui/icons-material'
 
 import Recipes from './Recipes'
 import SeasonalProduct from './SeasonalProduct'
 import {
-  // dietarySelect,
-  // dietaryRemove,
   fetchRecipes,
   fetchSeason,
 } from '../actions'
@@ -82,27 +78,25 @@ export default function SearchRecipe() {
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <FormControl 
-            sx={{
-              m: 0.5,
-              width: '12ch',
-            }}>
-              <InputLabel margin='dense' sx={{ top: "-5px", }} id="season-label">Season</InputLabel>
-              <Select
+            <FormControl
+              sx={{
+                m: 0.5,
+                width: '12ch',
+              }}>
+              <TextField
+                select
                 defaultValue="summer"
-                id="season"
-                labelId="season-label"
-                onChange={handleSeason}
-                value={season}
-                variant="outlined"
+                id="season-label"
                 label="Season"
                 size="small"
+                value={season}
+                onChange={handleSeason}
               >
                 <MenuItem value="summer">Summer</MenuItem>
                 <MenuItem value="autumn">Autumn</MenuItem>
                 <MenuItem value="winter">Winter</MenuItem>
                 <MenuItem value="spring">Spring</MenuItem>
-              </Select>
+              </TextField>
             </FormControl>
           </Box>
           <TextField
@@ -127,10 +121,10 @@ export default function SearchRecipe() {
             }}
           />
           <ToggleButton
-          sx={{
-            alignSelf: "center",
-            m: 0.5,
-          }}
+            sx={{
+              alignSelf: "center",
+              m: 0.5,
+            }}
             size="small"
             value="filters"
             name="filters"
