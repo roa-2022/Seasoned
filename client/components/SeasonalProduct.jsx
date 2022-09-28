@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Box, Grid, Container } from '@mui/material'
-import Typography from '@mui/material/Typography'
+import { Box, Grid, Container, Typography } from '@mui/material'
 import ProductCard from './ProductCard'
 import AppPagination from './AppPagination'
 
