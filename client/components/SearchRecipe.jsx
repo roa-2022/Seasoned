@@ -77,22 +77,26 @@ export default function SearchRecipe() {
             alignItems: 'flex-end',
             flexDirection: 'row',
             justifyContent: 'center',
+            width: "95%",
+            margin: "0 auto"
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <FormControl>
-              <InputLabel id="season-label">Season</InputLabel>
+            <FormControl 
+            sx={{
+              m: 0.5,
+              width: '12ch',
+            }}>
+              <InputLabel margin='dense' sx={{ top: "-5px", }} id="season-label">Season</InputLabel>
               <Select
                 defaultValue="summer"
                 id="season"
                 labelId="season-label"
-                justifycontent="flex-end"
                 onChange={handleSeason}
                 value={season}
                 variant="outlined"
                 label="Season"
                 size="small"
-                sx={{ m: 1, width: '12ch' }}
               >
                 <MenuItem value="summer">Summer</MenuItem>
                 <MenuItem value="autumn">Autumn</MenuItem>
@@ -111,7 +115,7 @@ export default function SearchRecipe() {
             color="primary"
             placeholder="Find a recipe"
             size="small"
-            sx={{ m: 1, width: '25ch' }}
+            sx={{ m: 0.5, width: '25ch' }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -123,6 +127,11 @@ export default function SearchRecipe() {
             }}
           />
           <ToggleButton
+          sx={{
+            alignSelf: "center",
+            m: 0.5,
+          }}
+            size="small"
             value="filters"
             name="filters"
             aria-label="search filters"
