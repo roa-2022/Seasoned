@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
+import { Link } from '@mui/material'
 
 import { getFavourites, removeFavouriteAction, editFavourite } from '../actions'
 
@@ -40,7 +41,11 @@ function Favourites() {
                 {favourite.id}
               </TableCell>
               <TableCell align="right">{favourite.label}</TableCell>
-              <TableCell align="right">{favourite.url}</TableCell>
+              <TableCell align="right">
+                <Link target="_blank" href={favourite.url} rel="noreferrer">
+                  {favourite.url}
+                </Link>
+              </TableCell>
               <TableCell align="right">
                 <input
                   type="checkbox"
