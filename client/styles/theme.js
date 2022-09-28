@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles'
 
-export const theme = createTheme ({
+export const theme = createTheme({
   palette: {
     type: 'light',
     primary: {
@@ -13,8 +13,8 @@ export const theme = createTheme ({
       main: '#EFF6EE',
     },
     background: {
-      default: "white"
-    }
+      default: 'white',
+    },
   },
   typography: {
     fontSize: 14,
@@ -40,6 +40,10 @@ export const theme = createTheme ({
     body1: {
       fontFamily: 'Nobile, sans-serif',
       fontWeight: 400,
+    },
+    body2: {
+      fontFamily: 'Nobile, sans-serif',
+      fontWeight: 600,
     },
   },
   props: {
@@ -85,4 +89,4 @@ export const theme = createTheme ({
   shape: {
     borderRadius: 4,
   },
-});
+})
