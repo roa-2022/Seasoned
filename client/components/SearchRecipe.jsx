@@ -18,6 +18,7 @@ import {
   MenuItem,
   FormControl,
   ToggleButton,
+  Typography,
 } from '@mui/material'
 
 export default function SearchRecipe() {
@@ -69,6 +70,15 @@ export default function SearchRecipe() {
 
   return (
     <Box>
+      <Typography 
+      variant="body2" 
+      sx={{
+        fontWeight: "200",
+        textAlign: "center",
+        paddingBottom: "5px",
+      }}>
+        Search ingredients in season to find delicious recipes!
+      </Typography>
       <Box marginBottom="30px">
         <form onSubmit={handleSearch}>
           <Box
@@ -111,7 +121,7 @@ export default function SearchRecipe() {
               label="Search"
               variant="outlined"
               color="primary"
-              placeholder="Find a recipe"
+              placeholder="e.g potato"
               size="small"
               sx={{ m: 0.5, width: '25ch' }}
               InputProps={{
