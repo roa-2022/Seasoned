@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
+import DeleteIcon from '@mui/icons-material/Delete'
 import { Link } from '@mui/material'
 
 import { getFavourites, removeFavouriteAction, editFavourite } from '../actions'
@@ -26,9 +27,9 @@ function Favourites() {
       <Table aria-label="Favourites table">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Link</TableCell>
-            <TableCell>Done</TableCell>
+            <TableCell variant="h6">Name</TableCell>
+            <TableCell variant="h6">Link</TableCell>
+            <TableCell variant="h6">Done</TableCell>
             {/* <TableCell>Rating</TableCell> */}
             <TableCell>Delete</TableCell>
           </TableRow>
@@ -38,7 +39,12 @@ function Favourites() {
             <TableRow key={favourite.id}>
               <TableCell>{favourite.label}</TableCell>
               <TableCell>
-                <Link target="_blank" href={favourite.url} rel="noreferrer">
+                <Link
+                  target="_blank"
+                  href={favourite.url}
+                  rel="noreferrer"
+                  underline="hover"
+                >
                   {favourite.url}
                 </Link>
               </TableCell>
@@ -58,13 +64,12 @@ function Favourites() {
               </TableCell>
               {/* <TableCell>{favourite.rating}</TableCell> */}
               <TableCell>
-                <button
+                <DeleteIcon
                   onClick={() =>
                     dispatch(removeFavouriteAction(favourite.id, user.auth0_id))
                   }
-                >
-                  Delete
-                </button>
+                  underline="hover"
+                ></DeleteIcon>
               </TableCell>
             </TableRow>
           ))}
