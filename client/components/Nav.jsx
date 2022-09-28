@@ -1,18 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate, Link as RouterLink } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
-import {
-  AppBar,
-  Avatar,
-  Button,
-  CssBaseline,
-  Grid,
-  Box,
-  Toolbar,
-} from '@mui/material'
+import { AppBar, Button, CssBaseline, Grid, Box, Toolbar } from '@mui/material'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -20,7 +11,6 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 
 function Nav() {
-  const user = useSelector((state) => state.loggedInUser)
   const { logout, loginWithRedirect } = useAuth0()
   const navigate = useNavigate()
 
@@ -60,6 +50,7 @@ function Nav() {
               variant="h5"
               sx={{ fontSize: '24px' }}
               onClick={handleHome}
+              aria-label="home"
             >
               <FontAwesomeIcon icon={faHouse} />
             </Button>
@@ -76,20 +67,15 @@ function Nav() {
                     component={RouterLink}
                     to="/favourites"
                     startIcon={<FavoriteIcon color={'white'} />}
+                    aria-label="favourites"
                   >
                     Favourites
                   </Button>
                   <Button
-                    sx={{ height: 30 }}
-                    startIcon={
-                      <Avatar
-                        alt={user.username}
-                        src={user.image}
-                        sx={{ width: 30, height: 30 }}
-                      />
-                    }
+                    startIcon={<AccountCircleIcon />}
                     color="inherit"
                     onClick={handleLogOff}
+                    aria-label="log out"
                   >
                     Log off
                   </Button>
@@ -99,6 +85,7 @@ function Nav() {
                     startIcon={<AccountCircleIcon />}
                     color="inherit"
                     onClick={handleSignIn}
+                    aria-label="login"
                   >
                     Sign In
                   </Button>

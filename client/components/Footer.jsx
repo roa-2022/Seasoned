@@ -92,7 +92,7 @@ export default function Footer() {
             <Grid item xs={12} md={2.4} color="inherit">
               <Link
                 underline="hover"
-                href={gitHubLinks.zin}
+                href={gitHubLinks.tomas}
                 target="_blank"
                 color="inherit"
                 variant="body2"
