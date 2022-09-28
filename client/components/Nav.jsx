@@ -4,15 +4,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate, Link as RouterLink } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
-import {
-  AppBar,
-  Avatar,
-  Button,
-  CssBaseline,
-  Grid,
-  Box,
-  Toolbar,
-} from '@mui/material'
+import { AppBar, Button, CssBaseline, Grid, Box, Toolbar } from '@mui/material'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
