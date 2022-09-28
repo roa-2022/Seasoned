@@ -78,6 +78,7 @@ Socialize, eat together, music and honey time. (on toast)
 4. Submit a pull request to the <b>dev branch</b>.
 5. Pull request from <b>dev branch</b> into main is reviewed by the team and our wonderful volunteer reviewer.
 6. Git keeper merges reviewed pull request to <b>main branch</b>.
+7. Deployment to Heroku from main.
 
 ---
 
@@ -92,24 +93,28 @@ Socialize, eat together, music and honey time. (on toast)
 
 ---
 
-## User stories
+## Completed user stories
 
-- [ ] See what vegetables/fruits are in season.
-- [ ] Filter recipes based on the season.
-- [x] See the whole recipe after clicking on the recipe card
+- [x] See what produce is in season.
+- [x] See the whole recipe after clicking on the recipe card.
 - [x] Search recipe according to vege and/or fruits.
+- [x] Able to navigate around the app seamlessly.
+- [x] Able to login/logout with Auth0.
+- [x] Filter options for vegetarian, vegan, gluten-free.
+- [x] Filter options for meal type, i.e. breakfast, lunch, dinner.
+- [x] Display details to recipes, e.g. cuisine.
+- [x] Favourites.
+- [x] To do list.
 
 ### Stretch
 
-#### Navigation
+#### TODO: user stories
 
-- [ ] Able to navigate around the app seamlessly
-- [ ] Able to hide the nav
-- [ ] Filter options for vegetarian, vegan, gluten-free (and maybe some other options).
-- [ ] Additional filters to recipes, e.g. cuisine.
-- [ ] Favourites
+- [ ] User recipe ratings
+- [ ] Autocomplete search form with in-season produce
+- [ ] Filter recipes based on the season.
+- [ ] Additional nav options that can be shown/hidden
 - [ ] Display trending and most popular favourites
-- [ ] Ratings
 - [ ] Comments
 - [ ] User photos
 
@@ -125,9 +130,13 @@ Socialize, eat together, music and honey time. (on toast)
 | name         | Name of the fruit/vegetable for use with the external API                                  |
 | display_name | Name of the fruit/vegetable for use on Seasoned, includes the Maori word (where available) |
 | type         | Type of the produce, i.e. fruit or vegetables                                              |
-| image        | Image of the fruit/vegetable <b>TODO: host these locally, switch to open-source images</b> |
+| image        | Image of the fruit/vegetable <b>TODO: switch to open-source images</b>                     |
 
 ### produce_available_months
+
+Each entry is in this table is a month that the produce is available in New Zealand. Additional tables could be added to track the other types of seasonality: available (imported), limited supply, limited supply (imported), and unavailable.
+
+For an example of this, see: https://www.produce.co.nz/seasonality-chart/
 
 | Name       | Content                          |
 | ---------- | -------------------------------- |
@@ -137,23 +146,26 @@ Socialize, eat together, music and honey time. (on toast)
 
 ### users
 
-| Name                 | Content                                                                                        |
-| -------------------- | ---------------------------------------------------------------------------------------------- |
-| auth0_id             | Auth0 ID for the user                                                                          |
-| username             | The user's chosen username (must be unique)                                                    |
-| created_at           | When the record was created                                                                    |
-| updated_at           | When the record was last updated <b>TODO: add this functionality.</b>                          |
-| name                 | The user's name, added from Auth0                                                              |
-| email                | The user's email, added from Auth0                                                             |
-| image                | The user's avatar, default is a Gravatar that's generated on sign-up                           |
-| favourites (stretch) | Contains the users favourites <b> or </b>links to their favourites entry in a favourites table |
+| Name       | Content                                                               |
+| ---------- | --------------------------------------------------------------------- |
+| auth0_id   | Auth0 ID for the user                                                 |
+| username   | The user's chosen username (must be unique)                           |
+| created_at | When the record was created                                           |
+| updated_at | When the record was last updated <b>TODO: add this functionality.</b> |
+| name       | The user's name, added from Auth0                                     |
+| email      | The user's email, added from Auth0                                    |
+| image      | The user's avatar, default is a Gravatar that's generated on sign-up  |
 
 ### favourites (stretch)
 
-| Name      | Content                                                            |
-| --------- | ------------------------------------------------------------------ |
-| user_id   | References the user's ID in the users table                        |
-| recipe_id | ID for the recipe (<b>external API or internal recipes table?</b>) |
+| Name     | Content                                                                   |
+| -------- | ------------------------------------------------------------------------- |
+| id       | id for the favourite                                                      |
+| auth0_id | References the user's ID in the users table                               |
+| rating   | The user's rating for the favourite TODO: complete this feature           |
+| done     | Boolean which functions as a to-do toggle for the user                    |
+| url      | Link to the full recipe on an external website (the source of the recipe) |
+| label    | The name of the recipe                                                    |
 
 ---
 
@@ -182,3 +194,14 @@ Socialize, eat together, music and honey time. (on toast)
 | GET    | `/v1/available/month/:id`      | Get all availability with the same month | An array of availability for that month with name, display_name, and image_url                                                                                       |
 | GET    | `/v1/available/produce/:id`    | Get all availability for a produce       | An array of availability for that produce with name, display_name, and image_url (or an empty array and 200 status okay if there's no availability for that produce) |
 | GET    | `/v1/available/season/:season` | Get all availability for a season        | An array of availability for that season with name, display_name, and image_url                                                                                      |
+
+### favourites
+
+| METHOD | ENDPOINT                            | USAGE                                              | RETURNS                                     |
+| ------ | ----------------------------------- | -------------------------------------------------- | ------------------------------------------- |
+| GET    | `/api/v1/favourites`                | All favourites                                     | All favourites                              |
+| GET    | `/api/v1/favourites/:id`            | A a favourite by ID                                | The row for a single favourite              |
+| GET    | `/api/v1/favourites/user/:auth0_id` | Get all favourites for a user using their auth0_id | An array with all of that user's favourites |
+| POST   | `/api/v1/favourites`                | Create a new favourite                             | The ID of the new favourite                 |
+| PATCH  | `/api/v1/favourites/:id`            | Update a favourite                                 | The row of the updated favourite            |
+| DELETE | `/api/v1/favourites`                | Delete a favourite                                 | The number of rows deleted                  |
