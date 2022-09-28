@@ -17,11 +17,11 @@ import {
 
 export default function Recipes() {
   const recipes = useSelector((state) => state.recipes)
-  const dietary = useSelector((state) => state.dietary)
+  const dietaryTypeList = useSelector((state) => state.dietary)
   const ingredient = useSelector((state) => state.ingredient)
 
   const shortlistedRecipe = recipes.filter((recipe) => {
-    const filtered = dietary.every((dietaryType) =>
+    const filtered = dietaryTypeList.every((dietaryType) =>
       recipe.recipe.healthLabels.includes(dietaryType)
     )
     if (filtered) {
