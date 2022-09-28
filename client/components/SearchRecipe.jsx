@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Box, TextField, IconButton, InputAdornment } from '@mui/material'
-import SearchIcon from '@mui/icons-material/Search'
-import FormGroup from '@mui/material/FormGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
-import MenuItem from '@mui/material/MenuItem'
-import FormControl from '@mui/material/FormControl'
-import ToggleButton from '@mui/material/ToggleButton'
-import { FilterAlt, FilterAltOff } from '@mui/icons-material'
+import { fetchRecipes, fetchSeason } from '../actions'
 
 import Recipes from './Recipes'
 import SeasonalProduct from './SeasonalProduct'
-import { fetchRecipes, fetchSeason } from '../actions'
+
+import { FilterAlt, FilterAltOff } from '@mui/icons-material'
+import SearchIcon from '@mui/icons-material/Search'
+import {
+  Box,
+  TextField,
+  IconButton,
+  InputAdornment,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  MenuItem,
+  FormControl,
+  ToggleButton,
+} from '@mui/material'
 
 export default function SearchRecipe() {
   const dispatch = useDispatch()

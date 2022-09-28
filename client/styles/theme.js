@@ -45,6 +45,10 @@ export const theme = createTheme({
       fontFamily: 'Nobile, sans-serif',
       fontWeight: 600,
     },
+    body3: {
+      fontFamily: 'Nobile, sans-serif',
+      fontSize: ' 1.2em',
+    },
   },
   props: {
     MuiButton: {
