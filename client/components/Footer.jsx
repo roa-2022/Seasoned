@@ -19,8 +19,11 @@ export default function Footer() {
       sx={{
         backgroundColor: '#3F6C51',
         color: 'white',
-        bottom: '-1px',
+        bottom: 0,
+        left: 0,
         width: '100%',
+        paddingBottom: '40px',
+        marginTop: "40px"
       }}
     >
       <Container maxWidth="lg">
@@ -32,7 +35,7 @@ export default function Footer() {
               </Link>
             </Box>
           </Grid>
-
+          
           <Grid container spacing={1}>
             <Grid item xs={12} md={2.4} color="inherit">
               <Link
