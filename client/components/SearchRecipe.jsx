@@ -33,7 +33,7 @@ export default function SearchRecipe() {
   const dispatch = useDispatch()
   const loading = useSelector((state) => state.loading)
   const [ingredient, setIngredient] = useState('')
-  const [season, setSeason] = useState('')
+  const [season, setSeason] = useState('summer')
   const [toggleFilters, setToggleFilters] = useState(false)
   const [dietaryForm, setDietaryForm] = useState({
     vegan: false,
@@ -94,7 +94,7 @@ export default function SearchRecipe() {
             <FormControl>
               <InputLabel id="season-label">Season</InputLabel>
               <Select
-                defaultValue="summer"
+                defaultValue={season}
                 id="season"
                 labelId="season-label"
                 justifycontent="flex-end"
@@ -103,7 +103,7 @@ export default function SearchRecipe() {
                 variant="outlined"
                 label="Season"
                 size="small"
-                sx={{ width: '12ch' }}
+                autoWidth
               >
                 <MenuItem value="summer">Summer</MenuItem>
                 <MenuItem value="autumn">Autumn</MenuItem>
