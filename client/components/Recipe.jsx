@@ -8,7 +8,7 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import { pink } from '@mui/material/colors'
 import { OpenInNew } from '@mui/icons-material'
-import { Box, List, Link, ListItem, Typography, Button } from '@mui/material'
+import { Box, List, ListItem, Typography, Button } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSeedling, faBook } from '@fortawesome/free-solid-svg-icons'
 import { postFavouriteProduct } from '../apis/produce'
@@ -56,10 +56,10 @@ export default function Recipe() {
               margin: '0px auto',
               width: {
                 xs: '90%', // theme.breakpoints.up('xs')
-                sm: 200, // theme.breakpoints.up('sm')
-                md: 300, // theme.breakpoints.up('md')
-                lg: 400, // theme.breakpoints.up('lg')
-                xl: 500, // theme.breakpoints.up('xl')
+                sm: '90%', // theme.breakpoints.up('sm')
+                md: '75%', // theme.breakpoints.up('md')
+                lg: '50%', // theme.breakpoints.up('lg')
+                xl: '40%', // theme.breakpoints.up('xl')
               },
             }}
           >
@@ -101,10 +101,10 @@ export default function Recipe() {
           margin: '0px auto',
           width: {
             xs: '90%', // theme.breakpoints.up('xs')
-            sm: 200, // theme.breakpoints.up('sm')
-            md: 300, // theme.breakpoints.up('md')
-            lg: 400, // theme.breakpoints.up('lg')
-            xl: 500, // theme.breakpoints.up('xl')
+            sm: '90%', // theme.breakpoints.up('sm')
+            md: '75%', // theme.breakpoints.up('md')
+            lg: '50%', // theme.breakpoints.up('lg')
+            xl: '40%', // theme.breakpoints.up('xl')
           },
         }}
       >
@@ -129,12 +129,17 @@ export default function Recipe() {
               </Typography>
               <Box>
                 <Button
-                  variant="body1"
-                  startIcon={<OpenInNew />}
+                sx={{
+                  textAlign: "center",
+                  marginTop: "30px",
+                  bgcolor: "primary",
+                  padding: "8px 16px"
+                }}
+                  variant="outlined"
+                  endIcon={<OpenInNew />}
                   target="_blank"
                   href={url}
                   rel="noreferrer"
-                  color="#3F6C51"
                   aria-label="Open recipe in new tab"
                 >
                   Recipe here!

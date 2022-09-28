@@ -5,21 +5,14 @@ import SearchIcon from '@mui/icons-material/Search'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
-import Select from '@mui/material/Select'
-import Toggle from '@mui/material/ToggleButton'
+import ToggleButton from '@mui/material/ToggleButton'
 import { FilterAlt, FilterAltOff } from '@mui/icons-material'
 
 import Recipes from './Recipes'
 import SeasonalProduct from './SeasonalProduct'
-import {
-  // dietarySelect,
-  // dietaryRemove,
-  fetchRecipes,
-  fetchSeason,
-} from '../actions'
+import { fetchRecipes, fetchSeason } from '../actions'
 
 export default function SearchRecipe() {
   const dispatch = useDispatch()
@@ -77,28 +70,31 @@ export default function SearchRecipe() {
             alignItems: 'flex-end',
             flexDirection: 'row',
             justifyContent: 'center',
+            width: '95%',
+            margin: '0 auto',
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <FormControl>
-              <InputLabel id="season-label">Season</InputLabel>
-              <Select
+            <FormControl
+              sx={{
+                m: 0.5,
+                width: '12ch',
+              }}
+            >
+              <TextField
+                select
                 defaultValue="summer"
-                id="season"
-                labelId="season-label"
-                justifycontent="flex-end"
-                onChange={handleSeason}
-                value={season}
-                variant="outlined"
+                id="season-label"
                 label="Season"
                 size="small"
-                sx={{ m: 1, width: '12ch' }}
+                value={season}
+                onChange={handleSeason}
               >
                 <MenuItem value="summer">Summer</MenuItem>
                 <MenuItem value="autumn">Autumn</MenuItem>
                 <MenuItem value="winter">Winter</MenuItem>
                 <MenuItem value="spring">Spring</MenuItem>
-              </Select>
+              </TextField>
             </FormControl>
           </Box>
           <TextField
@@ -111,7 +107,7 @@ export default function SearchRecipe() {
             color="primary"
             placeholder="Find a recipe"
             size="small"
-            sx={{ m: 1, width: '25ch' }}
+            sx={{ m: 0.5, width: '25ch' }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -122,7 +118,12 @@ export default function SearchRecipe() {
               ),
             }}
           />
-          <Toggle
+          <ToggleButton
+            sx={{
+              alignSelf: 'center',
+              m: 0.5,
+            }}
+            size="small"
             value="filters"
             name="filters"
             aria-label="search filters"
@@ -130,7 +131,7 @@ export default function SearchRecipe() {
             onChange={() => setToggleFilters(!toggleFilters)}
           >
             {toggleFilters ? <FilterAltOff /> : <FilterAlt />}
-          </Toggle>
+          </ToggleButton>
         </Box>
       </form>
 

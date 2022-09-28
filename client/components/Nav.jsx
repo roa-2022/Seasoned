@@ -5,7 +5,6 @@ import { useNavigate, Link as RouterLink } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 import {
-  Link,
   AppBar,
   Avatar,
   Button,
@@ -18,6 +17,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 
 function Nav() {
   const user = useSelector((state) => state.loggedInUser)
@@ -60,6 +60,7 @@ function Nav() {
               variant="h5"
               sx={{ fontSize: '24px' }}
               onClick={handleHome}
+              aria-label="home"
             >
               <FontAwesomeIcon icon={faHouse} />
             </Button>
@@ -68,11 +69,17 @@ function Nav() {
             <Grid item>
               <div>
                 <IfAuthenticated>
-                  <Link variant="body2" component={RouterLink} to="/favourites">
-                    Favourites
-                  </Link>
                   <Button
-                    sx={{ width: 30, height: 30 }}
+                    variant="body2"
+                    component={RouterLink}
+                    to="/favourites"
+                    startIcon={<FavoriteIcon color={'white'} />}
+                    aria-label="favourites"
+                  >
+                    Favourites
+                  </Button>
+                  <Button
+                    sx={{ height: 30 }}
                     startIcon={
                       <Avatar
                         alt={user.username}
@@ -81,6 +88,7 @@ function Nav() {
                       />
                     }
                     color="inherit"
+                    aria-label="log out"
                     onClick={handleLogOff}
                   >
                     Log off
@@ -91,6 +99,7 @@ function Nav() {
                     startIcon={<AccountCircleIcon />}
                     color="inherit"
                     onClick={handleSignIn}
+                    aria-label="login"
                   >
                     Sign In
                   </Button>
