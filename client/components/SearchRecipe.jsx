@@ -47,7 +47,7 @@ export default function SearchRecipe() {
     for (const key in dietaryForm) {
       if (dietaryForm[key]) {
         dietary += `&health=${key}`
-        dietaryForm[key] = false
+        // dietaryForm[key] = false
       }
     }
 
@@ -55,12 +55,12 @@ export default function SearchRecipe() {
     for (const key in mealType) {
       if (mealType[key]) {
         meal += `&mealType=${key}`
-        mealType[key] = false
+        // mealType[key] = false
       }
     }
 
     dispatch(fetchRecipes(ingredient + dietary + meal))
-    e.target.reset()
+    // e.target.reset()
   }
 
   const handleSeason = (e) => {
@@ -70,13 +70,14 @@ export default function SearchRecipe() {
 
   return (
     <Box>
-      <Typography 
-      variant="body2" 
-      sx={{
-        fontWeight: "200",
-        textAlign: "center",
-        paddingBottom: "5px",
-      }}>
+      <Typography
+        variant="body2"
+        sx={{
+          fontWeight: '200',
+          textAlign: 'center',
+          paddingBottom: '5px',
+        }}
+      >
         Search ingredients in season to find delicious recipes!
       </Typography>
       <Box marginBottom="30px">
@@ -127,7 +128,11 @@ export default function SearchRecipe() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton type="submit" aria-label="search" sx={{ p: '' }}>
+                    <IconButton
+                      type="submit"
+                      aria-label="search"
+                      sx={{ p: '' }}
+                    >
                       <SearchIcon />
                     </IconButton>
                   </InputAdornment>
@@ -226,7 +231,10 @@ export default function SearchRecipe() {
                     checked={mealType.breakfast}
                     name="Breakfast"
                     onChange={() =>
-                      setMealType({ ...mealType, breakfast: !mealType.breakfast })
+                      setMealType({
+                        ...mealType,
+                        breakfast: !mealType.breakfast,
+                      })
                     }
                   />
                 }
@@ -302,7 +310,6 @@ export default function SearchRecipe() {
             alt="Loading animation"
           />
         )}
-
       </Box>
       <Recipes />
       <SeasonalProduct />
