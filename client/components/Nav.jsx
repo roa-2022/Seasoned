@@ -79,17 +79,10 @@ function Nav() {
                     Favourites
                   </Button>
                   <Button
-                    sx={{ height: 30 }}
-                    startIcon={
-                      <Avatar
-                        alt={user.username}
-                        src={user.image}
-                        sx={{ width: 30, height: 30 }}
-                      />
-                    }
+                    startIcon={<AccountCircleIcon />}
                     color="inherit"
-                    aria-label="log out"
                     onClick={handleLogOff}
+                    aria-label="log out"
                   >
                     Log off
                   </Button>
