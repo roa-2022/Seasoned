@@ -15,10 +15,9 @@ export async function useCacheUser() {
   if (isAuthenticated && !tokenInRedux) {
     try {
       const token = await getAccessTokenSilently()
-      console.log('TOKEN: ', token)
 
       const userToSave = {
-        auth0Id: user.sub,
+        auth0_id: user.sub,
         email: user.email,
         token,
       }
