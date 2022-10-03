@@ -14,11 +14,6 @@ function Nav() {
   const { logout, loginWithRedirect } = useAuth0()
   const navigate = useNavigate()
 
-  const handleHome = (e) => {
-    e.preventDefault()
-    navigate('/')
-  }
-
   const handleLogOff = (e) => {
     e.preventDefault()
     logout()
@@ -49,7 +44,8 @@ function Nav() {
               color="inherit"
               variant="h5"
               sx={{ fontSize: '24px' }}
-              onClick={handleHome}
+              component={RouterLink}
+              to="/"
               aria-label="home"
             >
               <FontAwesomeIcon icon={faHouse} />
@@ -57,39 +53,41 @@ function Nav() {
           </Grid>
           <Grid container justifyContent="flex-end">
             <Grid item>
-                <IfAuthenticated sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center"
-                }}>
-                  <Button
-                    variant="body2"
-                    component={RouterLink}
-                    to="/favourites"
-                    startIcon={<FavoriteIcon color={'white'} />}
-                    aria-label="favourites"
-                  >
-                    Favourites
-                  </Button>
-                  <Button
-                    startIcon={<AccountCircleIcon />}
-                    color="inherit"
-                    onClick={handleLogOff}
-                    aria-label="log out"
-                  >
-                    Log off
-                  </Button>
-                </IfAuthenticated>
-                <IfNotAuthenticated>
-                  <Button
-                    startIcon={<AccountCircleIcon />}
-                    color="inherit"
-                    onClick={handleSignIn}
-                    aria-label="login"
-                  >
-                    Sign In
-                  </Button>
-                </IfNotAuthenticated>
+              <IfAuthenticated
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                }}
+              >
+                <Button
+                  variant="body2"
+                  component={RouterLink}
+                  to="/favourites"
+                  startIcon={<FavoriteIcon color={'white'} />}
+                  aria-label="favourites"
+                >
+                  Favourites
+                </Button>
+                <Button
+                  startIcon={<AccountCircleIcon />}
+                  color="inherit"
+                  onClick={handleLogOff}
+                  aria-label="log out"
+                >
+                  Log off
+                </Button>
+              </IfAuthenticated>
+              <IfNotAuthenticated>
+                <Button
+                  startIcon={<AccountCircleIcon />}
+                  color="inherit"
+                  onClick={handleSignIn}
+                  aria-label="login"
+                >
+                  Sign In
+                </Button>
+              </IfNotAuthenticated>
             </Grid>
           </Grid>
         </Toolbar>
